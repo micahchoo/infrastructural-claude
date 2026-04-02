@@ -1,0 +1,53 @@
+# Credentials
+.credentials.json
+.credentials/
+
+# Plugin caches (large, auto-downloaded)
+plugins/cache/
+plugins/marketplaces/
+
+# Session data
+projects/*/
+!projects/*/memory/
+
+# Debug/runtime logs
+context-mode/sessionstart-debug.log
+context-mode/precompact-debug.log
+logs/anti-pattern-scan.log
+
+# Autoresearch artifacts
+autoresearch/__pycache__/
+autoresearch/.*.so
+autoresearch/runs/
+autoresearch/tasks.json
+autoresearch/variants/*/
+
+# Backups (generated at runtime)
+backups/
+
+# File history (session edit tracking)
+file-history/
+
+# Runtime data
+tasks/
+paste-cache/
+teams/
+shell-snapshots/
+sessions/
+
+# Telemetry/history
+telemetry/
+history.jsonl
+stats-cache.json
+
+# Stale backups
+settings.json.orig
+settings.json.bak
+cache/
+
+# Temp/cache
+.cache/
+*.pyc
+debug/
+tmp/
+mcp-needs-auth-cache.json

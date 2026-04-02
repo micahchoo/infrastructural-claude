@@ -1,0 +1,82 @@
+[
+  {
+    "query": "how do I deploy my app to portainer? I've got a docker-compose.yml already",
+    "should_trigger": true
+  },
+  {
+    "query": "need to push to our container registry and update the prod stack on portainer, what's the workflow",
+    "should_trigger": true
+  },
+  {
+    "query": "write a Dockerfile and build-push script for this node service, we deploy via portainer stacks",
+    "should_trigger": true
+  },
+  {
+    "query": "ship it \u2014 the feature's done, let's get it on prod. we use portainer + docker compose at work",
+    "should_trigger": true
+  },
+  {
+    "query": "create an env template and healthcheck for the docker container before we deploy to production",
+    "should_trigger": true
+  },
+  {
+    "query": "our portainer webhook keeps timing out on deploy, help me set up proper automation for image-based deploys",
+    "should_trigger": true
+  },
+  {
+    "query": "i need a compose file that pulls from our private registry (registry.internal.acme.com) for the portainer stack",
+    "should_trigger": true
+  },
+  {
+    "query": "convert this docker run command into a portainer-compatible stack compose file with healthchecks and restart policies",
+    "should_trigger": true
+  },
+  {
+    "query": "deploy this \u2014 it's containerized and we use portainer CE on our VPS",
+    "should_trigger": true
+  },
+  {
+    "query": "set up a build-and-push pipeline to ghcr.io then trigger our portainer stack update via webhook",
+    "should_trigger": true
+  },
+  {
+    "query": "deploy this to heroku, I've got a Procfile already set up",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I deploy a lambda function that processes s3 events, need the IAM policy too",
+    "should_trigger": false
+  },
+  {
+    "query": "write a docker-compose.yml for local dev with postgres and redis, just for running tests locally",
+    "should_trigger": false
+  },
+  {
+    "query": "ship it \u2014 open the PR and tag it for release",
+    "should_trigger": false
+  },
+  {
+    "query": "help me set up a GitHub Actions workflow to build and push my docker image to ECR on merge to main",
+    "should_trigger": false
+  },
+  {
+    "query": "my docker container keeps OOMing in prod, help me tune the memory limits and figure out what's leaking",
+    "should_trigger": false
+  },
+  {
+    "query": "deploy this app to Railway, they support docker containers natively",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to stress test our deployment endpoint before shipping to prod \u2014 can you help me break it",
+    "should_trigger": false
+  },
+  {
+    "query": "set up kubernetes manifests and helm chart for deploying this service to our EKS cluster",
+    "should_trigger": false
+  },
+  {
+    "query": "my docker-compose up works locally but the container crashes on the prod VM \u2014 help me debug the startup logs",
+    "should_trigger": false
+  }
+]

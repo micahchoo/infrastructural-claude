@@ -1,0 +1,82 @@
+[
+  {
+    "query": "how does auth flow through our middleware stack? need to trace it from the JWT decode in api/middleware.js all the way to the user resolver",
+    "should_trigger": true
+  },
+  {
+    "query": "comparing zustand vs jotai vs recoil for our state management rewrite, want to understand tradeoffs before we commit",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm new to this repo and trying to understand how data gets from the kafka consumer to the postgres write path \u2014 can you map that out for me?",
+    "should_trigger": true
+  },
+  {
+    "query": "need to cross-reference the API docs with what's actually implemented in src/routes/ \u2014 suspecting there's drift between the two",
+    "should_trigger": true
+  },
+  {
+    "query": "before I write the migration strategy I want to gather evidence: how does our codebase currently handle tenant isolation? check the models, middleware, and query builders",
+    "should_trigger": true
+  },
+  {
+    "query": "trace how a webhook event from stripe gets processed \u2014 goes through several services and I keep losing the thread",
+    "should_trigger": true
+  },
+  {
+    "query": "we have 3 different retry patterns in this codebase (exponential backoff in utils/retry.ts, a manual loop in jobs/processor.ts, and something in the gRPC client) \u2014 can you compare them and tell me which is most robust",
+    "should_trigger": true
+  },
+  {
+    "query": "onboarding to the payments module, need to understand the domain model, main flows, and where the edge cases are handled before I touch anything",
+    "should_trigger": true
+  },
+  {
+    "query": "gather everything we know about how session expiry works \u2014 check the frontend cookie logic, the backend token validator, and the redis TTL config",
+    "should_trigger": true
+  },
+  {
+    "query": "two PRs touched the rate limiter last month and now behavior is inconsistent between REST and GraphQL endpoints \u2014 help me figure out why by tracing both code paths",
+    "should_trigger": true
+  },
+  {
+    "query": "write tests for the auth middleware before I refactor it",
+    "should_trigger": false
+  },
+  {
+    "query": "fix the bug in api/middleware.js where the JWT validation fails for expired tokens",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to brainstorm approaches for the state management rewrite before we decide on zustand",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from the last 3 weeks of commits on the payments branch",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test our webhook endpoint \u2014 try to find rate limiting bypasses and auth vulnerabilities",
+    "should_trigger": false
+  },
+  {
+    "query": "map the architecture of this entire codebase from business domain down to runtime \u2014 we have no docs and I need a full picture",
+    "should_trigger": false
+  },
+  {
+    "query": "run the retry logic in jobs/processor.ts against edge cases to characterize what it actually does before I change it",
+    "should_trigger": false
+  },
+  {
+    "query": "I already know the answer is in the stripe SDK docs \u2014 look up their webhook signature verification API",
+    "should_trigger": false
+  },
+  {
+    "query": "we have 5 independent tasks from the planning session that can all be worked in parallel \u2014 dispatch agents for each",
+    "should_trigger": false
+  },
+  {
+    "query": "resume from the handoff \u2014 we were halfway through mapping the kafka consumer flow last session",
+    "should_trigger": false
+  }
+]

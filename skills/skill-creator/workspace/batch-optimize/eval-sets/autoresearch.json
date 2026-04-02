@@ -1,0 +1,82 @@
+[
+  {
+    "query": "audit the skill tree",
+    "should_trigger": true
+  },
+  {
+    "query": "run autoresearch on the skill tree",
+    "should_trigger": true
+  },
+  {
+    "query": "/autoresearch",
+    "should_trigger": true
+  },
+  {
+    "query": "check if my skills follow the holistic integration principle",
+    "should_trigger": true
+  },
+  {
+    "query": "skill tree health check",
+    "should_trigger": true
+  },
+  {
+    "query": "I just added a new skill with skill-creator, can you validate it against the three principles?",
+    "should_trigger": true
+  },
+  {
+    "query": "do a full audit of ~/.claude/skills to see what's missing or out of alignment",
+    "should_trigger": true
+  },
+  {
+    "query": "my skill tree feels fragmented, can you check whether the skills close the loop on each other",
+    "should_trigger": true
+  },
+  {
+    "query": "autoresearch gate \u2014 just wrote a SKILL.md for the new deploy skill, make sure it's up to standard",
+    "should_trigger": true
+  },
+  {
+    "query": "check principles compliance across all skills, I think some are missing baseline enrichment hooks",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to stress test the new /payments API endpoint I just built, try to find vulnerabilities",
+    "should_trigger": false
+  },
+  {
+    "query": "run grade.py on the last eval round and show me the scores",
+    "should_trigger": false
+  },
+  {
+    "query": "audit my approved bash commands in settings.json for anything dangerous",
+    "should_trigger": false
+  },
+  {
+    "query": "I just wrote a new skill file, review the code quality and simplify it",
+    "should_trigger": false
+  },
+  {
+    "query": "check the skill I wrote for the brainstorming workflow \u2014 does the description make sense?",
+    "should_trigger": false
+  },
+  {
+    "query": "run run_ab.py with the new prompt variant and compare against baseline",
+    "should_trigger": false
+  },
+  {
+    "query": "audit the codebase architecture and map the subsystems for the new payment service",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from git history and check which features are missing documentation",
+    "should_trigger": false
+  },
+  {
+    "query": "my eval-protocol gates aren't firing correctly after a skill runs \u2014 debug the PostToolUse hook",
+    "should_trigger": false
+  },
+  {
+    "query": "check the SKILL.md I just wrote for skill-creator to see if the trigger description is clear enough",
+    "should_trigger": false
+  }
+]

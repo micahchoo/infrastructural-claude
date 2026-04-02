@@ -1,0 +1,24 @@
+Model: claude-sonnet-4-6, Max iterations: 3, Apply: False
+Runner dir: /home/micah/.claude/plugins/cache/claude-plugins-official/skill-creator/614a283a7087/skills/skill-creator
+
+Found 41 eval sets
+OPTIMIZING adversarial-api-testing... score=62% (delta: -29%) [all_passed (iteration 1)]
+OPTIMIZING autoresearch... score=75% (delta: -17%) [all_passed (iteration 2)]
+OPTIMIZING brainstorming... score=88% (delta: -4%) [all_passed (iteration 2)]
+OPTIMIZING changelog... score=100% (delta: +4%) [max_iterations (3)]
+OPTIMIZING characterization-testing...   TIMEOUT (>600s)
+FAILED
+OPTIMIZING chat-archive-ner-tuning... score=88% (delta: +8%) [max_iterations (3)]
+OPTIMIZING check-handoff... score=62% (delta: -33%) [all_passed (iteration 2)]
+OPTIMIZING codebase-diagnostics... score=88% (delta: -8%) [all_passed (iteration 1)]
+OPTIMIZING cognitive-guardrails... score=100% (delta: +15%) [max_iterations (3)]
+OPTIMIZING commands-auditor... score=62% (delta: -4%) [rate_limited (iteration 2)]
+OPTIMIZING compound... score=50% (delta: +0%) [rate_limited (iteration 1)]
+OPTIMIZING dispatching-parallel-agents... score=50% (delta: +0%) [rate_limited (iteration 1)]
+OPTIMIZING domain-codebooks...   FAILED (rc=1)
+FAILED
+OPTIMIZING dream... score=50% (delta: +0%) [rate_limited (iteration 1)]
+OPTIMIZING eval-protocol... score=50% (delta: +0%) [rate_limited (iteration 1)]
+OPTIMIZING executing-plans... score=50% (delta: +0%) [rate_limited (iteration 1)]
+OPTIMIZING failure-capture... score=50% (delta: +0%) [rate_limited (iteration 1)]
+OPTIMIZING gha... 

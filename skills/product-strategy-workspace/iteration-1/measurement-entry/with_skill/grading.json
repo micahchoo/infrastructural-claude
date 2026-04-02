@@ -1,0 +1,42 @@
+{
+  "eval_id": 2,
+  "eval_name": "measurement-entry",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "Correctly identifies this as a Phase 4 (Measure) entry — does not start from discovery or strategy",
+      "passed": true,
+      "evidence": "measurement-plan.md explicitly states 'Entry Mode: Entering the product lifecycle at Phase 4: Measure. The build pipeline has completed (new onboarding flow shipped). We now evaluate outcomes against the success criteria defined pre-launch.' The retrospective also references 'Phase 5 Entry Note' for the learn phase. Clear lifecycle awareness."
+    },
+    {
+      "text": "References the pre-defined targets (18% conversion, <15min time-to-first-value) as the success criteria",
+      "passed": true,
+      "evidence": "measurement-plan.md has a 'Pre-Defined Success Criteria (Phase 2 Reference)' table: 'Trial-to-paid conversion: Baseline 12%, Target 18%, Timeframe 60 days' and 'Time-to-first-value (TTFV): Baseline 45 minutes, Target < 15 minutes, Timeframe 60 days'. kpi-evaluation.md references these same targets for each KPI assessment."
+    },
+    {
+      "text": "Plans for both quantitative (analytics) AND qualitative (support tickets) signal types",
+      "passed": true,
+      "evidence": "signal-collection-plan.md defines 4 signal types: 'Signal 1: Quantitative (Analytics Dashboard)' with conversion rates, TTFV distributions, funnel drop-off; 'Signal 2: Qualitative (Support Tickets)' with categorization framework across 3 dimensions (onboarding stage, issue type, sentiment); 'Signal 3: UX Audit (Shadow-Walk)'; and 'Signal 4: Technical Health'. Exceeds the minimum requirement of both quant and qual."
+    },
+    {
+      "text": "Addresses attribution confidence — does not simply claim causation from correlation",
+      "passed": true,
+      "evidence": "kpi-evaluation.md lists 'Attribution confidence: TBD' for both KPIs, explicitly refusing to claim causation before data. The bias checks section states 'overconfidence: 2 weeks of data in a 60-day window. High uncertainty on conversion (lagging indicator).' WYSIATI check notes 'What signals are we NOT seeing? Users who bounced before completing onboarding... Competitors' onboarding improvements during this period.' The assessment framework discusses confounding factors."
+    },
+    {
+      "text": "Acknowledges 2 weeks is early and discusses leading vs lagging indicators or measurement timing",
+      "passed": true,
+      "evidence": "measurement-plan.md 'Evaluation Timing' section: 'At 2 weeks (14 days into 60-day window), we have: Sufficient data for: Leading indicator assessment, early trend detection... Insufficient data for: Definitive PASS/MISS verdict on conversion (need full cohort maturation). Recommended: Treat this as an early read, not a final evaluation.' KPI evaluation marks conversion as 'PENDING (too early for verdict)' vs TTFV as 'PRELIMINARY READ POSSIBLE'."
+    },
+    {
+      "text": "Closes with Learn/next-steps recommendations — what to do based on findings",
+      "passed": true,
+      "evidence": "retrospective-synthesis.md provides structured next steps: 'Immediate Actions (This Week)', 'Scheduled Checkpoints', and 'Conditional Next Steps' with specific trigger conditions: 'Day 45-60 evaluation completes with PASS → next cycle focuses on a different product area; PARTIAL → next cycle iterates on onboarding; MISS → returns to Phase 1: Discover.' Also includes 'Do NOT start a new cycle yet' with clear reasoning."
+    },
+    {
+      "text": "Mentions UX audit, flow tracing, or shadow-walk as a signal source for qualitative evaluation",
+      "passed": true,
+      "evidence": "signal-collection-plan.md has a dedicated 'Signal 3: UX Audit (Shadow-Walk)' section with audit brief, specific checkpoints, and persona lens. States 'Dispatch to shadow-walk skill (or manual walkthrough)' and includes specific audit brief: 'Walk the new onboarding flow from the perspective of a first-time user who signed up for a free trial. Focus on: time-to-first-value.'"
+    }
+  ]
+}

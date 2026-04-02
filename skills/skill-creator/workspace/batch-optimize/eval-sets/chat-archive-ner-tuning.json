@@ -1,0 +1,82 @@
+[
+  {
+    "query": "my WhatsApp export NER keeps pulling in 'lol' and 'ok' as person entities, how do I add them to a stoplist",
+    "should_trigger": true
+  },
+  {
+    "query": "the entity extractor is tagging Discord bot names like 'MEE6' and 'Dyno' as real people, need to filter those out",
+    "should_trigger": true
+  },
+  {
+    "query": "running spacy on chat archives and threshold 0.6 gives too much noise but 0.8 misses half the real names \u2014 how do I tune this",
+    "should_trigger": true
+  },
+  {
+    "query": "have WhatsApp and Discord exports covering the same group chat, entities are deduped weirdly \u2014 'Mike' vs 'michael.k' are same person",
+    "should_trigger": true
+  },
+  {
+    "query": "NER pipeline is mixing up who sent a message vs who they mentioned. 'hey @sarah can you call John' \u2014 John showing as sender",
+    "should_trigger": true
+  },
+  {
+    "query": "chat archive NER keeps extracting phone numbers from WhatsApp system messages like 'added +1-555-...' \u2014 platform metadata leaking in",
+    "should_trigger": true
+  },
+  {
+    "query": "aliases are a mess across my Discord exports, 'xX_DarkLord_Xx' and 'Dave' are same user, how do I normalize these before entity dedup",
+    "should_trigger": true
+  },
+  {
+    "query": "precision on person entities from our Slack export is 40%, recall is fine. want to do a sample-based audit to find the noise patterns",
+    "should_trigger": true
+  },
+  {
+    "query": "building a social graph from 3 years of family WhatsApp groups, entity extraction keeps surfacing 'papa', 'mom', 'sis' as distinct person entities per group when they should merge",
+    "should_trigger": true
+  },
+  {
+    "query": "ner on multilingual chat \u2014 mix of English and Tagalog \u2014 stoplist tuned for English is not catching Tagalog filler words that get tagged as ORG entities",
+    "should_trigger": true
+  },
+  {
+    "query": "want to fine-tune a BERT NER model on our internal chat logs so it learns company-specific names",
+    "should_trigger": false
+  },
+  {
+    "query": "extracting named entities from customer support email threads to build a CRM \u2014 need to identify company names and contacts",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I train spacy's NER component on a custom dataset of medical records",
+    "should_trigger": false
+  },
+  {
+    "query": "deduplicating chat messages in our Discord export \u2014 lots of reposts and cross-channel mirrors creating duplicate message rows",
+    "should_trigger": false
+  },
+  {
+    "query": "cleaning up our WhatsApp export CSV \u2014 removing blank rows, fixing encoding issues, normalizing timestamps before analysis",
+    "should_trigger": false
+  },
+  {
+    "query": "NER pipeline on legal contracts is tagging 'Party A' and 'Party B' as person entities incorrectly",
+    "should_trigger": false
+  },
+  {
+    "query": "sentiment analysis on Discord messages \u2014 want to track mood trends per channel over time",
+    "should_trigger": false
+  },
+  {
+    "query": "building a NER model eval harness \u2014 want to run precision/recall benchmarks across 5 different models on a held-out test set",
+    "should_trigger": false
+  },
+  {
+    "query": "entity resolution across our CRM and Salesforce \u2014 same companies have slightly different names in each system",
+    "should_trigger": false
+  },
+  {
+    "query": "need to extract person names from news articles and Wikipedia pages for a knowledge graph project",
+    "should_trigger": false
+  }
+]

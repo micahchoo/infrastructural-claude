@@ -1,0 +1,334 @@
+=== STDOUT ===
+{
+  "exit_reason": "rate_limited (iteration 1)",
+  "original_description": "Agent decision-quality protocol \u2014 expect/capture/grade primitives for checking whether the right tool, approach, or research target was chosen at workflow phase transitions. Use for: phase gates between workflow stages, decision routing eval harnesses, transcript grading, or embedding checkpoints in skills. NOT for: pytest/unit tests, ML metrics, LLM output eval, performance benchmarks, or code review \u2014 this evaluates agent decisions, not code correctness.",
+  "best_description": "Agent decision-quality protocol \u2014 expect/capture/grade primitives for checking whether the right tool, approach, or research target was chosen at workflow phase transitions. Use for: phase gates between workflow stages, decision routing eval harnesses, transcript grading, or embedding checkpoints in skills. NOT for: pytest/unit tests, ML metrics, LLM output eval, performance benchmarks, or code review \u2014 this evaluates agent decisions, not code correctness.",
+  "best_score": "4/8",
+  "best_train_score": "6/12",
+  "best_test_score": "4/8",
+  "final_description": "Agent decision-quality protocol \u2014 expect/capture/grade primitives for checking whether the right tool, approach, or research target was chosen at workflow phase transitions. Use for: phase gates between workflow stages, decision routing eval harnesses, transcript grading, or embedding checkpoints in skills. NOT for: pytest/unit tests, ML metrics, LLM output eval, performance benchmarks, or code review \u2014 this evaluates agent decisions, not code correctness.",
+  "iterations_run": 1,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Agent decision-quality protocol \u2014 expect/capture/grade primitives for checking whether the right tool, approach, or research target was chosen at workflow phase transitions. Use for: phase gates between workflow stages, decision routing eval harnesses, transcript grading, or embedding checkpoints in skills. NOT for: pytest/unit tests, ML metrics, LLM output eval, performance benchmarks, or code review \u2014 this evaluates agent decisions, not code correctness.",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "writing a decision routing eval \u2014 agents keep picking foxhound when they should use get_docs, want to score the difference systematically",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we're instrumenting our skills pipeline with quality gates between stages, specifically to catch wrong-approach selections before they propagate",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "eval-protocol for checking if subagent chose the right db query strategy at the planning\u2192execution phase gate",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "need decision-quality checkpoints in our multi-agent pipeline \u2014 specifically catching when the agent should have searched mulch but went straight to implementation",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "I want to add phase gate checks between the research and implementation stages of my skill \u2014 capture whether the agent picked the right tool before moving forward",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building an eval harness to grade agent decision quality at workflow transitions, need the expect/capture/grade primitives",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run the autoresearch audit to gate my new skill against the holistic integration principle",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check my executing-plans phase transitions \u2014 the plan has 4 stages and I want to make sure each checkpoint commit captures the right state",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "writing characterization tests for the existing routing code so I have a safety net before I refactor it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want to evaluate whether my agents are making good decisions \u2014 should I use cognitive-guardrails or something else for bias checks at key moments",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "performance benchmark for our decision tree \u2014 want to know latency at each routing branch under load",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit my skill's cognitive checkpoints \u2014 specifically the wysiati and overconfidence checks to make sure they fire at the right decision points",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "transcript grading \u2014 I recorded 40 agent sessions and want to score whether the tool selection at each workflow decision point was correct",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "need to grade a transcript from yesterday's agent run \u2014 want to check if it routed to the right tool at each phase boundary",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "how do I embed a checkpoint in my skill that verifies the right research target was chosen before execution starts",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add an expect/capture gate to my brainstorming skill that checks the agent stayed in the right phase before advancing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "stress test the API endpoint decision logic \u2014 try to break the routing with adversarial inputs",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before I start implementing, I want to brainstorm the phase structure of this feature \u2014 make sure I've mapped the workflow correctly first",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add assertions to the pytest suite that verify the routing logic picks the right handler for each request type",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to measure LLM output quality on our eval set \u2014 tracking hallucination rate across 500 prompts using ROUGE scores",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "writing a decision routing eval \u2014 agents keep picking foxhound when they should use get_docs, want to score the difference systematically",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we're instrumenting our skills pipeline with quality gates between stages, specifically to catch wrong-approach selections before they propagate",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "eval-protocol for checking if subagent chose the right db query strategy at the planning\u2192execution phase gate",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "need decision-quality checkpoints in our multi-agent pipeline \u2014 specifically catching when the agent should have searched mulch but went straight to implementation",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "I want to add phase gate checks between the research and implementation stages of my skill \u2014 capture whether the agent picked the right tool before moving forward",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building an eval harness to grade agent decision quality at workflow transitions, need the expect/capture/grade primitives",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run the autoresearch audit to gate my new skill against the holistic integration principle",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check my executing-plans phase transitions \u2014 the plan has 4 stages and I want to make sure each checkpoint commit captures the right state",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "writing characterization tests for the existing routing code so I have a safety net before I refactor it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want to evaluate whether my agents are making good decisions \u2014 should I use cognitive-guardrails or something else for bias checks at key moments",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "performance benchmark for our decision tree \u2014 want to know latency at each routing branch under load",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit my skill's cognitive checkpoints \u2014 specifically the wysiati and overconfidence checks to make sure they fire at the right decision points",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+
+=== STDERR ===
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/3
+Description: Agent decision-quality protocol — expect/capture/grade primitives for checking whether the right tool, approach, or research target was chosen at workflow phase transitions. Use for: phase gates between workflow stages, decision routing eval harnesses, transcript grading, or embedding checkpoints in skills. NOT for: pytest/unit tests, ML metrics, LLM output eval, performance benchmarks, or code review — this evaluates agent decisions, not code correctness.
+============================================================
+Gtk-Message: 22:05:48.759: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Train: 12/24 correct, precision=100% recall=0% accuracy=50% (27.6s)
+  [FAIL] rate=0/2 expected=True: writing a decision routing eval — agents keep picking foxhou
+  [FAIL] rate=0/2 expected=True: we're instrumenting our skills pipeline with quality gates b
+  [FAIL] rate=0/2 expected=True: eval-protocol for checking if subagent chose the right db qu
+  [FAIL] rate=0/2 expected=True: need decision-quality checkpoints in our multi-agent pipelin
+  [FAIL] rate=0/2 expected=True: I want to add phase gate checks between the research and imp
+  [FAIL] rate=0/2 expected=True: building an eval harness to grade agent decision quality at 
+  [PASS] rate=0/2 expected=False: run the autoresearch audit to gate my new skill against the 
+  [PASS] rate=0/2 expected=False: check my executing-plans phase transitions — the plan has 4 
+  [PASS] rate=0/2 expected=False: writing characterization tests for the existing routing code
+  [PASS] rate=0/2 expected=False: I want to evaluate whether my agents are making good decisio
+  [PASS] rate=0/2 expected=False: performance benchmark for our decision tree — want to know l
+  [PASS] rate=0/2 expected=False: audit my skill's cognitive checkpoints — specifically the wy
+Test : 8/16 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/2 expected=True: transcript grading — I recorded 40 agent sessions and want t
+  [FAIL] rate=0/2 expected=True: need to grade a transcript from yesterday's agent run — want
+  [FAIL] rate=0/2 expected=True: how do I embed a checkpoint in my skill that verifies the ri
+  [FAIL] rate=0/2 expected=True: add an expect/capture gate to my brainstorming skill that ch
+  [PASS] rate=0/2 expected=False: stress test the API endpoint decision logic — try to break t
+  [PASS] rate=0/2 expected=False: before I start implementing, I want to brainstorm the phase 
+  [PASS] rate=0/2 expected=False: add assertions to the pytest suite that verify the routing l
+  [PASS] rate=0/2 expected=False: I need to measure LLM output quality on our eval set — track
+
+Improving description...
+Warning: claude --print returned 1
+Rate limited, keeping current description: Rate limited: You've hit your limit · resets 2am (America/Los_Angeles)
+
+Exit reason: rate_limited (iteration 1)
+Best score: 4/8 (iteration 1)
+
+Report: /tmp/skill_description_report_eval-protocol_20260330_220548.html
+Results saved to: /home/micah/.claude/skills/skill-creator/workspace/batch-optimize/results/eval-protocol/2026-03-30_220548
+
+=== RETURN CODE: 0 ===

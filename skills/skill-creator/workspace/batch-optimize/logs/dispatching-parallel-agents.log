@@ -1,0 +1,334 @@
+=== STDOUT ===
+{
+  "exit_reason": "rate_limited (iteration 1)",
+  "original_description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Also triggered when strategic-looping or executing-plans identifies parallelizable work within a plan.",
+  "best_description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Also triggered when strategic-looping or executing-plans identifies parallelizable work within a plan.",
+  "best_score": "4/8",
+  "best_train_score": "6/12",
+  "best_test_score": "4/8",
+  "final_description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Also triggered when strategic-looping or executing-plans identifies parallelizable work within a plan.",
+  "iterations_run": 1,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Also triggered when strategic-looping or executing-plans identifies parallelizable work within a plan.",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "I need to audit the auth module, refactor the payment service, and update the README \u2014 can you tackle all three at once?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "two independent features: dark mode toggle and csv export. can we work both simultaneously so i dont have to wait?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "executing-plans flagged 3 parallelizable tasks in wave 2, how do i dispatch them concurrently?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "need to write unit tests for src/parsers/ AND scrape the competitor API docs AND grep for all TODO comments \u2014 no deps between any of these",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "research the tradeoffs of redis vs memcached AND benchmark our current cache hit rate AND check if competitors use edge caching \u2014 all independent",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "spin up agents to investigate the db connection leak in /api/users AND the memory spike in /workers/queue.js \u2014 they're totally unrelated",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "first migrate the schema, then update the ORM models, then fix the endpoints that break \u2014 walk me through each in order",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we're mid-plan on the auth rewrite, i just finished the token validation step, do the findings change anything about the remaining steps?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ok i have a plan doc at PLAN.md with 8 tasks, lets start executing it step by step",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog from the last 3 sprints and also write the migration guide \u2014 both need the same git history context",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write characterization tests for the legacy payment module before i start refactoring it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "brainstorm how to parallelize our CI pipeline \u2014 it's taking 40min and blocking deploys",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "investigate why staging differs from prod: one agent checks env vars, another checks db migrations, another checks nginx config \u2014 go",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run the security scan on billing-service and the perf profiling on search-service in parallel pls",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we have 4 microservices that need dependency upgrades, none of them share code. fastest way to do this?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "i have 6 unrelated repos that all need the same linting fixes applied, can agents do them simultaneously",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "these two tasks look independent but they both write to config.json \u2014 is it safe to run them at the same time?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the full test suite, and if it passes, deploy to staging, and if that works, cut the release branch",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "i want to add a new feature to the checkout flow, help me think through the design before we write any code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "i need to implement the oauth flow \u2014 there are like 5 steps that all depend on each other, help me not miss anything",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "I need to audit the auth module, refactor the payment service, and update the README \u2014 can you tackle all three at once?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "two independent features: dark mode toggle and csv export. can we work both simultaneously so i dont have to wait?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "executing-plans flagged 3 parallelizable tasks in wave 2, how do i dispatch them concurrently?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "need to write unit tests for src/parsers/ AND scrape the competitor API docs AND grep for all TODO comments \u2014 no deps between any of these",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "research the tradeoffs of redis vs memcached AND benchmark our current cache hit rate AND check if competitors use edge caching \u2014 all independent",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "spin up agents to investigate the db connection leak in /api/users AND the memory spike in /workers/queue.js \u2014 they're totally unrelated",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "first migrate the schema, then update the ORM models, then fix the endpoints that break \u2014 walk me through each in order",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we're mid-plan on the auth rewrite, i just finished the token validation step, do the findings change anything about the remaining steps?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ok i have a plan doc at PLAN.md with 8 tasks, lets start executing it step by step",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog from the last 3 sprints and also write the migration guide \u2014 both need the same git history context",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write characterization tests for the legacy payment module before i start refactoring it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "brainstorm how to parallelize our CI pipeline \u2014 it's taking 40min and blocking deploys",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+
+=== STDERR ===
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/3
+Description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Also triggered when strategic-looping or executing-plans identifies parallelizable work within a plan.
+============================================================
+Gtk-Message: 22:04:40.881: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Train: 12/24 correct, precision=100% recall=0% accuracy=50% (27.9s)
+  [FAIL] rate=0/2 expected=True: I need to audit the auth module, refactor the payment servic
+  [FAIL] rate=0/2 expected=True: two independent features: dark mode toggle and csv export. c
+  [FAIL] rate=0/2 expected=True: executing-plans flagged 3 parallelizable tasks in wave 2, ho
+  [FAIL] rate=0/2 expected=True: need to write unit tests for src/parsers/ AND scrape the com
+  [FAIL] rate=0/2 expected=True: research the tradeoffs of redis vs memcached AND benchmark o
+  [FAIL] rate=0/2 expected=True: spin up agents to investigate the db connection leak in /api
+  [PASS] rate=0/2 expected=False: first migrate the schema, then update the ORM models, then f
+  [PASS] rate=0/2 expected=False: we're mid-plan on the auth rewrite, i just finished the toke
+  [PASS] rate=0/2 expected=False: ok i have a plan doc at PLAN.md with 8 tasks, lets start exe
+  [PASS] rate=0/2 expected=False: generate a changelog from the last 3 sprints and also write 
+  [PASS] rate=0/2 expected=False: write characterization tests for the legacy payment module b
+  [PASS] rate=0/2 expected=False: brainstorm how to parallelize our CI pipeline — it's taking 
+Test : 8/16 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/2 expected=True: investigate why staging differs from prod: one agent checks 
+  [FAIL] rate=0/2 expected=True: run the security scan on billing-service and the perf profil
+  [FAIL] rate=0/2 expected=True: we have 4 microservices that need dependency upgrades, none 
+  [FAIL] rate=0/2 expected=True: i have 6 unrelated repos that all need the same linting fixe
+  [PASS] rate=0/2 expected=False: these two tasks look independent but they both write to conf
+  [PASS] rate=0/2 expected=False: run the full test suite, and if it passes, deploy to staging
+  [PASS] rate=0/2 expected=False: i want to add a new feature to the checkout flow, help me th
+  [PASS] rate=0/2 expected=False: i need to implement the oauth flow — there are like 5 steps 
+
+Improving description...
+Warning: claude --print returned 1
+Rate limited, keeping current description: Rate limited: You've hit your limit · resets 2am (America/Los_Angeles)
+
+Exit reason: rate_limited (iteration 1)
+Best score: 4/8 (iteration 1)
+
+Report: /tmp/skill_description_report_dispatching-parallel-agents_20260330_220440.html
+Results saved to: /home/micah/.claude/skills/skill-creator/workspace/batch-optimize/results/dispatching-parallel-agents/2026-03-30_220440
+
+=== RETURN CODE: 0 ===

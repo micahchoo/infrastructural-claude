@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I want to add phase gate checks between the research and implementation stages of my skill \u2014 capture whether the agent picked the right tool before moving forward",
+    "should_trigger": true
+  },
+  {
+    "query": "building an eval harness to grade agent decision quality at workflow transitions, need the expect/capture/grade primitives",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I embed a checkpoint in my skill that verifies the right research target was chosen before execution starts",
+    "should_trigger": true
+  },
+  {
+    "query": "need to grade a transcript from yesterday's agent run \u2014 want to check if it routed to the right tool at each phase boundary",
+    "should_trigger": true
+  },
+  {
+    "query": "writing a decision routing eval \u2014 agents keep picking foxhound when they should use get_docs, want to score the difference systematically",
+    "should_trigger": true
+  },
+  {
+    "query": "we're instrumenting our skills pipeline with quality gates between stages, specifically to catch wrong-approach selections before they propagate",
+    "should_trigger": true
+  },
+  {
+    "query": "eval-protocol for checking if subagent chose the right db query strategy at the planning\u2192execution phase gate",
+    "should_trigger": true
+  },
+  {
+    "query": "transcript grading \u2014 I recorded 40 agent sessions and want to score whether the tool selection at each workflow decision point was correct",
+    "should_trigger": true
+  },
+  {
+    "query": "add an expect/capture gate to my brainstorming skill that checks the agent stayed in the right phase before advancing",
+    "should_trigger": true
+  },
+  {
+    "query": "need decision-quality checkpoints in our multi-agent pipeline \u2014 specifically catching when the agent should have searched mulch but went straight to implementation",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to evaluate whether my agents are making good decisions \u2014 should I use cognitive-guardrails or something else for bias checks at key moments",
+    "should_trigger": false
+  },
+  {
+    "query": "run the autoresearch audit to gate my new skill against the holistic integration principle",
+    "should_trigger": false
+  },
+  {
+    "query": "add assertions to the pytest suite that verify the routing logic picks the right handler for each request type",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test the API endpoint decision logic \u2014 try to break the routing with adversarial inputs",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to measure LLM output quality on our eval set \u2014 tracking hallucination rate across 500 prompts using ROUGE scores",
+    "should_trigger": false
+  },
+  {
+    "query": "before I start implementing, I want to brainstorm the phase structure of this feature \u2014 make sure I've mapped the workflow correctly first",
+    "should_trigger": false
+  },
+  {
+    "query": "performance benchmark for our decision tree \u2014 want to know latency at each routing branch under load",
+    "should_trigger": false
+  },
+  {
+    "query": "writing characterization tests for the existing routing code so I have a safety net before I refactor it",
+    "should_trigger": false
+  },
+  {
+    "query": "check my executing-plans phase transitions \u2014 the plan has 4 stages and I want to make sure each checkpoint commit captures the right state",
+    "should_trigger": false
+  },
+  {
+    "query": "audit my skill's cognitive checkpoints \u2014 specifically the wysiati and overconfidence checks to make sure they fire at the right decision points",
+    "should_trigger": false
+  }
+]

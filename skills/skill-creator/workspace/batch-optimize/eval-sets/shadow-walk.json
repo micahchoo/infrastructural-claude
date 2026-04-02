@@ -1,0 +1,82 @@
+[
+  {
+    "query": "shadow walk the checkout flow in our React app \u2014 customers keep abandoning at step 3 but I can't figure out why",
+    "should_trigger": true
+  },
+  {
+    "query": "what does the user actually see when they click 'forgot password' \u2014 walk me through it from their POV",
+    "should_trigger": true
+  },
+  {
+    "query": "audit the onboarding UX flow starting from /src/pages/signup.tsx, we redesigned it last sprint and want to make sure nothing feels broken",
+    "should_trigger": true
+  },
+  {
+    "query": "trace what a free-tier user experiences vs pro user when they hit the billing page in our SaaS dashboard",
+    "should_trigger": true
+  },
+  {
+    "query": "find UX issues in our notification permission flow \u2014 users say its confusing but I need to see exactly what they encounter",
+    "should_trigger": true
+  },
+  {
+    "query": "walk thru the user experience of submitting a support ticket in acme-app, theres complaints but no specific errors in logs",
+    "should_trigger": true
+  },
+  {
+    "query": "what does the end user see when a webhook delivery fails in our integrations panel? trying to understand if the error messaging is clear",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to audit what a logged-out user sees when they land on a shared document link \u2014 can you trace that flow through the code?",
+    "should_trigger": true
+  },
+  {
+    "query": "shadow walk src/flows/cart.ts \u2014 from add-to-cart through order confirmation, just want to see it from the customers perspective",
+    "should_trigger": true
+  },
+  {
+    "query": "map out the ux a new user goes thru during account setup, specifically looking for confusing states or dead ends they might hit",
+    "should_trigger": true
+  },
+  {
+    "query": "review the checkout flow for code quality issues, specifically looking for N+1 queries and missing error boundaries",
+    "should_trigger": false
+  },
+  {
+    "query": "the payment form is throwing a 500 when stripe webhook fires \u2014 help me debug why the handler in src/api/webhooks.ts is failing",
+    "should_trigger": false
+  },
+  {
+    "query": "write characterization tests for the onboarding flow so we have a safety net before refactoring it",
+    "should_trigger": false
+  },
+  {
+    "query": "analyze why our dashboard takes 8 seconds to load \u2014 profile the render path and find the bottleneck",
+    "should_trigger": false
+  },
+  {
+    "query": "audit our login endpoint for security vulnerabilities, specifically looking for session fixation and timing attacks",
+    "should_trigger": false
+  },
+  {
+    "query": "what does this component render when props.user is null? I think there's a bug in UserProfile.tsx around line 84",
+    "should_trigger": false
+  },
+  {
+    "query": "trace the JWT refresh flow to find where the token expiry is being miscalculated \u2014 auth keeps breaking every hour exactly",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to brainstorm the UX for our new onboarding flow \u2014 what are the design options for a 3-step wizard vs a single long form?",
+    "should_trigger": false
+  },
+  {
+    "query": "what does the database look like after a user completes checkout \u2014 walk me through which tables get written and in what order",
+    "should_trigger": false
+  },
+  {
+    "query": "find UX issues in our component library by running axe-core against all our Storybook stories",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I want to add a notification system to our app \u2014 users should get alerts when their reports finish processing",
+    "should_trigger": true
+  },
+  {
+    "query": "let's build out the settings page, needs dark mode toggle, notification prefs, and account management",
+    "should_trigger": true
+  },
+  {
+    "query": "we need a new feature for bulk CSV import, havent thought through the UX yet",
+    "should_trigger": true
+  },
+  {
+    "query": "thinking about adding rate limiting to our API endpoints \u2014 not sure if we should do it at the gateway or middleware level",
+    "should_trigger": true
+  },
+  {
+    "query": "product wants a 'smart suggestions' feature in the editor, kinda like copilot but for our domain-specific stuff",
+    "should_trigger": true
+  },
+  {
+    "query": "refactor the auth flow \u2014 currently we have session cookies but we're moving to JWTs and need to figure out the migration path",
+    "should_trigger": true
+  },
+  {
+    "query": "add drag-and-drop reordering to the kanban board in src/components/Board.tsx",
+    "should_trigger": true
+  },
+  {
+    "query": "we want to let users share dashboards with external people (no login required) \u2014 need to think through security and link expiry",
+    "should_trigger": true
+  },
+  {
+    "query": "our onboarding is terrible, lets redesign it \u2014 new users dont know what to do after signup",
+    "should_trigger": true
+  },
+  {
+    "query": "im thinking we change how the search works \u2014 right now its exact match but we want fuzzy/semantic, not sure which approach fits our stack",
+    "should_trigger": true
+  },
+  {
+    "query": "write characterization tests for the auth middleware before I refactor it",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from the last two weeks of commits for the v2.4 release",
+    "should_trigger": false
+  },
+  {
+    "query": "run adversarial tests against the /api/payments endpoint, try to find injection vulnerabilities",
+    "should_trigger": false
+  },
+  {
+    "query": "execute the implementation plan in PLAN.md for the user profile feature",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to debug why the dashboard component re-renders 3 times on load \u2014 here's the profiler output",
+    "should_trigger": false
+  },
+  {
+    "query": "dispatch parallel agents to handle the three independent migration tasks from our seeds backlog",
+    "should_trigger": false
+  },
+  {
+    "query": "check the handoff from yesterday's session and figure out what's left on the payments feature",
+    "should_trigger": false
+  },
+  {
+    "query": "what architectural patterns should I use for real-time collaborative editing? just need a reference, not building it now",
+    "should_trigger": false
+  },
+  {
+    "query": "run a codebase diagnostic on this repo \u2014 I just joined the team and need to understand the architecture",
+    "should_trigger": false
+  },
+  {
+    "query": "the build is failing in CI on the test-unit job, here's the error log \u2014 help me fix it",
+    "should_trigger": false
+  }
+]

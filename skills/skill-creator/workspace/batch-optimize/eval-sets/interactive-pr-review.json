@@ -1,0 +1,82 @@
+[
+  {
+    "query": "review PR #847",
+    "should_trigger": true
+  },
+  {
+    "query": "can you go through https://github.com/acme/backend/pull/234 and tell me what you think",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to approve sarah's PR before EOD, can you help me read through the changes",
+    "should_trigger": true
+  },
+  {
+    "query": "look at the diff on #1203 and flag anything sketchy",
+    "should_trigger": true
+  },
+  {
+    "query": "our team opened a PR for the auth refactor, walk me through it as a reviewer",
+    "should_trigger": true
+  },
+  {
+    "query": "can u reveiw pr 99 from the feature/payments branch",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm the on-call reviewer today, help me audit this PR from the infra team: github.com/org/repo/pull/512",
+    "should_trigger": true
+  },
+  {
+    "query": "go through the changes in https://github.com/myco/api/pull/78 line by line and post review comments via gh",
+    "should_trigger": true
+  },
+  {
+    "query": "inspect the diff of PR #301 \u2014 it touches the billing module and I want a second pair of eyes before merging",
+    "should_trigger": true
+  },
+  {
+    "query": "examine PR #45 from jsmith and let me know if there are any security issues I should block on",
+    "should_trigger": true
+  },
+  {
+    "query": "I just finished implementing the new caching layer, can you review my PR before I request reviewers",
+    "should_trigger": false
+  },
+  {
+    "query": "create a PR for the feature/dark-mode branch targeting main",
+    "should_trigger": false
+  },
+  {
+    "query": "my tech lead left comments on PR #203, help me address all their feedback",
+    "should_trigger": false
+  },
+  {
+    "query": "open a pull request for these changes with a good description",
+    "should_trigger": false
+  },
+  {
+    "query": "I got a review back on my auth PR, the reviewer wants me to split it into smaller commits \u2014 how should I do that",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from the last 20 PRs merged to main",
+    "should_trigger": false
+  },
+  {
+    "query": "review my implementation of the OAuth flow before I push",
+    "should_trigger": false
+  },
+  {
+    "query": "can you do an adversarial review of the payments API endpoint \u2014 try to find security holes",
+    "should_trigger": false
+  },
+  {
+    "query": "the reviewer approved PR #88 with nits, help me resolve them and push a fixup commit",
+    "should_trigger": false
+  },
+  {
+    "query": "look at this diff and help me write a good PR description before I open it",
+    "should_trigger": false
+  }
+]

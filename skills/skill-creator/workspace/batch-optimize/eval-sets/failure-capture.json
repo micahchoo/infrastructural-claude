@@ -1,0 +1,82 @@
+[
+  {
+    "query": "just hit a [SNAG] with the webpack config, it's silently ignoring my aliases",
+    "should_trigger": true
+  },
+  {
+    "query": "had to abandon the redis approach entirely, switched to in-memory cache as a workaround \u2014 should capture this somewhere",
+    "should_trigger": true
+  },
+  {
+    "query": "the stripe webhook handler keeps timing out but only in prod, not locally. third attempt at fixing this. logging the failure",
+    "should_trigger": true
+  },
+  {
+    "query": "tool call failed again \u2014 gh pr create just hung for 2 minutes and died with no error message",
+    "should_trigger": true
+  },
+  {
+    "query": "ok I give up on the oauth2 pkce flow with keycloak, using client credentials instead. want to record why",
+    "should_trigger": true
+  },
+  {
+    "query": "something weird happened \u2014 db migration ran clean but rows are missing in staging. not sure why yet",
+    "should_trigger": true
+  },
+  {
+    "query": "that assumption about useLayoutEffect was completely wrong, cost me an hour, want to record this so it doesnt happen again",
+    "should_trigger": true
+  },
+  {
+    "query": "the approach i was taking with the AST transform doesnt work for generics. documenting this dead end before pivoting",
+    "should_trigger": true
+  },
+  {
+    "query": "foxhound returned empty for 'hook payload schema' \u2014 nothing useful, had to guess. [SNAG]",
+    "should_trigger": true
+  },
+  {
+    "query": "need to capture that the grpc streaming approach failed due to cloudflare's 100s timeout \u2014 created a workaround using polling",
+    "should_trigger": true
+  },
+  {
+    "query": "we keep hitting the same auth bug in this codebase, let's write characterization tests before touching it",
+    "should_trigger": false
+  },
+  {
+    "query": "the build is failing in CI, can you look at the GHA logs and figure out what's wrong",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to stress test the payments API to find edge cases before we go live",
+    "should_trigger": false
+  },
+  {
+    "query": "something unexpected happened in prod last night \u2014 need to write a postmortem doc for the incident",
+    "should_trigger": false
+  },
+  {
+    "query": "we had a bad deploy last quarter because mocked tests passed but real db migration failed \u2014 capture that as a decision",
+    "should_trigger": false
+  },
+  {
+    "query": "log all the decisions from this session before I close it out",
+    "should_trigger": false
+  },
+  {
+    "query": "the websocket reconnection logic surprised me \u2014 document how it actually works before we change it",
+    "should_trigger": false
+  },
+  {
+    "query": "I keep making the same mistakes in this codebase \u2014 let's audit what patterns are causing recurring bugs",
+    "should_trigger": false
+  },
+  {
+    "query": "the approach failed review, need to record the feedback and update my implementation plan",
+    "should_trigger": false
+  },
+  {
+    "query": "debugging this race condition \u2014 can't figure out why the mutex isn't holding. help me trace through the execution",
+    "should_trigger": false
+  }
+]

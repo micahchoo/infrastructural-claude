@@ -1,0 +1,14 @@
+{
+  "eval_id": 3,
+  "eval_name": "greenfield-entry",
+  "prompt": "I want to build a tool for indie game developers to manage their community feedback — like a hub where they can collect player suggestions from Discord, Steam forums, and Reddit, then prioritize what to work on. I've been a game dev for 5 years and I keep seeing the same problem: devs either ignore feedback entirely or try to build everything players ask for. There's nothing in the middle that helps them make strategic decisions about what feedback to act on. Where do I even start?",
+  "assertions": [
+    {"text": "Attempts full cycle — Phase 1 (Discover) through Phase 3 (Dispatch) for greenfield product", "passed": null, "evidence": ""},
+    {"text": "Personas describe specific indie dev behaviors (e.g., community size, feedback volume), not generic 'game developer'", "passed": null, "evidence": ""},
+    {"text": "Names actual competitors or competitor categories (Canny, UserVoice, Nolt, or similar feedback tools)", "passed": null, "evidence": ""},
+    {"text": "Differentiation is grounded in a user pain point — not generic 'better UX' or 'more features'", "passed": null, "evidence": ""},
+    {"text": "Produces a product vision statement", "passed": null, "evidence": ""},
+    {"text": "KPIs have specific measurement methods and target values — not vague 'increase adoption'", "passed": null, "evidence": ""},
+    {"text": "Routes to product-design or brainstorming as the next step (dispatch)", "passed": null, "evidence": ""}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "skill_name": "cognitive-guardrails",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Research how Python's asyncio.TaskGroup handles exception propagation compared to trio's nurseries and Go's errgroup. Then recommend which pattern we should use for our worker pool in wa2obsidian. Give me a concrete recommendation.",
+      "expected_output": "Should trigger anchoring (multi-source research), wysiati (missing info before recommending), and availability (checking multiple source types). The response should show evidence of re-synthesizing after gathering sources rather than anchoring on the first one found, should name what information is missing, and should consult code/docs/tests not just web results.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I think our renderer.py might have a bug where messages with both media attachments and quoted replies get the quote block nested inside the media embed incorrectly. Can you investigate and tell me if this is likely to affect users, and if so fix it?",
+      "expected_output": "Should trigger substitution (answering the specific bug not a generic one), overconfidence (claims about what the code does should be sourced from reading it), conjunction (decomposing 'is this likely to affect users' into independent factors), and reframe (before concluding whether to fix). Should not just produce a generic 'media handling' analysis.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "We need to refactor the CLI module to support both interactive and batch modes. Start by planning the approach, then implement the first phase. If you hit problems with the current architecture, push through and make it work.",
+      "expected_output": "Should trigger sunk-cost (the 'push through' framing is a trap — should do a stateless re-evaluation if the approach isn't working rather than doubling down), substitution (plan should address THIS cli's specific structure not a generic refactor), and wysiati (before acting on the plan). The response should show a checkpoint where it reassesses rather than blindly continuing.",
+      "files": []
+    }
+  ]
+}

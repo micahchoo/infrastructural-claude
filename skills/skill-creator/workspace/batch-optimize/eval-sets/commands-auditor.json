@@ -1,0 +1,82 @@
+[
+  {
+    "query": "audit my claude code permissions",
+    "should_trigger": true
+  },
+  {
+    "query": "can you check settings.json for dangerous bash commands",
+    "should_trigger": true
+  },
+  {
+    "query": "run cc-safe on my config",
+    "should_trigger": true
+  },
+  {
+    "query": "I just updated my permissions.allow list, can you check if any of the new entries are risky",
+    "should_trigger": true
+  },
+  {
+    "query": "permission audit for my claude code setup",
+    "should_trigger": true
+  },
+  {
+    "query": "is Bash(*) in my settings.json a security risk",
+    "should_trigger": true
+  },
+  {
+    "query": "we added sudo and rm -rf to approved commands last week, someone flagged it in code review, can you review the whole allow list",
+    "should_trigger": true
+  },
+  {
+    "query": "check my claude settings for dangerous shell permissions",
+    "should_trigger": true
+  },
+  {
+    "query": "just ran update-config to add some bash permissions, audit them pls",
+    "should_trigger": true
+  },
+  {
+    "query": "our security team wants a review of what shell commands claude code can run autonomously",
+    "should_trigger": true
+  },
+  {
+    "query": "audit our REST API for security vulnerabilities before we ship",
+    "should_trigger": false
+  },
+  {
+    "query": "check if our GraphQL endpoints have any permission issues",
+    "should_trigger": false
+  },
+  {
+    "query": "review my app's user permission model for privilege escalation risks",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to stress test the auth endpoints and find vulnerabilities in our API",
+    "should_trigger": false
+  },
+  {
+    "query": "audit the RBAC configuration in our database schema",
+    "should_trigger": false
+  },
+  {
+    "query": "scan my codebase for hardcoded credentials or insecure patterns",
+    "should_trigger": false
+  },
+  {
+    "query": "check if any npm packages in package.json have known CVEs",
+    "should_trigger": false
+  },
+  {
+    "query": "our CI pipeline runs curl | sh to install deps, is that safe",
+    "should_trigger": false
+  },
+  {
+    "query": "review what permissions the app requests from the OS at runtime",
+    "should_trigger": false
+  },
+  {
+    "query": "audit the bash scripts in our deploy pipeline for risky commands",
+    "should_trigger": false
+  }
+]

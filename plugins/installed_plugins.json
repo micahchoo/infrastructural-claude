@@ -1,0 +1,164 @@
+{
+  "version": 2,
+  "plugins": {
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-07T09:55:24.294Z",
+        "lastUpdated": "2026-03-07T09:55:24.294Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "pyright-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-07T23:25:45.855Z",
+        "lastUpdated": "2026-03-07T23:25:45.855Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7",
+        "version": "5.0.7",
+        "installedAt": "2026-03-11T04:00:30.515Z",
+        "lastUpdated": "2026-03-31T22:23:17.404Z",
+        "gitCommitSha": "5ef73d25b71e69e63a74eae359fb26c7a6ac8fc0"
+      }
+    ],
+    "superpowers@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/superpowers-marketplace/superpowers/5.0.1",
+        "version": "5.0.1",
+        "installedAt": "2026-03-11T04:01:44.864Z",
+        "lastUpdated": "2026-03-11T04:01:44.864Z",
+        "gitCommitSha": "5ef73d25b71e69e63a74eae359fb26c7a6ac8fc0"
+      }
+    ],
+    "claude-code-setup@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-13T02:09:19.412Z",
+        "lastUpdated": "2026-03-13T02:09:19.412Z",
+        "gitCommitSha": "b36fd4b753018b0b340803579399992a32e43502"
+      }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/frontend-design/ce3f706b2767",
+        "version": "ce3f706b2767",
+        "installedAt": "2026-03-13T02:18:19.040Z",
+        "lastUpdated": "2026-04-01T17:51:01.381Z",
+        "gitCommitSha": "b36fd4b753018b0b340803579399992a32e43502"
+      }
+    ],
+    "code-simplifier@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/code-simplifier/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-13T02:20:13.405Z",
+        "lastUpdated": "2026-03-13T02:20:13.405Z",
+        "gitCommitSha": "b36fd4b753018b0b340803579399992a32e43502"
+      }
+    ],
+    "ralph-loop@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/ralph-loop/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-13T02:20:13.425Z",
+        "lastUpdated": "2026-03-29T06:57:02.240Z",
+        "gitCommitSha": "b36fd4b753018b0b340803579399992a32e43502"
+      }
+    ],
+    "skill-creator@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/skill-creator/ce3f706b2767",
+        "version": "ce3f706b2767",
+        "installedAt": "2026-03-16T18:11:06.733Z",
+        "lastUpdated": "2026-04-01T17:51:01.375Z",
+        "gitCommitSha": "d5c15b861cd23e3102215c26020368ad5134dc47"
+      }
+    ],
+    "rust-analyzer-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/rust-analyzer-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-20T07:27:13.580Z",
+        "lastUpdated": "2026-03-20T07:27:13.580Z",
+        "gitCommitSha": "b664e152af5742dd11b6a6e5d7a65848a8c5a261"
+      }
+    ],
+    "foxhound@local": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/mcp-servers/foxhound",
+        "version": "1.0.0",
+        "installedAt": "2026-03-21T12:00:00.000Z",
+        "lastUpdated": "2026-03-21T12:00:00.000Z"
+      }
+    ],
+    "pr-review-toolkit@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/ce3f706b2767",
+        "version": "ce3f706b2767",
+        "installedAt": "2026-03-23T17:42:27.279Z",
+        "lastUpdated": "2026-04-01T17:51:01.370Z",
+        "gitCommitSha": "61c0597779bd2d670dcd4fbbf37c66aa19eb2ce6"
+      }
+    ],
+    "plugin-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/plugin-dev/ce3f706b2767",
+        "version": "ce3f706b2767",
+        "installedAt": "2026-03-23T17:43:12.349Z",
+        "lastUpdated": "2026-04-01T17:51:01.386Z",
+        "gitCommitSha": "61c0597779bd2d670dcd4fbbf37c66aa19eb2ce6"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/claude-md-management/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-23T17:43:16.204Z",
+        "lastUpdated": "2026-03-23T17:43:16.204Z",
+        "gitCommitSha": "61c0597779bd2d670dcd4fbbf37c66aa19eb2ce6"
+      }
+    ],
+    "hookify@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/claude-plugins-official/hookify/ce3f706b2767",
+        "version": "ce3f706b2767",
+        "installedAt": "2026-03-23T17:43:19.373Z",
+        "lastUpdated": "2026-04-01T17:51:01.365Z",
+        "gitCommitSha": "61c0597779bd2d670dcd4fbbf37c66aa19eb2ce6"
+      }
+    ],
+    "context-mode@context-mode": [
+      {
+        "scope": "user",
+        "installPath": "/home/micah/.claude/plugins/cache/context-mode/context-mode/1.0.18",
+        "version": "1.0.18",
+        "installedAt": "2026-03-24T01:26:46.263Z",
+        "lastUpdated": "2026-03-29T07:49:49.022Z",
+        "gitCommitSha": "4b2f814f811c16e446b6fffce3b552d50e08168c"
+      }
+    ]
+  }
+}

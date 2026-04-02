@@ -1,0 +1,82 @@
+[
+  {
+    "query": "create a changelog for the v2.3.0 release",
+    "should_trigger": true
+  },
+  {
+    "query": "generate release notes from git history since last tag",
+    "should_trigger": true
+  },
+  {
+    "query": "update CHANGELOG.md with everything merged this sprint",
+    "should_trigger": true
+  },
+  {
+    "query": "what changed since v1.5.0? need something customer-friendly",
+    "should_trigger": true
+  },
+  {
+    "query": "write up the release notes for this branch before i merge it",
+    "should_trigger": true
+  },
+  {
+    "query": "our PM wants a changelog for the mobile team, can you pull from git commits",
+    "should_trigger": true
+  },
+  {
+    "query": "changlelog for last 2 weeks of commits plz",
+    "should_trigger": true
+  },
+  {
+    "query": "transform these commits into user-facing release notes, ignore the chore and ci stuff",
+    "should_trigger": true
+  },
+  {
+    "query": "need to update docs/CHANGELOG.md before cutting the 3.0 release",
+    "should_trigger": true
+  },
+  {
+    "query": "what shipped in this release? summarize git log into something non-technical for stakeholders",
+    "should_trigger": true
+  },
+  {
+    "query": "what changed in this file since last week",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize the git history of the auth module so i can understand how it evolved",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a summary of all commits by the backend team this quarter",
+    "should_trigger": false
+  },
+  {
+    "query": "i'm finishing up this feature branch, review it before i open a PR",
+    "should_trigger": false
+  },
+  {
+    "query": "write release notes for this API endpoint explaining how to use it",
+    "should_trigger": false
+  },
+  {
+    "query": "create a migration guide for users upgrading from v1 to v2",
+    "should_trigger": false
+  },
+  {
+    "query": "git log shows a lot of noise, help me understand what this branch actually does",
+    "should_trigger": false
+  },
+  {
+    "query": "document what changed in the database schema for the DBA team",
+    "should_trigger": false
+  },
+  {
+    "query": "what commits broke the tests? trace the regression in git history",
+    "should_trigger": false
+  },
+  {
+    "query": "write up a postmortem on the outage, include what changed before it happened",
+    "should_trigger": false
+  }
+]

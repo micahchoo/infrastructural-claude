@@ -1,0 +1,82 @@
+[
+  {
+    "query": "write me a new skill for deploying to kubernetes",
+    "should_trigger": true
+  },
+  {
+    "query": "my /db-migrate skill keeps triggering on the wrong queries, can you fix the description so it's more accurate",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to build a skill from scratch for our internal PR review process at Acme Corp",
+    "should_trigger": true
+  },
+  {
+    "query": "run evals on the triage skill and tell me how often it fires correctly vs misses",
+    "should_trigger": true
+  },
+  {
+    "query": "the brainstorming skill description says 'creative work' but it's not triggering when i say 'design a feature' \u2014 optimize it",
+    "should_trigger": true
+  },
+  {
+    "query": "benchmark my custom onboarding skill against 50 test queries and give me variance analysis",
+    "should_trigger": true
+  },
+  {
+    "query": "update skills/deploy/SKILL.md to add a new phase for rollback detection",
+    "should_trigger": true
+  },
+  {
+    "query": "creat a skill that fires whenever someone asks about db migrations (sorry for typo)",
+    "should_trigger": true
+  },
+  {
+    "query": "the seeds skill is triggering too aggressively on non-issue queries \u2014 help me tighten the trigger description",
+    "should_trigger": true
+  },
+  {
+    "query": "I have a rough draft skill for incident response but it's too verbose and misses edge cases, can you refine it",
+    "should_trigger": true
+  },
+  {
+    "query": "I just finished writing a new skill \u2014 now run autoresearch to validate it against the skill tree principles",
+    "should_trigger": false
+  },
+  {
+    "query": "before I build this feature, let's brainstorm what a good skill for CI pipeline automation would look like",
+    "should_trigger": false
+  },
+  {
+    "query": "write tests that document what our existing deploy.sh script actually does before I refactor it",
+    "should_trigger": false
+  },
+  {
+    "query": "eval whether the model chose the right tool at each phase transition in last session's debugging loop",
+    "should_trigger": false
+  },
+  {
+    "query": "create a new claude code plugin with commands and hooks for our internal tooling",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog for the skill updates we made this sprint \u2014 transform the commits into release notes",
+    "should_trigger": false
+  },
+  {
+    "query": "the /compound skill ran \u2014 now extract all the decisions and failures from this session into mulch records",
+    "should_trigger": false
+  },
+  {
+    "query": "audit all the approved bash commands in settings.json for security risks, some of them look sketchy",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test our new /review-pr skill against edge cases \u2014 try to break it with adversarial inputs",
+    "should_trigger": false
+  },
+  {
+    "query": "my skill description mentions 'cognitive guardrails' \u2014 can you run the overconfidence check on my architecture claims before I proceed",
+    "should_trigger": false
+  }
+]

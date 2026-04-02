@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I need to research three completely independent things before we start: the Kafka consumer group rebalancing behavior, our internal retry policy conventions, and how the new auth service handles token expiry. These can all be investigated in parallel.",
+    "should_trigger": true
+  },
+  {
+    "query": "We're evaluating five different vector DB options (Pinecone, Weaviate, Qdrant, Milvus, pgvector) for our RAG pipeline and I need a structured research plan with orthogonality checks \u2014 don't want the tracks bleeding into each other",
+    "should_trigger": true
+  },
+  {
+    "query": "need to run parallel research on: (1) how competitors handle offline sync, (2) CRDT implementations in open source, (3) IndexedDB perf limits, (4) conflict resolution UX patterns. structured multi-agent approach pls",
+    "should_trigger": true
+  },
+  {
+    "query": "Before we architect the new observability layer I want independent tracks investigating: OTel collector bottlenecks, our current Grafana dashboards' query patterns, Prometheus cardinality issues, and what Datadog's agent actually costs us",
+    "should_trigger": true
+  },
+  {
+    "query": "spin up a proper multi-track research protocol for investigating why our p99 latency spiked \u2014 I want DB query analysis, network hop tracing, GC pause correlation, and cache eviction patterns all investigated independently then composed",
+    "should_trigger": true
+  },
+  {
+    "query": "research protocol for a 4-track investigation: GDPR data residency requirements, our current PII flows, encryption-at-rest options, and what the legal team flagged in the Q1 audit. need gates between phases",
+    "should_trigger": true
+  },
+  {
+    "query": "structured research across 6 independent failure hypotheses for the prod incident \u2014 want numbered plans and journal templates so the team can run them in parallel without stepping on each other",
+    "should_trigger": true
+  },
+  {
+    "query": "do a research-protocol style investigation: track 1 is webpack bundle analysis, track 2 is React rendering profiling, track 3 is network waterfall, track 4 is font/asset loading. compose findings at the end",
+    "should_trigger": true
+  },
+  {
+    "query": "I've got 3+ completely orthogonal research threads for the migration: legacy schema archaeology, target Postgres 16 feature set, and ETL tooling landscape. want prerequisite gates and formal dispatch",
+    "should_trigger": true
+  },
+  {
+    "query": "multi-track research needed \u2014 independently investigate our gRPC timeout config, the upstream SLA contracts, the circuit breaker thresholds, and historical timeout rates in Datadog. need structured composition at the end",
+    "should_trigger": true
+  },
+  {
+    "query": "research how postgres handles MVCC and vacuum so I know when to tune autovacuum for our write-heavy tables",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to understand two things: how our current auth middleware works and what JWT rotation looks like in production. run hybrid-research on both",
+    "should_trigger": false
+  },
+  {
+    "query": "onboard me to the payments service \u2014 I'm new to this part of the codebase and need to understand how it fits together",
+    "should_trigger": false
+  },
+  {
+    "query": "extract patterns from these three OSS repositories for how they handle optimistic updates in offline-first apps",
+    "should_trigger": false
+  },
+  {
+    "query": "research the best approach and then implement the rate limiter for our API gateway",
+    "should_trigger": false
+  },
+  {
+    "query": "investigate these two competing approaches for our caching layer: Redis with write-through vs Memcached with write-behind. which fits our read/write ratio?",
+    "should_trigger": false
+  },
+  {
+    "query": "try to break our /api/v2/checkout endpoint \u2014 stress test it and find vulnerabilities before the launch",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to deeply understand the architecture of this codebase before touching anything \u2014 map the subsystems, data flows, and runtime behavior",
+    "should_trigger": false
+  },
+  {
+    "query": "research what features competitors have that we don't before we start brainstorming the Q3 roadmap",
+    "should_trigger": false
+  },
+  {
+    "query": "look up the openai embeddings API docs and find the right parameters for our use case",
+    "should_trigger": false
+  }
+]

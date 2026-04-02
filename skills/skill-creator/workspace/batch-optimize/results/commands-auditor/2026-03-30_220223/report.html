@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>commands-auditor — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>commands-auditor — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> Audit Claude Code&#x27;s approved Bash commands (permissions.allow) for security risks. Scans settings.json for dangerous patterns like Bash(*), sudo, rm -rf, curl|sh. Triggers: &quot;audit permissions&quot;, &quot;cc-safe&quot;, &quot;permission audit&quot;, reviewing permissions.allow, or after update-config modifies Bash permissions. ONLY for Claude Code&#x27;s own permissions.allow — not npm/pip audit, chmod, IAM, or general security review.</p>
+        <p class="best"><strong>Best:</strong> Audit Claude Code&#x27;s approved Bash commands (permissions.allow) for security risks. Scans settings.json for dangerous patterns like Bash(*), sudo, rm -rf, curl|sh. Triggers: &quot;audit permissions&quot;, &quot;cc-safe&quot;, &quot;permission audit&quot;, reviewing permissions.allow, or after update-config modifies Bash permissions. ONLY for Claude Code&#x27;s own permissions.allow — not npm/pip audit, chmod, IAM, or general security review.</p>
+        <p><strong>Best Score:</strong> 5/8 (test)</p>
+        <p><strong>Iterations:</strong> 2 | <strong>Train:</strong> 12 | <strong>Test:</strong> 8</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">permission audit for my claude code setup</th>
+                <th class="positive-col">our security team wants a review of what shell commands claude code can run autonomously</th>
+                <th class="positive-col">we added sudo and rm -rf to approved commands last week, someone flagged it in code review, can you review the whole allow list</th>
+                <th class="positive-col">audit my claude code permissions</th>
+                <th class="positive-col">is Bash(*) in my settings.json a security risk</th>
+                <th class="positive-col">can you check settings.json for dangerous bash commands</th>
+                <th class="negative-col">check if our GraphQL endpoints have any permission issues</th>
+                <th class="negative-col">review what permissions the app requests from the OS at runtime</th>
+                <th class="negative-col">audit our REST API for security vulnerabilities before we ship</th>
+                <th class="negative-col">audit the bash scripts in our deploy pipeline for risky commands</th>
+                <th class="negative-col">check if any npm packages in package.json have known CVEs</th>
+                <th class="negative-col">our CI pipeline runs curl | sh to install deps, is that safe</th>
+                <th class="test-col positive-col">check my claude settings for dangerous shell permissions</th>
+                <th class="test-col positive-col">I just updated my permissions.allow list, can you check if any of the new entries are risky</th>
+                <th class="test-col positive-col">run cc-safe on my config</th>
+                <th class="test-col positive-col">just ran update-config to add some bash permissions, audit them pls</th>
+                <th class="test-col negative-col">I want to stress test the auth endpoints and find vulnerabilities in our API</th>
+                <th class="test-col negative-col">audit the RBAC configuration in our database schema</th>
+                <th class="test-col negative-col">scan my codebase for hardcoded credentials or insecure patterns</th>
+                <th class="test-col negative-col">review my app&#x27;s user permission model for privilege escalation risks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="best-row">
+                <td>1</td>
+                <td><span class="score score-ok">16/24</span></td>
+                <td><span class="score score-ok">10/16</span></td>
+                <td class="description">Audit Claude Code&#x27;s approved Bash commands (permissions.allow) for security risks. Scans settings.json for dangerous patterns like Bash(*), sudo, rm -rf, curl|sh. Triggers: &quot;audit permissions&quot;, &quot;cc-safe&quot;, &quot;permission audit&quot;, reviewing permissions.allow, or after update-config modifies Bash permissions. ONLY for Claude Code&#x27;s own permissions.allow — not npm/pip audit, chmod, IAM, or general security review.</td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">2/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+            </tr>
+            <tr class="">
+                <td>2</td>
+                <td><span class="score score-ok">19/24</span></td>
+                <td><span class="score score-ok">8/16</span></td>
+                <td class="description">Use when the user wants to review, audit, or assess the security of commands that Claude Code is allowed to run automatically — specifically entries in `permissions.allow` inside `settings.json`. Covers questions like whether dangerous patterns (wildcards, sudo, rm -rf, curl|sh) are present in the allow list, whether specific entries pose security risks, or whether the overall set of auto-approved commands is safe. Also use when someone flags a risky entry that was added to Claude Code&#x27;s approved commands.
+
+Do NOT use for: auditing bash scripts in a project&#x27;s codebase, deploy pipelines, or CI scripts — this skill only covers Claude Code&#x27;s own runtime permissions in settings.json.</td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">1/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>

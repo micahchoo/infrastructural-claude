@@ -1,0 +1,82 @@
+[
+  {
+    "query": "functional tests are all green, now try to break our /payments API \u2014 looking for IDOR, injection, anything",
+    "should_trigger": true
+  },
+  {
+    "query": "pentest the GraphQL endpoint at api/graphql, we're shipping next week and haven't done any security review",
+    "should_trigger": true
+  },
+  {
+    "query": "stress test the /orders REST API, it keeps throwing 500s under load and I think there's a concurrency bug",
+    "should_trigger": true
+  },
+  {
+    "query": "find vulnerabilities in our checkout API before the security audit on Thursday",
+    "should_trigger": true
+  },
+  {
+    "query": "adversarial test the user auth endpoints \u2014 try SQL injection, mass assignment, anything you can think of",
+    "should_trigger": true
+  },
+  {
+    "query": "written unit tests for the API but haven't checked for IDOR or race conditions yet, can you do that now",
+    "should_trigger": true
+  },
+  {
+    "query": "our /admin/users endpoint might have broken access control, can you try to exploit it with different user tokens",
+    "should_trigger": true
+  },
+  {
+    "query": "try to break the rate limiting on POST /api/v2/transfers \u2014 I suspect it can be bypassed",
+    "should_trigger": true
+  },
+  {
+    "query": "we passed all functional tests but QA flagged some weird behavior under parallel requests to /cart/checkout, check for concurrency issues",
+    "should_trigger": true
+  },
+  {
+    "query": "security audit requires we test for OWASP top 10 on our REST API, help me find injection and auth bypass issues in routes/api.js",
+    "should_trigger": true
+  },
+  {
+    "query": "write unit tests for the payments API in routes/payments.js",
+    "should_trigger": false
+  },
+  {
+    "query": "the /orders endpoint is returning 500 errors, help me debug what's causing them",
+    "should_trigger": false
+  },
+  {
+    "query": "add integration tests for our GraphQL mutations to make sure they return the right data",
+    "should_trigger": false
+  },
+  {
+    "query": "characterize what the existing /auth endpoints actually do before I refactor them",
+    "should_trigger": false
+  },
+  {
+    "query": "evaluate whether our test suite has good coverage of the API layer",
+    "should_trigger": false
+  },
+  {
+    "query": "load test our API with k6 to see how many requests per second we can handle",
+    "should_trigger": false
+  },
+  {
+    "query": "audit our Claude Code permissions in settings.json for any dangerous bash commands",
+    "should_trigger": false
+  },
+  {
+    "query": "help me write a changelog for the API v2 release based on recent commits",
+    "should_trigger": false
+  },
+  {
+    "query": "the API keeps returning 500s under load, use systematic-debugging to trace the root cause in the request pipeline",
+    "should_trigger": false
+  },
+  {
+    "query": "review test coverage completeness for our API using eval-protocol \u2014 want to know what decision points we're missing",
+    "should_trigger": false
+  }
+]

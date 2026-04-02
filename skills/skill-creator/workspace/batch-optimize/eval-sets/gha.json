@@ -1,0 +1,82 @@
+[
+  {
+    "query": "my PR checks are all red, the deploy job keeps failing with exit code 1",
+    "should_trigger": true
+  },
+  {
+    "query": "GHA run https://github.com/acme/api/actions/runs/8234567890 failed on the lint step, not sure why",
+    "should_trigger": true
+  },
+  {
+    "query": "CI is broken on main, build job dies at the docker push step",
+    "should_trigger": true
+  },
+  {
+    "query": "workflow run failed \u2014 looks like the test matrix explodes on node 20 but passes on 18",
+    "should_trigger": true
+  },
+  {
+    "query": "github actions failing on my feature branch, passes locally though",
+    "should_trigger": true
+  },
+  {
+    "query": "checks failing on PR #412, the action log just says 'Process completed with exit code 2'",
+    "should_trigger": true
+  },
+  {
+    "query": "our nightly release workflow hasn't run in 3 days, not sure if it's disabled or broken",
+    "should_trigger": true
+  },
+  {
+    "query": "build broke in CI after I merged the deps update PR, can you help me root cause it",
+    "should_trigger": true
+  },
+  {
+    "query": "the `integration-tests` job in our GHA pipeline is flaky \u2014 fails ~30% of the time with a timeout",
+    "should_trigger": true
+  },
+  {
+    "query": "ci checks red on my branch, specifically the `security-scan` step, logs say SARIF upload failed",
+    "should_trigger": true
+  },
+  {
+    "query": "tests are failing locally after I pulled main, looks like something changed in auth.ts",
+    "should_trigger": false
+  },
+  {
+    "query": "CircleCI pipeline is broken on our staging branch, can you look at the config",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to add a new step to our workflow.yml that runs on push to main",
+    "should_trigger": false
+  },
+  {
+    "query": "GitLab CI job failing with 'permission denied' when cloning submodule",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I write a GitHub Actions workflow that deploys to ECS on merge to main",
+    "should_trigger": false
+  },
+  {
+    "query": "my GitHub issue actions aren't working \u2014 the auto-label bot stopped labeling new issues",
+    "should_trigger": false
+  },
+  {
+    "query": "Jenkins build broke after the repo migration, pipeline config is at Jenkinsfile",
+    "should_trigger": false
+  },
+  {
+    "query": "the unit tests I wrote are all red, can you help me fix them",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to stress test our API before the release, want to find vulnerabilities in the auth endpoint",
+    "should_trigger": false
+  },
+  {
+    "query": "build broke \u2014 my local docker build fails with 'no space left on device'",
+    "should_trigger": false
+  }
+]

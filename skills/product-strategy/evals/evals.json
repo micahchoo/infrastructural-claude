@@ -1,0 +1,50 @@
+{
+  "skill_name": "product-strategy",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I've been building a personal finance app called Pocketwise for about 6 months now. It started as a budgeting tool but I've been getting feature requests for investment tracking, bill reminders, and shared household budgets. I have no idea what to prioritize next — I'm a solo dev and I can't do everything. My current users are mostly millennials who found me through a Reddit post. Can you help me figure out what to build next and how to think about this strategically?",
+      "expected_output": "Should enter at Phase 2 (Strategize) with a lightweight Phase 1 (Discover) to synthesize the user signals already available. Should produce: persona synthesis from the Reddit user base description, a prioritization framework applied to the three feature requests, success metrics for the chosen priority, and a strategic brief ready for dispatch to brainstorming. Should use seeds for the strategic backlog and mulch for product decisions.",
+      "files": [],
+      "assertions": [
+        "Correctly identifies this as a Phase 2 (Strategize) entry",
+        "Produces at least one persona with behavioral profile, not just demographics",
+        "Uses an explicit prioritization framework (RICE, Impact-Effort, MoSCoW, or similar)",
+        "Priority recommendations cite specific user signals",
+        "Defines measurable success metrics for the recommended priority",
+        "Produces a strategic brief or dispatch recommendation",
+        "Explicitly states what is NOT being built and why"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We just launched the new onboarding flow for our SaaS product two weeks ago. Before the redesign, our trial-to-paid conversion was around 12% and average time-to-first-value was about 45 minutes. The PM defined success as getting conversion to 18% and time-to-first-value under 15 minutes within 60 days. I have access to our analytics dashboard and we've gotten about 30 support tickets since launch. Can you help me evaluate whether this is working?",
+      "expected_output": "Should enter at Phase 4 (Measure). Should structure a measurement plan using the pre-defined KPIs (conversion target 18%, time-to-first-value <15min), gather both quantitative (analytics) and qualitative (support tickets) signals, evaluate against baselines, and produce a measurement report with attribution confidence. Should dispatch shadow-walk for UX audit of the new onboarding flow. Should close with Phase 5 (Learn) recommendations.",
+      "files": [],
+      "assertions": [
+        "Correctly identifies this as a Phase 4 (Measure) entry",
+        "References the pre-defined targets (18% conversion, <15min TTFV)",
+        "Plans for both quantitative AND qualitative signal types",
+        "Addresses attribution confidence",
+        "Acknowledges 2 weeks is early and discusses measurement timing",
+        "Closes with Learn/next-steps recommendations",
+        "Mentions UX audit or flow tracing as a signal source"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want to build a tool for indie game developers to manage their community feedback — like a hub where they can collect player suggestions from Discord, Steam forums, and Reddit, then prioritize what to work on. I've been a game dev for 5 years and I keep seeing the same problem: devs either ignore feedback entirely or try to build everything players ask for. There's nothing in the middle that helps them make strategic decisions about what feedback to act on. Where do I even start?",
+      "expected_output": "Should enter at Phase 1 (Discover) — full cycle for a greenfield product. Should produce: persona development for indie game devs, competitive landscape analysis of existing feedback tools (Canny, UserVoice, etc.), opportunity framing. Then move to Phase 2 (Strategize) with vision, KPIs, prioritization of initial features, and roadmap. Phase 3 (Dispatch) should route to product-design skill with a strategic brief. Should use foxhound/hybrid-research for competitive research.",
+      "files": [],
+      "assertions": [
+        "Attempts full cycle — Phase 1 (Discover) through Phase 3 (Dispatch)",
+        "Personas describe specific indie dev behaviors, not generic 'game developer'",
+        "Names actual competitors or competitor categories (Canny, UserVoice, etc.)",
+        "Differentiation grounded in user pain point, not generic 'better UX'",
+        "Produces a product vision statement",
+        "KPIs have specific measurement methods and target values",
+        "Routes to product-design or brainstorming as next step"
+      ]
+    }
+  ]
+}

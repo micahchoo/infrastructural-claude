@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>codebase-diagnostics — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>codebase-diagnostics — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> Progressive multi-level codebase analysis — maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: &quot;what is this codebase?&quot;, &quot;onboard me&quot;, &quot;map this project&quot;, &quot;diagnose this repo&quot;, &quot;analyze architecture&quot;, &quot;what are the subsystems?&quot;, entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn&#x27;t enough — when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).</p>
+        <p class="best"><strong>Best:</strong> Progressive multi-level codebase analysis — maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: &quot;what is this codebase?&quot;, &quot;onboard me&quot;, &quot;map this project&quot;, &quot;diagnose this repo&quot;, &quot;analyze architecture&quot;, &quot;what are the subsystems?&quot;, entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn&#x27;t enough — when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).</p>
+        <p><strong>Best Score:</strong> 7/8 (test)</p>
+        <p><strong>Iterations:</strong> 1 | <strong>Train:</strong> 12 | <strong>Test:</strong> 8</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">what is this codebase even doing? feels like 3 different apps stitched together</th>
+                <th class="positive-col">new to this monorepo, can you give me a full picture of how everything connects?</th>
+                <th class="positive-col">just cloned this repo from the acquisition team, no docs anywhere, need to understand what it actually does before I touch anything</th>
+                <th class="positive-col">entering this brownfield codebase cold, team is unavailable, need a full diagnostic before sprint planning</th>
+                <th class="positive-col">onboard me to this codebase</th>
+                <th class="negative-col">generate a changelog for the last two sprints so I can brief the PM</th>
+                <th class="negative-col">what does the UserController class actually do at runtime? trace the execution path</th>
+                <th class="negative-col">map out what tests I need to write before modifying the auth module</th>
+                <th class="positive-col">map the architecture of this service before we start the refactor</th>
+                <th class="negative-col">what files do I need to change to add a new payment provider?</th>
+                <th class="negative-col">write characterization tests for the billing subsystem before I touch it</th>
+                <th class="negative-col">what are the seams in the payment module? want to understand where to inject the new provider</th>
+                <th class="test-col positive-col">diagnose this repo — inherited it from a contractor, zero handoff docs</th>
+                <th class="test-col positive-col">seam-identification and shadow-walk both ran but I still don&#x27;t have a complete picture, need deeper analysis</th>
+                <th class="test-col negative-col">I found a bug in the subsystem that handles user sessions, help me debug it</th>
+                <th class="test-col positive-col">analyze architecture — specifically need to understand data flow from ingestion to the API layer</th>
+                <th class="test-col positive-col">what are the main subsystems in this project?</th>
+                <th class="test-col negative-col">what does this legacy function actually do — need to understand it before refactoring</th>
+                <th class="test-col negative-col">plan out the implementation for adding websocket support to this service</th>
+                <th class="test-col negative-col">analyze this PR before I merge it, want to catch any architectural issues</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="best-row">
+                <td>1</td>
+                <td><span class="score score-good">23/24</span></td>
+                <td><span class="score score-good">13/16</span></td>
+                <td class="description">Progressive multi-level codebase analysis — maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: &quot;what is this codebase?&quot;, &quot;onboard me&quot;, &quot;map this project&quot;, &quot;diagnose this repo&quot;, &quot;analyze architecture&quot;, &quot;what are the subsystems?&quot;, entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn&#x27;t enough — when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).</td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">2/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">1/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">2/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">2/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">1/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>

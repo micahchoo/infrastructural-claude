@@ -1,0 +1,42 @@
+{
+  "eval_id": 1,
+  "eval_name": "prioritization-entry",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "Correctly identifies this as a Phase 2 (Strategize) entry — does not start full discovery from scratch",
+      "passed": true,
+      "evidence": "The roadmap philosophy states 'Sequencing is optimized for a solo dev shipping one major initiative per quarter' and the output starts from existing user signals rather than discovery. The opportunity framing and competitive landscape are strategize-phase artifacts that build on assumed existing product knowledge. However, it also produced Discover-phase artifacts (personas, competitive landscape, vision) — it did more than pure Phase 2 but did NOT start from scratch discovery. It recognized the existing product and user base."
+    },
+    {
+      "text": "Produces at least one persona with behavioral profile (jobs-to-be-done, pain points), not just demographics",
+      "passed": true,
+      "evidence": "Three detailed personas produced: Budget-Conscious Maya ('Primary job: Maintain awareness of where every dollar goes so she can hit savings goals'), Coupled-Finances Jordan ('Primary job: Coordinate shared expenses with a partner'), and Aspiring-Investor Alex ('Primary job: Graduate from just budgeting to building wealth'). Each includes pain points, current tools, workarounds, and switch triggers."
+    },
+    {
+      "text": "Uses an explicit prioritization framework (RICE, Impact-Effort, MoSCoW, or similar) — not just opinion",
+      "passed": true,
+      "evidence": "Dedicated prioritization-rice.md file with explicit RICE framework. Defines scoring criteria (Reach, Impact, Confidence, Effort), scores each candidate numerically, and produces a final ranking: Bill Reminders (RICE score shown), Shared Household Budgets, Investment Tracking, Analytics Instrumentation. Includes 'Framework Choice Rationale' section explaining why RICE was selected."
+    },
+    {
+      "text": "Priority recommendations cite specific user signals (Reddit users, feature request types, solo dev constraint)",
+      "passed": true,
+      "evidence": "Strategic constraints explicitly state 'Solo dev reality: Can only ship one major initiative per quarter. Sequencing is everything.' Persona evidence cites 'Reddit acquisition channel analysis (user found via r/personalfinance post)'. Vision references 'Reddit credibility'. Explicit trade-offs reference feature request volume and solo dev constraints for sequencing decisions."
+    },
+    {
+      "text": "Defines measurable success metrics for the recommended priority",
+      "passed": true,
+      "evidence": "kpis.md defines specific metrics with baselines and targets: Monthly Active Retention (target: >60% 30-day retention), Household Conversion Rate (target: >15% of active users invite a partner within 30 days), Budget Adherence Improvement, Time-to-Value (target: Under 4 minutes), and Feature Completeness. Each has measurement methods and timeframes."
+    },
+    {
+      "text": "Produces a strategic brief or dispatch recommendation for what to do next",
+      "passed": true,
+      "evidence": "Two strategic briefs produced: 'briefs/q2-bill-reminders-brief.md' and 'briefs/q3-household-budgets-brief.md'. Strategic summary closes with 'Recommended Next Action: Start Q2 by implementing basic analytics event tracking. While that ships, begin designing the bill reminders feature. The strategic brief at briefs/q2-bill-reminders-brief.md has the full context for a brainstorming or product-design session.'"
+    },
+    {
+      "text": "Explicitly states what is NOT being built and why (trade-offs)",
+      "passed": true,
+      "evidence": "Explicit Trade-offs section states: 'NO to investment tracking in the near term: Confidence is too low and cost is too high.' Provides reasoning: 'The right sequence: (1) ship household budgets to validate paid tier, (2) use paid tier revenue to fund brokerage Plaid costs, (3) then ship investment tracking for paying users.' Prioritization matrix ranks Investment Tracking last (1.85) with explicit deferral. Vision states 'What This Analysis Cannot Tell You' section for epistemic humility."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "skill_name": "obsidian",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "I need a .base file that shows all my meeting notes. They're tagged #meeting and live in the Meetings/ folder. I want to see the date, attendees (a list property), and a formula that shows how many days ago the meeting was. Sort by date descending. Also add a summary row that counts unique attendees across all meetings.",
+      "expected_output": "A valid .base YAML file with filters using file.hasTag and file.inFolder, a formula using date arithmetic with now(), a table view with proper order array, groupBy or sort, and a summaries section using Unique on attendees.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Create a new Obsidian note template for project planning. It should have frontmatter with tags, aliases, status, priority (number), and due date properties. The body should use callouts for objectives and risks, embed a base query showing related tasks, include internal links to a Projects dashboard, and have a section with task checkboxes. Make sure it uses Obsidian-specific markdown features like highlights and comments.",
+      "expected_output": "A markdown file with valid YAML frontmatter (correct property types), callouts with proper > [!type] syntax, an embedded base code block, wikilinks, task list syntax, ==highlights==, and %%comments%%.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "My topics.base file isn't showing any results even though I know there are notes tagged #topic in the vault. Walk me through how to debug this using the Obsidian CLI. What commands should I run and in what order?",
+      "expected_output": "A step-by-step debugging workflow using obsidian CLI commands: check availability, list bases, query the base, verify tags exist, check properties, and reload. Should mention the availability check first and fallback to file operations if CLI unavailable.",
+      "files": []
+    }
+  ]
+}

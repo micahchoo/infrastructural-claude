@@ -1,0 +1,82 @@
+[
+  {
+    "query": "how do I create a wikilink between two notes in my vault",
+    "should_trigger": true
+  },
+  {
+    "query": "my [[daily notes]] template isn't populating {{date}} correctly",
+    "should_trigger": true
+  },
+  {
+    "query": "convert all my ==highlighted text== to bold in the vault",
+    "should_trigger": true
+  },
+  {
+    "query": "I have a .base file that's supposed to show a filtered view of my project notes but the YAML isn't working",
+    "should_trigger": true
+  },
+  {
+    "query": "set up obsidian:// URI handler to open notes from terminal",
+    "should_trigger": true
+  },
+  {
+    "query": "my .canvas file has orphaned nodes, how do I clean them up with the obsidian CLI",
+    "should_trigger": true
+  },
+  {
+    "query": "write a script to batch-add cssclasses and aliases to frontmatter across my entire vault",
+    "should_trigger": true
+  },
+  {
+    "query": "the graph view is showing disconnected notes, I want to find all notes with no outgoing wikilinks",
+    "should_trigger": true
+  },
+  {
+    "query": "%%these inline comments%% are showing up in my exports, how do I strip them",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm using chat-archive-ner-tuning and need to write the extracted entities as notes into my obsidian vault with proper ^block-id references",
+    "should_trigger": true
+  },
+  {
+    "query": "ansible-vault encrypted my .env file and now I can't read the base64 output",
+    "should_trigger": false
+  },
+  {
+    "query": "my blog post frontmatter has a tags field but Hugo isn't picking it up for taxonomy pages",
+    "should_trigger": false
+  },
+  {
+    "query": "Docker image tags keep getting overwritten in our CI pipeline, how do I pin them",
+    "should_trigger": false
+  },
+  {
+    "query": "I have a SQL base table called `notes` and need to add a full-text index on the content column",
+    "should_trigger": false
+  },
+  {
+    "query": "Notion database properties aren't syncing to our linear tickets after the API update",
+    "should_trigger": false
+  },
+  {
+    "query": "Express route base path is /api/v2 but my middleware is only matching /api",
+    "should_trigger": false
+  },
+  {
+    "query": "Roam Research graph export to markdown \u2014 how do I convert [[brackets]] to standard links for a static site",
+    "should_trigger": false
+  },
+  {
+    "query": "Kubernetes YAML frontmatter is malformed \u2014 the apiVersion field is missing from our deployment manifest",
+    "should_trigger": false
+  },
+  {
+    "query": "Storybook stories have frontmatter that controls the sidebar \u2014 need to add tags to filter by component type",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm writing a hybrid-research report and need to pull citations from a Zotero library into markdown footnotes",
+    "should_trigger": false
+  }
+]

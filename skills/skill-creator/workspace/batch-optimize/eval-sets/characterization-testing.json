@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I need to add a feature to this payment processor but I'm scared to touch it \u2014 can you write tests that capture what it currently does before I change anything?",
+    "should_trigger": true
+  },
+  {
+    "query": "what does this auth middleware actually do? I inherited this codebase and have no idea",
+    "should_trigger": true
+  },
+  {
+    "query": "capture current behavior of src/billing/invoicer.py before we refactor it",
+    "should_trigger": true
+  },
+  {
+    "query": "safety net tests for the UserSession class \u2014 I need to know I haven't broken anything when I migrate it",
+    "should_trigger": true
+  },
+  {
+    "query": "probe the behavior of this legacy order pipeline, I want a map of what it actually does not what the docs say",
+    "should_trigger": true
+  },
+  {
+    "query": "write tests documenting what this code does, not what it should do",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm at pattern-extraction-pipeline stage 2 on the checkout module, need to characterize what it does before I extract patterns",
+    "should_trigger": true
+  },
+  {
+    "query": "I found a seam in the notification system between the dispatcher and the queue \u2014 can you write tests to verify what actually happens at that boundary?",
+    "should_trigger": true
+  },
+  {
+    "query": "golden master tests for lib/xml_parser.rb \u2014 the thing is a black box and I need a regression harness",
+    "should_trigger": true
+  },
+  {
+    "query": "test before I change it \u2014 the reconciliation service at services/reconcile.go has zero tests and I need to refactor it next sprint",
+    "should_trigger": true
+  },
+  {
+    "query": "write tests for the new cart feature I'm about to implement in checkout.ts",
+    "should_trigger": false
+  },
+  {
+    "query": "I need tests for the auth module but I already know it should reject expired tokens and allow valid ones",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test the payment API to see if it breaks under load or has any security holes",
+    "should_trigger": false
+  },
+  {
+    "query": "what does this code do \u2014 can you explain the algorithm in plain English?",
+    "should_trigger": false
+  },
+  {
+    "query": "map the architecture of the entire monorepo, I need to understand how all the subsystems connect before I start the migration",
+    "should_trigger": false
+  },
+  {
+    "query": "TDD for the new user registration flow \u2014 red green refactor",
+    "should_trigger": false
+  },
+  {
+    "query": "capture the current behavior of the API in a changelog so stakeholders can see what changed in this release",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to extract reusable patterns from the acme-corp reference repo \u2014 starting with stage 2 of the pipeline",
+    "should_trigger": false
+  },
+  {
+    "query": "probe this REST endpoint for vulnerabilities, try to break the authentication with malformed tokens",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm refactoring the data layer \u2014 brainstorm what the new design should look like before I write any tests",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,565 @@
+{
+  "exit_reason": "all_passed (iteration 2)",
+  "original_description": "Audit and gate the skill-tree against three principles: holistic integration, closing the loop, and baseline-enrichment. Two modes: audit (full tree scan) and gate (post-skill-creator validation). Produces infrastructure-mapped recommendations gated by simplify + eval-protocol, with automatic seeds issue creation. Triggers: \"audit skill tree\", \"check principles\", \"skill tree health\", \"autoresearch audit\", \"/autoresearch\", or after skill-creator writes a SKILL.md (via PostToolUse hook). Do NOT trigger for: running A/B tests directly (run_ab.py, grade.py), debugging, code review, or general codebase exploration.",
+  "best_description": "Audit and gate the skill-tree against three principles: holistic integration, closing the loop, and baseline-enrichment. Two modes: audit (full tree scan) and gate (post-skill-creator validation). Produces infrastructure-mapped recommendations gated by simplify + eval-protocol, with automatic seeds issue creation. Triggers: \"audit skill tree\", \"check principles\", \"skill tree health\", \"autoresearch audit\", \"/autoresearch\", or after skill-creator writes a SKILL.md (via PostToolUse hook). Do NOT trigger for: running A/B tests directly (run_ab.py, grade.py), debugging, code review, or general codebase exploration.",
+  "best_score": "6/8",
+  "best_train_score": "11/12",
+  "best_test_score": "6/8",
+  "final_description": "Use for skill-tree quality enforcement: auditing all skills against three principles (holistic integration, closing the loop, baseline-enrichment), or validating a newly created skill against those same principles. Two entry points: user requests a skill-tree audit/health check, OR a skill was just created/modified with skill-creator and needs principle validation before it's considered done. Produces concrete infrastructure recommendations (cross-references, eval checkpoints, diffusion targets) filtered through a quality gate, with seeds issues for gaps found. Do NOT use for: running A/B experiments directly, debugging hooks, code review, or general codebase exploration.",
+  "iterations_run": 2,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Audit and gate the skill-tree against three principles: holistic integration, closing the loop, and baseline-enrichment. Two modes: audit (full tree scan) and gate (post-skill-creator validation). Produces infrastructure-mapped recommendations gated by simplify + eval-protocol, with automatic seeds issue creation. Triggers: \"audit skill tree\", \"check principles\", \"skill tree health\", \"autoresearch audit\", \"/autoresearch\", or after skill-creator writes a SKILL.md (via PostToolUse hook). Do NOT trigger for: running A/B tests directly (run_ab.py, grade.py), debugging, code review, or general codebase exploration.",
+      "train_passed": 11,
+      "train_failed": 1,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "audit the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I just added a new skill with skill-creator, can you validate it against the three principles?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "skill tree health check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check principles compliance across all skills, I think some are missing baseline enrichment hooks",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "do a full audit of ~/.claude/skills to see what's missing or out of alignment",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run autoresearch on the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run grade.py on the last eval round and show me the scores",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my eval-protocol gates aren't firing correctly after a skill runs \u2014 debug the PostToolUse hook",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog from git history and check which features are missing documentation",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want to stress test the new /payments API endpoint I just built, try to find vulnerabilities",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit the codebase architecture and map the subsystems for the new payment service",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check the SKILL.md I just wrote for skill-creator to see if the trigger description is clear enough",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 6,
+      "test_failed": 2,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "check if my skills follow the holistic integration principle",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my skill tree feels fragmented, can you check whether the skills close the loop on each other",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "/autoresearch",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "autoresearch gate \u2014 just wrote a SKILL.md for the new deploy skill, make sure it's up to standard",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I just wrote a new skill file, review the code quality and simplify it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run run_ab.py with the new prompt variant and compare against baseline",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check the skill I wrote for the brainstorming workflow \u2014 does the description make sense?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit my approved bash commands in settings.json for anything dangerous",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 1,
+      "total": 12,
+      "results": [
+        {
+          "query": "audit the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I just added a new skill with skill-creator, can you validate it against the three principles?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "skill tree health check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check principles compliance across all skills, I think some are missing baseline enrichment hooks",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "do a full audit of ~/.claude/skills to see what's missing or out of alignment",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run autoresearch on the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run grade.py on the last eval round and show me the scores",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my eval-protocol gates aren't firing correctly after a skill runs \u2014 debug the PostToolUse hook",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog from git history and check which features are missing documentation",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want to stress test the new /payments API endpoint I just built, try to find vulnerabilities",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit the codebase architecture and map the subsystems for the new payment service",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check the SKILL.md I just wrote for skill-creator to see if the trigger description is clear enough",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use for skill-tree quality enforcement: auditing all skills against three principles (holistic integration, closing the loop, baseline-enrichment), or validating a newly created skill against those same principles. Two entry points: user requests a skill-tree audit/health check, OR a skill was just created/modified with skill-creator and needs principle validation before it's considered done. Produces concrete infrastructure recommendations (cross-references, eval checkpoints, diffusion targets) filtered through a quality gate, with seeds issues for gaps found. Do NOT use for: running A/B experiments directly, debugging hooks, code review, or general codebase exploration.",
+      "train_passed": 12,
+      "train_failed": 0,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "skill tree health check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I just added a new skill with skill-creator, can you validate it against the three principles?",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "do a full audit of ~/.claude/skills to see what's missing or out of alignment",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check principles compliance across all skills, I think some are missing baseline enrichment hooks",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run autoresearch on the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run grade.py on the last eval round and show me the scores",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my eval-protocol gates aren't firing correctly after a skill runs \u2014 debug the PostToolUse hook",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog from git history and check which features are missing documentation",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want to stress test the new /payments API endpoint I just built, try to find vulnerabilities",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check the SKILL.md I just wrote for skill-creator to see if the trigger description is clear enough",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit the codebase architecture and map the subsystems for the new payment service",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "check if my skills follow the holistic integration principle",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my skill tree feels fragmented, can you check whether the skills close the loop on each other",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "autoresearch gate \u2014 just wrote a SKILL.md for the new deploy skill, make sure it's up to standard",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "/autoresearch",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "I just wrote a new skill file, review the code quality and simplify it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit my approved bash commands in settings.json for anything dangerous",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run run_ab.py with the new prompt variant and compare against baseline",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "check the skill I wrote for the brainstorming workflow \u2014 does the description make sense?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "results": [
+        {
+          "query": "skill tree health check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I just added a new skill with skill-creator, can you validate it against the three principles?",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "do a full audit of ~/.claude/skills to see what's missing or out of alignment",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check principles compliance across all skills, I think some are missing baseline enrichment hooks",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run autoresearch on the skill tree",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run grade.py on the last eval round and show me the scores",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my eval-protocol gates aren't firing correctly after a skill runs \u2014 debug the PostToolUse hook",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog from git history and check which features are missing documentation",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want to stress test the new /payments API endpoint I just built, try to find vulnerabilities",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check the SKILL.md I just wrote for skill-creator to see if the trigger description is clear enough",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit the codebase architecture and map the subsystems for the new payment service",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

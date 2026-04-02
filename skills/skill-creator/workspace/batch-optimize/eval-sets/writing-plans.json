@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I have a PRD for the new billing system refactor, need to break it down into implementation steps before I start coding",
+    "should_trigger": true
+  },
+  {
+    "query": "here's the spec for the oauth2 migration: [doc]. walk me through how to implement this without breaking existing sessions",
+    "should_trigger": true
+  },
+  {
+    "query": "got requirements from PM for the dashboard feature, need a plan before touching anything",
+    "should_trigger": true
+  },
+  {
+    "query": "create an implementation plan for adding multi-tenancy based on these requirements",
+    "should_trigger": true
+  },
+  {
+    "query": "we have a technical spec for migrating from REST to gRPC, help me plan the rollout steps",
+    "should_trigger": true
+  },
+  {
+    "query": "before I touch the auth module, I need to map out all the steps for this SAML integration the client wants",
+    "should_trigger": true
+  },
+  {
+    "query": "turn this jira ticket into a step by step plan: we need to add rate limiting to /api/v2 endpoints",
+    "should_trigger": true
+  },
+  {
+    "query": "my tech lead wrote up the requirements for the db schema migration, can u write up the implementation plan",
+    "should_trigger": true
+  },
+  {
+    "query": "requirements doc is in docs/specs/search-v2.md \u2014 need to plan implementation before sprint starts monday",
+    "should_trigger": true
+  },
+  {
+    "query": "we agreed on the design in the RFC, now I need to break it into concrete tasks before any code gets written",
+    "should_trigger": true
+  },
+  {
+    "query": "I already wrote the plan in PLAN.md, help me execute step 3 which is setting up the redis cache",
+    "should_trigger": false
+  },
+  {
+    "query": "not sure what we should build for the new notifications feature, let's explore some options",
+    "should_trigger": false
+  },
+  {
+    "query": "I finished implementing the payment service, can you review it against the spec",
+    "should_trigger": false
+  },
+  {
+    "query": "write characterization tests for UserAuthService before I refactor it",
+    "should_trigger": false
+  },
+  {
+    "query": "I have a plan.md, start working through the tasks and implement each one",
+    "should_trigger": false
+  },
+  {
+    "query": "the team keeps debating whether to use event sourcing or CQRS for this, help me think through the tradeoffs",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to break the monolith into microservices but I don't know where to start \u2014 what should the new architecture look like?",
+    "should_trigger": false
+  },
+  {
+    "query": "review the PR I just pushed for the billing refactor, make sure it matches the original spec",
+    "should_trigger": false
+  },
+  {
+    "query": "run the implementation plan from our last session, start with wave 1 tasks",
+    "should_trigger": false
+  },
+  {
+    "query": "we need to stress test the new auth endpoints before shipping, design an adversarial test plan",
+    "should_trigger": false
+  }
+]

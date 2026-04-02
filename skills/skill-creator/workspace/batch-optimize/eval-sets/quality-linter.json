@@ -1,0 +1,82 @@
+[
+  {
+    "query": "are these tests any good? we've got like 200 tests but coverage feels fake",
+    "should_trigger": true
+  },
+  {
+    "query": "can you evaluate our QA setup? inheriting this codebase and I have no idea if the test suite is trustworthy",
+    "should_trigger": true
+  },
+  {
+    "query": "what contracts does our test suite actually enforce? trying to onboard the team and need to know what we're protecting",
+    "should_trigger": true
+  },
+  {
+    "query": "audit test quality for src/payments \u2014 we keep shipping regressions despite 80% coverage",
+    "should_trigger": true
+  },
+  {
+    "query": "design a test strategy for this greenfield service, we're about to start building and want to get QA right from day one",
+    "should_trigger": true
+  },
+  {
+    "query": "is this test useful or just noise: tests/unit/userService.test.ts \u2014 it mocks everything and I'm not sure it proves anything",
+    "should_trigger": true
+  },
+  {
+    "query": "what does our test suite reveal about what the team actually cares about? trying to understand the implicit contracts before I refactor auth",
+    "should_trigger": true
+  },
+  {
+    "query": "we have eslint, prettier, and jest configs but they feel like they were added by 3 different people. can you evaluate them as a unified system",
+    "should_trigger": true
+  },
+  {
+    "query": "post brainstorm we need QA architecture for the new billing module \u2014 what should we test and how should linting enforce the design",
+    "should_trigger": true
+  },
+  {
+    "query": "our simplify pass flagged a bunch of stuff but I want a deeper QA assessment before we lock the design",
+    "should_trigger": true
+  },
+  {
+    "query": "set up eslint with airbnb rules for my react project",
+    "should_trigger": false
+  },
+  {
+    "query": "these unit tests are failing after my refactor, help me debug why",
+    "should_trigger": false
+  },
+  {
+    "query": "write characterization tests for the legacy payment processor before I touch it",
+    "should_trigger": false
+  },
+  {
+    "query": "review this PR \u2014 I want to know if the test someone added actually covers the edge case they described",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test the /api/checkout endpoint and find any vulnerabilities in the auth flow",
+    "should_trigger": false
+  },
+  {
+    "query": "configure prettier to use single quotes and 2-space indentation across the monorepo",
+    "should_trigger": false
+  },
+  {
+    "query": "did the agent choose the right testing approach in that last phase? I want to grade the decision quality",
+    "should_trigger": false
+  },
+  {
+    "query": "we have a bug in the discount calculation \u2014 the test passes but prod is wrong, help me figure out why",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from our last sprint \u2014 we shipped a bunch of test infra improvements I want to call out",
+    "should_trigger": false
+  },
+  {
+    "query": "map the architecture of this repo before we start the refactor \u2014 I need to understand what subsystems exist",
+    "should_trigger": false
+  }
+]

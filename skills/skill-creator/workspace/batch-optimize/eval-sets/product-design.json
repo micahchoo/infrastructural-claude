@@ -1,0 +1,82 @@
+[
+  {
+    "query": "we need to design a new project management app from scratch \u2014 help me figure out what we're building, the core UX, and get to a handoff doc for the devs",
+    "should_trigger": true
+  },
+  {
+    "query": "product vision for a B2B invoicing SaaS \u2014 we haven't built anything yet, starting from zero",
+    "should_trigger": true
+  },
+  {
+    "query": "plan a new app for tracking gym workouts, need to think through the full product before we start coding",
+    "should_trigger": true
+  },
+  {
+    "query": "we're adding a completely new 'analytics' area to our dashboard \u2014 needs its own design system, data shapes, the whole thing",
+    "should_trigger": true
+  },
+  {
+    "query": "create a design handoff doc for the implementation agents on the new onboarding flow we sketched out",
+    "should_trigger": true
+  },
+  {
+    "query": "what should we build for the internal tooling team? they need something for managing deploys",
+    "should_trigger": true
+  },
+  {
+    "query": "design tokens and section specs for a greenfield fintech product, our designer quit and I need to move fast",
+    "should_trigger": true
+  },
+  {
+    "query": "brainstorming gave me a greenfield product idea \u2014 now I need to go deeper on the product design before we write any code",
+    "should_trigger": true
+  },
+  {
+    "query": "startup idea: AI-powered recipe app. help me think through the full product \u2014 vision, UX flows, data model, handoff",
+    "should_trigger": true
+  },
+  {
+    "query": "we decided to build a separate 'marketplace' section in our platform, treat it as a new product within the product, need full design pipeline",
+    "should_trigger": true
+  },
+  {
+    "query": "design the new UserCard component to match our existing design system tokens",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to brainstorm ideas for what features to add to our auth module before implementing",
+    "should_trigger": false
+  },
+  {
+    "query": "write an implementation plan for the new checkout flow \u2014 we already have the designs, just need the dev plan",
+    "should_trigger": false
+  },
+  {
+    "query": "design the settings page UI \u2014 here's the figma link, just need the React components",
+    "should_trigger": false
+  },
+  {
+    "query": "we have a product design doc already, help me turn it into a step-by-step implementation plan for the sprint",
+    "should_trigger": false
+  },
+  {
+    "query": "refactor the existing product catalog page to use our new design tokens",
+    "should_trigger": false
+  },
+  {
+    "query": "frontend-design for our landing page \u2014 hero section, pricing table, footer, make it look premium",
+    "should_trigger": false
+  },
+  {
+    "query": "product vision section in our README is outdated, help me rewrite it to match what we actually built",
+    "should_trigger": false
+  },
+  {
+    "query": "plan out the new notification feature \u2014 we know what we want, just need tasks broken down before coding",
+    "should_trigger": false
+  },
+  {
+    "query": "design review: does our current component library follow good UX patterns? audit it and tell me what's wrong",
+    "should_trigger": false
+  }
+]

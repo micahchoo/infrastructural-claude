@@ -1,0 +1,82 @@
+[
+  {
+    "query": "just got dropped into this legacy payments codebase, no docs, need to understand how it's structured before touching anything",
+    "should_trigger": true
+  },
+  {
+    "query": "where are the extension points in this plugin system? want to know what I can hook into without rewriting core",
+    "should_trigger": true
+  },
+  {
+    "query": "find the seams in src/engine \u2014 trying to figure out what's load-bearing before we refactor",
+    "should_trigger": true
+  },
+  {
+    "query": "what's structural vs incidental in this billing module? inherited it last week",
+    "should_trigger": true
+  },
+  {
+    "query": "map this codebase for me, specifically the dependency topology around the auth layer",
+    "should_trigger": true
+  },
+  {
+    "query": "before i run pattern-extraction on acme/api-gateway i need to orient myself first, where do i even start",
+    "should_trigger": true
+  },
+  {
+    "query": "which parts of this monolith are tightly coupled vs replaceable? trying to plan a strangler fig migration",
+    "should_trigger": true
+  },
+  {
+    "query": "i keep getting lost in this repo, can you show me where behavior gets injected vs where it's hardcoded",
+    "should_trigger": true
+  },
+  {
+    "query": "whats the coupling topology of the notification subsystem in /services/notifications",
+    "should_trigger": true
+  },
+  {
+    "query": "new to this codebase, where would i add a new feature without touching half the system",
+    "should_trigger": true
+  },
+  {
+    "query": "write characterization tests for the auth module before I start refactoring it",
+    "should_trigger": false
+  },
+  {
+    "query": "map out all the API endpoints in this service so I can write adversarial tests against them",
+    "should_trigger": false
+  },
+  {
+    "query": "what does this codebase actually do at runtime? trace through a real request end to end",
+    "should_trigger": false
+  },
+  {
+    "query": "do a full codebase diagnostic on /src, 8 zoom levels, and persist architecture docs to docs/architecture",
+    "should_trigger": false
+  },
+  {
+    "query": "extract patterns from this open source repo so I can apply them to our project",
+    "should_trigger": false
+  },
+  {
+    "query": "where are the extension points in our API so I can document them in the changelog for v2.1",
+    "should_trigger": false
+  },
+  {
+    "query": "find all the places this legacy module is coupled to \u2014 I want to write tests covering each before touching it",
+    "should_trigger": false
+  },
+  {
+    "query": "what's structural in the auth flow? I want to brainstorm a redesign before we implement anything",
+    "should_trigger": false
+  },
+  {
+    "query": "map the architecture of this service so I can identify which domain codebook patterns apply",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to understand this codebase before I write the seeds issues for the refactor sprint",
+    "should_trigger": false
+  }
+]

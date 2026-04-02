@@ -1,0 +1,82 @@
+[
+  {
+    "query": "how do I use ml prime before starting work on this repo?",
+    "should_trigger": true
+  },
+  {
+    "query": "we just finished the auth refactor, I want to record what we learned so future agents don't repeat our mistakes",
+    "should_trigger": true
+  },
+  {
+    "query": "ml search isn't returning anything useful for 'database connection pooling' \u2014 should I add a new record?",
+    "should_trigger": true
+  },
+  {
+    "query": "what record type should I use for this? it's a decision we made about using UUIDs instead of auto-increment ids",
+    "should_trigger": true
+  },
+  {
+    "query": "this project doesn't have .mulch/ yet, how do I set it up",
+    "should_trigger": true
+  },
+  {
+    "query": "run ml compact and ml prune on the expertise, it's getting stale",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to track that the pattern of using repository classes failed for us \u2014 record it so we stop suggesting it",
+    "should_trigger": true
+  },
+  {
+    "query": "setting up mulch for a new claude agent on our monorepo, what domains should I add",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I structure project knowledge so agents pick it up automatically each session?",
+    "should_trigger": true
+  },
+  {
+    "query": "ml doctor is throwing errors about missing domain files, help me fix it",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to document our API design decisions so the team can reference them \u2014 should I put this in a wiki or README?",
+    "should_trigger": false
+  },
+  {
+    "query": "record the outcome of this session in git \u2014 commit everything we changed with a good message",
+    "should_trigger": false
+  },
+  {
+    "query": "we finished the feature, capture what we learned from this session before I close it out",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I initialize a new project repo with the right folder structure and git hooks?",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to write a CLAUDE.md that helps agents understand our codebase conventions",
+    "should_trigger": false
+  },
+  {
+    "query": "prime the codebase context before we start \u2014 load the architecture docs and recent decisions",
+    "should_trigger": false
+  },
+  {
+    "query": "the dream pipeline shows 61 cross-project memory files to integrate, run it",
+    "should_trigger": false
+  },
+  {
+    "query": "ml is a CLI tool we use \u2014 but I want to add a new subcommand to it, help me write the code",
+    "should_trigger": false
+  },
+  {
+    "query": "use compound to record the conventions we settled on during this session",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to prune unused dependencies from package.json and record what we removed",
+    "should_trigger": false
+  }
+]

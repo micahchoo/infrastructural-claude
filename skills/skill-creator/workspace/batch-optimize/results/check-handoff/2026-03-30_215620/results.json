@@ -1,0 +1,565 @@
+{
+  "exit_reason": "all_passed (iteration 2)",
+  "original_description": "Resume work from a previous session's HANDOFF.md. Reads it, validates referenced files exist, summarizes state, proposes a session plan.",
+  "best_description": "Resume work from a previous session's HANDOFF.md. Reads it, validates referenced files exist, summarizes state, proposes a session plan.",
+  "best_score": "5/8",
+  "best_train_score": "11/12",
+  "best_test_score": "5/8",
+  "final_description": "Use when resuming work from a previous session using a HANDOFF.md file. Triggers when the user wants to pick up where they left off, continue mid-session work, validate a handoff document before starting, or orient themselves to prior session state. Reads HANDOFF.md, validates that referenced files and artifacts still exist, checks git state, surfaces open questions, and proposes a session plan.\n\nNOT for: writing or creating handoff documents (use the handoff skill), checking whether a plan is still valid for immediate execution, or general project status checks without a HANDOFF.md.",
+  "iterations_run": 2,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Resume work from a previous session's HANDOFF.md. Reads it, validates referenced files exist, summarizes state, proposes a session plan.",
+      "train_passed": 11,
+      "train_failed": 1,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "check handoff",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "picking this back up after the weekend, validate the handoff and propose next steps",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resuming work on the acme-corp project from friday, check the handoff file",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "continue from last session, we were mid-way through the payment integration",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've got a HANDOFF.md in this dir, can you read it and tell me what's next",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a HANDOFF.md summarizing what we did today",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I left a TODO comment in auth.ts last session, find it and continue",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume where I left off yesterday",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write a handoff doc before I end this session",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume the failing CI pipeline, it keeps timing out on the integration tests",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what's the current status of the open seeds issues from last week?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check if the plan we wrote is still valid before we execute it",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "what was I doing last time? there should be a handoff doc somewhere in here",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "/check-handoff",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "pick up where we left off on the auth refactor",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "load the handoff and give me a plan for today's session",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume the stalled migration task in seeds, it got blocked on the db schema",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "continue implementing the feature we planned in the last brainstorm",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "onboard me to this codebase, I just joined the team",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to hand off this PR to another dev, how do I document it?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 1,
+      "total": 12,
+      "results": [
+        {
+          "query": "check handoff",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "picking this back up after the weekend, validate the handoff and propose next steps",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resuming work on the acme-corp project from friday, check the handoff file",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "continue from last session, we were mid-way through the payment integration",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've got a HANDOFF.md in this dir, can you read it and tell me what's next",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a HANDOFF.md summarizing what we did today",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I left a TODO comment in auth.ts last session, find it and continue",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume where I left off yesterday",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write a handoff doc before I end this session",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume the failing CI pipeline, it keeps timing out on the integration tests",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what's the current status of the open seeds issues from last week?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check if the plan we wrote is still valid before we execute it",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use when resuming work from a previous session using a HANDOFF.md file. Triggers when the user wants to pick up where they left off, continue mid-session work, validate a handoff document before starting, or orient themselves to prior session state. Reads HANDOFF.md, validates that referenced files and artifacts still exist, checks git state, surfaces open questions, and proposes a session plan.\n\nNOT for: writing or creating handoff documents (use the handoff skill), checking whether a plan is still valid for immediate execution, or general project status checks without a HANDOFF.md.",
+      "train_passed": 12,
+      "train_failed": 0,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "check handoff",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "continue from last session, we were mid-way through the payment integration",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've got a HANDOFF.md in this dir, can you read it and tell me what's next",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "picking this back up after the weekend, validate the handoff and propose next steps",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resuming work on the acme-corp project from friday, check the handoff file",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume where I left off yesterday",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a HANDOFF.md summarizing what we did today",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I left a TODO comment in auth.ts last session, find it and continue",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write a handoff doc before I end this session",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume the failing CI pipeline, it keeps timing out on the integration tests",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what's the current status of the open seeds issues from last week?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check if the plan we wrote is still valid before we execute it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "what was I doing last time? there should be a handoff doc somewhere in here",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "/check-handoff",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "pick up where we left off on the auth refactor",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "load the handoff and give me a plan for today's session",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume the stalled migration task in seeds, it got blocked on the db schema",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "continue implementing the feature we planned in the last brainstorm",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "onboard me to this codebase, I just joined the team",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to hand off this PR to another dev, how do I document it?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "results": [
+        {
+          "query": "check handoff",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "continue from last session, we were mid-way through the payment integration",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've got a HANDOFF.md in this dir, can you read it and tell me what's next",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "picking this back up after the weekend, validate the handoff and propose next steps",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resuming work on the acme-corp project from friday, check the handoff file",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume where I left off yesterday",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a HANDOFF.md summarizing what we did today",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I left a TODO comment in auth.ts last session, find it and continue",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write a handoff doc before I end this session",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "resume the failing CI pipeline, it keeps timing out on the integration tests",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what's the current status of the open seeds issues from last week?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "check if the plan we wrote is still valid before we execute it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+=== STDOUT ===
+{
+  "exit_reason": "rate_limited (iteration 1)",
+  "original_description": "Use when you have a written implementation plan to execute. Supports two modes: Subagent Mode (fresh subagent per task with two-phase review, for platforms with subagent support like Claude Code) and Sequential Mode (single-agent execution with review checkpoints). Do NOT trigger for: parallel dispatch of independent investigations without review stages (use dispatching-parallel-agents); orchestrating 3+ tasks across multiple sessions (use strategic-looping with executing-plans); creating or writing implementation plans (use writing-plans); creating or modifying skills (use skill-creator).",
+  "best_description": "Use when you have a written implementation plan to execute. Supports two modes: Subagent Mode (fresh subagent per task with two-phase review, for platforms with subagent support like Claude Code) and Sequential Mode (single-agent execution with review checkpoints). Do NOT trigger for: parallel dispatch of independent investigations without review stages (use dispatching-parallel-agents); orchestrating 3+ tasks across multiple sessions (use strategic-looping with executing-plans); creating or writing implementation plans (use writing-plans); creating or modifying skills (use skill-creator).",
+  "best_score": "4/8",
+  "best_train_score": "6/12",
+  "best_test_score": "4/8",
+  "final_description": "Use when you have a written implementation plan to execute. Supports two modes: Subagent Mode (fresh subagent per task with two-phase review, for platforms with subagent support like Claude Code) and Sequential Mode (single-agent execution with review checkpoints). Do NOT trigger for: parallel dispatch of independent investigations without review stages (use dispatching-parallel-agents); orchestrating 3+ tasks across multiple sessions (use strategic-looping with executing-plans); creating or writing implementation plans (use writing-plans); creating or modifying skills (use skill-creator).",
+  "iterations_run": 1,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Use when you have a written implementation plan to execute. Supports two modes: Subagent Mode (fresh subagent per task with two-phase review, for platforms with subagent support like Claude Code) and Sequential Mode (single-agent execution with review checkpoints). Do NOT trigger for: parallel dispatch of independent investigations without review stages (use dispatching-parallel-agents); orchestrating 3+ tasks across multiple sessions (use strategic-looping with executing-plans); creating or writing implementation plans (use writing-plans); creating or modifying skills (use skill-creator).",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "I've got a plan.md from our design session yesterday, let's start executing it",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we're on step 3 of the plan, the first two checkpoints passed, continue from where we left off",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the design doc at docs/architecture/redesign.md has all the tasks laid out \u2014 execute it in subagent mode",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we brainstormed this yesterday and I saved the output to brainstorm_output.md. now execute it",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run through the implementation plan I pasted above, use two-phase review between tasks",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "there are 4 completely independent investigation tasks here \u2014 search the codebase for each in parallel",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ok the plan is written out in PLAN.md, can you start working through the tasks",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we're mid-plan but I realize the approach is wrong \u2014 let me brainstorm an alternative before continuing",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what does the existing auth code actually do before I start changing it? write characterization tests first",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to write an implementation plan for the new billing system before we start coding",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "checkpoint 2 failed on the plan \u2014 write a postmortem and figure out why before we continue",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "help me structure a technical spec for the cache layer redesign so we can hand it off to the team",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "platform doesn't support subagents here so just do sequential mode on this plan please",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "here's the plan we agreed on: 1) refactor auth middleware 2) add rate limiting 3) update tests. go ahead and implement it",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my HANDOFF has a full implementation plan in it \u2014 pick it up and run the tasks sequentially",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the plan has 5 tasks, waves 1-2 are independent but wave 3 depends on both \u2014 start working through it",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "haven't thought through the design yet, let's brainstorm the auth refactor before touching any code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "these 6 tasks are all independent with no shared state, dispatch them all at once",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we have a 3-month roadmap across multiple sessions, need to orchestrate it with checkpoints and memory between runs",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "can you create a step-by-step plan for migrating our postgres schema to the new format",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "I've got a plan.md from our design session yesterday, let's start executing it",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we're on step 3 of the plan, the first two checkpoints passed, continue from where we left off",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the design doc at docs/architecture/redesign.md has all the tasks laid out \u2014 execute it in subagent mode",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we brainstormed this yesterday and I saved the output to brainstorm_output.md. now execute it",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run through the implementation plan I pasted above, use two-phase review between tasks",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "there are 4 completely independent investigation tasks here \u2014 search the codebase for each in parallel",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ok the plan is written out in PLAN.md, can you start working through the tasks",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we're mid-plan but I realize the approach is wrong \u2014 let me brainstorm an alternative before continuing",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what does the existing auth code actually do before I start changing it? write characterization tests first",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to write an implementation plan for the new billing system before we start coding",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "checkpoint 2 failed on the plan \u2014 write a postmortem and figure out why before we continue",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "help me structure a technical spec for the cache layer redesign so we can hand it off to the team",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+
+=== STDERR ===
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/3
+Description: Use when you have a written implementation plan to execute. Supports two modes: Subagent Mode (fresh subagent per task with two-phase review, for platforms with subagent support like Claude Code) and Sequential Mode (single-agent execution with review checkpoints). Do NOT trigger for: parallel dispatch of independent investigations without review stages (use dispatching-parallel-agents); orchestrating 3+ tasks across multiple sessions (use strategic-looping with executing-plans); creating or writing implementation plans (use writing-plans); creating or modifying skills (use skill-creator).
+============================================================
+Gtk-Message: 22:06:20.774: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Train: 12/24 correct, precision=100% recall=0% accuracy=50% (27.4s)
+  [FAIL] rate=0/2 expected=True: I've got a plan.md from our design session yesterday, let's 
+  [FAIL] rate=0/2 expected=True: we're on step 3 of the plan, the first two checkpoints passe
+  [FAIL] rate=0/2 expected=True: the design doc at docs/architecture/redesign.md has all the 
+  [FAIL] rate=0/2 expected=True: we brainstormed this yesterday and I saved the output to bra
+  [FAIL] rate=0/2 expected=True: run through the implementation plan I pasted above, use two-
+  [PASS] rate=0/2 expected=False: there are 4 completely independent investigation tasks here 
+  [FAIL] rate=0/2 expected=True: ok the plan is written out in PLAN.md, can you start working
+  [PASS] rate=0/2 expected=False: we're mid-plan but I realize the approach is wrong — let me 
+  [PASS] rate=0/2 expected=False: what does the existing auth code actually do before I start 
+  [PASS] rate=0/2 expected=False: I need to write an implementation plan for the new billing s
+  [PASS] rate=0/2 expected=False: checkpoint 2 failed on the plan — write a postmortem and fig
+  [PASS] rate=0/2 expected=False: help me structure a technical spec for the cache layer redes
+Test : 8/16 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/2 expected=True: platform doesn't support subagents here so just do sequentia
+  [FAIL] rate=0/2 expected=True: here's the plan we agreed on: 1) refactor auth middleware 2)
+  [FAIL] rate=0/2 expected=True: my HANDOFF has a full implementation plan in it — pick it up
+  [FAIL] rate=0/2 expected=True: the plan has 5 tasks, waves 1-2 are independent but wave 3 d
+  [PASS] rate=0/2 expected=False: haven't thought through the design yet, let's brainstorm the
+  [PASS] rate=0/2 expected=False: these 6 tasks are all independent with no shared state, disp
+  [PASS] rate=0/2 expected=False: we have a 3-month roadmap across multiple sessions, need to 
+  [PASS] rate=0/2 expected=False: can you create a step-by-step plan for migrating our postgre
+
+Improving description...
+Warning: claude --print returned 1
+Rate limited, keeping current description: Rate limited: You've hit your limit · resets 2am (America/Los_Angeles)
+
+Exit reason: rate_limited (iteration 1)
+Best score: 4/8 (iteration 1)
+
+Report: /tmp/skill_description_report_executing-plans_20260330_220620.html
+Results saved to: /home/micah/.claude/skills/skill-creator/workspace/batch-optimize/results/executing-plans/2026-03-30_220620
+
+=== RETURN CODE: 0 ===

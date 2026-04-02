@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I'm done with the auth refactor, can you request a review for me?",
+    "should_trigger": true
+  },
+  {
+    "query": "finished implementing the stripe webhook handler, ready to ship",
+    "should_trigger": true
+  },
+  {
+    "query": "ok I think this feature is done. help me land it",
+    "should_trigger": true
+  },
+  {
+    "query": "just wrapped up the migration to postgres, want to make sure it's solid before merging to main",
+    "should_trigger": true
+  },
+  {
+    "query": "done w/ impl on the rate limiter PR \u2014 ship it",
+    "should_trigger": true
+  },
+  {
+    "query": "I've finished the branch feature/user-invites, everything passes locally. how do I close out this branch properly?",
+    "should_trigger": true
+  },
+  {
+    "query": "we're trying to merge services/payments into main by EOD, can you help me verify the implementation is complete and correct?",
+    "should_trigger": true
+  },
+  {
+    "query": "alright the dashboard redesign is done, I want to get eyes on it before it goes out",
+    "should_trigger": true
+  },
+  {
+    "query": "finishing up this feature, want a final sanity check before I open the PR",
+    "should_trigger": true
+  },
+  {
+    "query": "I think I'm done but want to double-check the work meets the ticket requirements before landing this",
+    "should_trigger": true
+  },
+  {
+    "query": "can you review PR #482 from @jsmith on the billing module?",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to build a new notification system, what should I consider before starting?",
+    "should_trigger": false
+  },
+  {
+    "query": "let's brainstorm how to add multi-tenancy to the API before I start coding",
+    "should_trigger": false
+  },
+  {
+    "query": "write me an implementation plan for the search indexing feature",
+    "should_trigger": false
+  },
+  {
+    "query": "git push origin feature/dashboard && open a PR",
+    "should_trigger": false
+  },
+  {
+    "query": "can you look at this open PR from the team and leave feedback on the approach?",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to understand what this legacy auth middleware actually does before touching it",
+    "should_trigger": false
+  },
+  {
+    "query": "done with the spec doc for the new caching layer, review it before I share with the team",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog for the v2.1.0 release we're shipping tomorrow",
+    "should_trigger": false
+  },
+  {
+    "query": "merge conflict on main \u2014 can you help me resolve it and push?",
+    "should_trigger": false
+  }
+]

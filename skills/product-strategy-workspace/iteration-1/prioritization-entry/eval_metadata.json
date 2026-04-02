@@ -1,0 +1,14 @@
+{
+  "eval_id": 1,
+  "eval_name": "prioritization-entry",
+  "prompt": "I've been building a personal finance app called Pocketwise for about 6 months now. It started as a budgeting tool but I've been getting feature requests for investment tracking, bill reminders, and shared household budgets. I have no idea what to prioritize next — I'm a solo dev and I can't do everything. My current users are mostly millennials who found me through a Reddit post. Can you help me figure out what to build next and how to think about this strategically?",
+  "assertions": [
+    {"text": "Correctly identifies this as a Phase 2 (Strategize) entry — does not start full discovery from scratch", "passed": null, "evidence": ""},
+    {"text": "Produces at least one persona with behavioral profile (jobs-to-be-done, pain points), not just demographics", "passed": null, "evidence": ""},
+    {"text": "Uses an explicit prioritization framework (RICE, Impact-Effort, MoSCoW, or similar) — not just opinion", "passed": null, "evidence": ""},
+    {"text": "Priority recommendations cite specific user signals (Reddit users, feature request types, solo dev constraint)", "passed": null, "evidence": ""},
+    {"text": "Defines measurable success metrics for the recommended priority", "passed": null, "evidence": ""},
+    {"text": "Produces a strategic brief or dispatch recommendation for what to do next", "passed": null, "evidence": ""},
+    {"text": "Explicitly states what is NOT being built and why (trade-offs)", "passed": null, "evidence": ""}
+  ]
+}

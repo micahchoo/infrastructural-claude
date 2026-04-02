@@ -1,0 +1,82 @@
+[
+  {
+    "query": "we're building a multi-tenant SaaS and I can't decide between row-level security in postgres vs separate schemas per tenant \u2014 what's the right call given we expect ~500 tenants?",
+    "should_trigger": true
+  },
+  {
+    "query": "our event sourcing setup is getting really messy, we chose it 2 years ago but replay is now taking 45min \u2014 was that the right architecture or should we migrate?",
+    "should_trigger": true
+  },
+  {
+    "query": "stuck between CQRS and a simpler read/write model for our inventory service, team is 3 devs, latency isn't a concern but consistency is",
+    "should_trigger": true
+  },
+  {
+    "query": "advise on my architecture \u2014 I've got a monolith at src/api/server.ts that's getting hard to maintain and I'm considering breaking it into services",
+    "should_trigger": true
+  },
+  {
+    "query": "which pattern for optimistic updates in my project? using react-query, REST backend, users complain about UI feeling slow",
+    "should_trigger": true
+  },
+  {
+    "query": "the saga pattern isn't working for us, transactions keep getting stuck in intermediate states and rollback logic is a nightmare across 4 services",
+    "should_trigger": true
+  },
+  {
+    "query": "recommend an approach for my notification system \u2014 need to handle email, sms, push, and in-app, currently all hardcoded in NotificationService.java",
+    "should_trigger": true
+  },
+  {
+    "query": "we went with a plugin architecture for extensibility but third party devs keep breaking the core \u2014 evaluate whether this was the right call",
+    "should_trigger": true
+  },
+  {
+    "query": "trying to decide between an outbox pattern vs direct kafka publish in my order service, worried about dual-write failures in prod",
+    "should_trigger": true
+  },
+  {
+    "query": "our frontend team and backend team keep fighting over where validation logic lives, whats the right pattern here given we have both mobile and web clients hitting the same API",
+    "should_trigger": true
+  },
+  {
+    "query": "explain how the outbox pattern works and when you'd use it vs two-phase commit",
+    "should_trigger": false
+  },
+  {
+    "query": "plan the implementation of a CQRS system for our orders module \u2014 I've already decided on CQRS, just need the steps",
+    "should_trigger": false
+  },
+  {
+    "query": "the saga transaction is throwing NullPointerException at line 47 in OrderSagaCoordinator.java after the payment step",
+    "should_trigger": false
+  },
+  {
+    "query": "what are the tradeoffs between event sourcing and traditional CRUD? just trying to learn the concepts",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to brainstorm ideas for redesigning our checkout flow \u2014 open to anything, no constraints yet",
+    "should_trigger": false
+  },
+  {
+    "query": "show me all the patterns in the distributed state codebook",
+    "should_trigger": false
+  },
+  {
+    "query": "write the code to implement the repository pattern in our user service \u2014 we've already decided thats what we're doing",
+    "should_trigger": false
+  },
+  {
+    "query": "we need to add optimistic locking to the inventory table, can you help implement it using @Version in hibernate",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from our last sprint \u2014 we refactored the auth module to use JWT and added rate limiting",
+    "should_trigger": false
+  },
+  {
+    "query": "what does our current OrderProcessor class actually do? I inherited this codebase and need to understand it before touching anything",
+    "should_trigger": false
+  }
+]

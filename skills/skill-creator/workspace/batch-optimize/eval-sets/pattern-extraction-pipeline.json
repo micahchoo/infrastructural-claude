@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I want to extract patterns from the react-query codebase into a codebook organized around data-fetching forces \u2014 caching vs freshness, optimistic vs pessimistic updates, that kind of thing",
+    "should_trigger": true
+  },
+  {
+    "query": "run the pattern extraction pipeline on ~/repos/temporal \u2014 want a structured codebook I can reference when building similar workflow engines",
+    "should_trigger": true
+  },
+  {
+    "query": "our codebook at docs/patterns/sync-codebook.md hasn't been touched in 6 months, can you audit it and tell me which entries need more production examples",
+    "should_trigger": true
+  },
+  {
+    "query": "I cloned the linear app source and want to build a force-cluster codebook from it for our own editor work",
+    "should_trigger": true
+  },
+  {
+    "query": "enrichment mode: we have an existing undo/redo codebook and I just found the prosemirror repo \u2014 can we pull new evidence from it into the existing entries",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to understand WHY the command-pattern exists in this codebase \u2014 can we try removing it and see what forces emerge / what breaks structurally",
+    "should_trigger": true
+  },
+  {
+    "query": "building a pattern library from stripe-node for onboarding new devs, need it organized by the design tensions not just by feature area",
+    "should_trigger": true
+  },
+  {
+    "query": "de-factor the observer pattern from src/events/ and document what spaghetti that resolves so we can explain it in architecture docs",
+    "should_trigger": true
+  },
+  {
+    "query": "our codebook audit shows 3 orphaned patterns with no production examples \u2014 can you regenerate the enrichment roadmap prioritized by coverage gaps",
+    "should_trigger": true
+  },
+  {
+    "query": "want to create a reusable reference artifact from the vscode extension API \u2014 extracting competing forces around activation, disposal, and async lifecycle",
+    "should_trigger": true
+  },
+  {
+    "query": "look at the undo/redo patterns in our codebook and help me implement the command pattern in my editor component",
+    "should_trigger": false
+  },
+  {
+    "query": "explore the react-query codebase and explain how its caching works \u2014 I'm trying to debug a stale data issue in our app",
+    "should_trigger": false
+  },
+  {
+    "query": "review this PR \u2014 it introduces a new event bus pattern, want to make sure it's consistent with how we do things",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm reading through the prosemirror source trying to understand the transform layer architecture, can you help me trace through the code",
+    "should_trigger": false
+  },
+  {
+    "query": "audit our test suite coverage and tell me which modules are underspecified before we ship v2",
+    "should_trigger": false
+  },
+  {
+    "query": "the domain-codebooks skill has patterns for spatial editing \u2014 can you walk me through the cursor-ownership pattern so I can apply it to our collab feature",
+    "should_trigger": false
+  },
+  {
+    "query": "characterize what the EventEmitter class in src/core/events.ts actually does \u2014 I need a safety net before refactoring it",
+    "should_trigger": false
+  },
+  {
+    "query": "we removed the repository pattern last sprint and things are messy \u2014 help me debug why our data layer is now tangled",
+    "should_trigger": false
+  },
+  {
+    "query": "brainstorm the architecture for a new pattern registry feature \u2014 should support tagging by force cluster and linking to example repos",
+    "should_trigger": false
+  },
+  {
+    "query": "run autoresearch audit on the skill tree \u2014 specifically want to check if pattern-extraction-pipeline closes the loop properly",
+    "should_trigger": false
+  }
+]

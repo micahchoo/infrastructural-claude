@@ -1,0 +1,82 @@
+[
+  {
+    "query": "our undo stack keeps corrupting when two users edit the same node simultaneously in our canvas editor",
+    "should_trigger": true
+  },
+  {
+    "query": "how should we architect the sync layer for our collaborative whiteboard app? we're seeing state drift when users go offline and reconnect",
+    "should_trigger": true
+  },
+  {
+    "query": "gesture handlers are fighting in our touch drawing app \u2014 pinch-to-zoom keeps triggering when user tries to rotate",
+    "should_trigger": true
+  },
+  {
+    "query": "what's the right pattern for virtualizing a 50k row tree where nodes can expand/collapse and have variable height?",
+    "should_trigger": true
+  },
+  {
+    "query": "our node graph evaluator in the shader editor has weird ordering bugs when cycles get introduced \u2014 how should I structure evaluation?",
+    "should_trigger": true
+  },
+  {
+    "query": "designing the schema migration path for our .sketch-like save format \u2014 need backwards compat when we add new node types",
+    "should_trigger": true
+  },
+  {
+    "query": "keeps breaking whenever two people edit the same component \u2014 race condition in our OT implementation I think",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I embed our rich text editor as a component inside a host app without the keyboard shortcuts leaking out?",
+    "should_trigger": true
+  },
+  {
+    "query": "snap-to-grid constraint solving is jittery when elements are close together, what's the right approach for alignment snapping?",
+    "should_trigger": true
+  },
+  {
+    "query": "off-thread compute coordination for our wasm-based layout engine \u2014 main thread keeps getting stale layout results mid-drag",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I style the undo button in our toolbar to match the rest of the design system?",
+    "should_not_trigger": false
+  },
+  {
+    "query": "our REST API undo endpoint returns 500 sometimes \u2014 can you stress test it and find edge cases that break it?",
+    "should_not_trigger": false
+  },
+  {
+    "query": "write characterization tests for our existing sync module before I refactor it",
+    "should_not_trigger": false
+  },
+  {
+    "query": "what CSS should I use for the drag handle on these list items? needs to work on mobile too",
+    "should_not_trigger": false
+  },
+  {
+    "query": "brainstorm features for our new collaborative editing product \u2014 what would make it stand out vs Figma?",
+    "should_not_trigger": false
+  },
+  {
+    "query": "the undo shortcut ctrl+z isn't working on our settings page \u2014 looks like it's a simple event listener missing",
+    "should_not_trigger": false
+  },
+  {
+    "query": "run an adversarial test on our schema migration endpoint \u2014 I want to find inputs that corrupt the document format",
+    "should_not_trigger": false
+  },
+  {
+    "query": "generate a changelog from the last two weeks of commits to our canvas module",
+    "should_not_trigger": false
+  },
+  {
+    "query": "debug why our websocket connection drops after exactly 30 seconds \u2014 server logs show no error on the backend side",
+    "should_not_trigger": false
+  },
+  {
+    "query": "we have a race condition in our API rate limiter \u2014 two requests come in at the same time and both get through",
+    "should_not_trigger": false
+  }
+]

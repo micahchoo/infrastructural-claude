@@ -1,0 +1,82 @@
+[
+  {
+    "query": "why is the checkout flow taking 8 seconds on prod? started after last Thursday's deploy",
+    "should_trigger": true
+  },
+  {
+    "query": "benchmark our new Redis caching layer vs the old DB queries \u2014 need numbers before the architecture review",
+    "should_trigger": true
+  },
+  {
+    "query": "/perf",
+    "should_trigger": true
+  },
+  {
+    "query": "find the bottleneck in src/api/search.ts \u2014 p99 latency spiked to 3s this morning",
+    "should_trigger": true
+  },
+  {
+    "query": "perf regression after merging the ORM migration, CPU usage doubled on the worker nodes",
+    "should_trigger": true
+  },
+  {
+    "query": "this query takes 40ms locally but 4s in staging, need to figure out why before we ship friday",
+    "should_trigger": true
+  },
+  {
+    "query": "our image processing pipeline is slow af, somewhere in the resize \u2192 compress \u2192 upload chain. help me profile it",
+    "should_trigger": true
+  },
+  {
+    "query": "performance investigation on the GraphQL resolver \u2014 DataDog shows it's allocating 200MB per request",
+    "should_trigger": true
+  },
+  {
+    "query": "verification-before-completion flagged that the new batch job might be too slow for the SLA, can you investigate",
+    "should_trigger": true
+  },
+  {
+    "query": "need to find the breaking point of our websocket server before the load test tomorrow",
+    "should_trigger": true
+  },
+  {
+    "query": "the login endpoint throws a 500 when two users sign in at the same time \u2014 race condition I think",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test the /payments API endpoint, try to break it with concurrent requests and edge case inputs",
+    "should_trigger": false
+  },
+  {
+    "query": "our test suite is slow, want to add characterization tests before I refactor the billing module",
+    "should_trigger": false
+  },
+  {
+    "query": "can you benchmark which sorting algorithm to use? just need a quick comparison, no need for a full investigation",
+    "should_trigger": false
+  },
+  {
+    "query": "profile this function and tell me which branch it takes most often \u2014 trying to understand the logic flow",
+    "should_trigger": false
+  },
+  {
+    "query": "the DB query is slow because we're missing an index on user_id \u2014 just add the index migration",
+    "should_trigger": false
+  },
+  {
+    "query": "debug why the auth middleware sometimes returns 401 even with valid tokens \u2014 happens about 5% of requests",
+    "should_trigger": false
+  },
+  {
+    "query": "map out the architecture of our ingestion pipeline before we start optimizing it \u2014 no docs exist",
+    "should_trigger": false
+  },
+  {
+    "query": "write a changelog entry for the perf improvements we shipped in v2.3 \u2014 need it for the release notes",
+    "should_trigger": false
+  },
+  {
+    "query": "our CI pipeline takes 18 minutes, help me figure out which GHA steps are slowest so I can parallelize them",
+    "should_trigger": false
+  }
+]

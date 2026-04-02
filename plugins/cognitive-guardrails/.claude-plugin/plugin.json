@@ -1,0 +1,7 @@
+{
+  "name": "cognitive-guardrails",
+  "description": "Bias mitigation micro-skills for agentic work. Provides surgical cognitive checks (anchoring, WYSIATI, substitution, overconfidence, reframing, availability, conjunction fallacy, sunk cost) invocable at natural decision points during research, planning, and execution phases.",
+  "author": {
+    "name": "Micah"
+  }
+}

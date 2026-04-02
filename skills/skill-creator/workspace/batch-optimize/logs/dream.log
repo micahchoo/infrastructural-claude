@@ -1,0 +1,334 @@
+=== STDOUT ===
+{
+  "exit_reason": "rate_limited (iteration 1)",
+  "original_description": "Run a principle-pipeline on accumulated knowledge. Three modes: enrichment (consolidate memory, raise baseline), detect-gaps (find missing detection categories, promote rules), integrate (surface cross-project patterns, resolve conflicts). Triggered proactively at session start when signal accumulates. Invoke as: /dream enrichment, /dream detect-gaps, /dream integrate.",
+  "best_description": "Run a principle-pipeline on accumulated knowledge. Three modes: enrichment (consolidate memory, raise baseline), detect-gaps (find missing detection categories, promote rules), integrate (surface cross-project patterns, resolve conflicts). Triggered proactively at session start when signal accumulates. Invoke as: /dream enrichment, /dream detect-gaps, /dream integrate.",
+  "best_score": "4/8",
+  "best_train_score": "6/12",
+  "best_test_score": "4/8",
+  "final_description": "Run a principle-pipeline on accumulated knowledge. Three modes: enrichment (consolidate memory, raise baseline), detect-gaps (find missing detection categories, promote rules), integrate (surface cross-project patterns, resolve conflicts). Triggered proactively at session start when signal accumulates. Invoke as: /dream enrichment, /dream detect-gaps, /dream integrate.",
+  "iterations_run": 1,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Run a principle-pipeline on accumulated knowledge. Three modes: enrichment (consolidate memory, raise baseline), detect-gaps (find missing detection categories, promote rules), integrate (surface cross-project patterns, resolve conflicts). Triggered proactively at session start when signal accumulates. Invoke as: /dream enrichment, /dream detect-gaps, /dream integrate.",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "session just started and the hook flagged signal accumulation \u2014 run dream before we get into the work",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "consolidate accumulated knowledge across sessions using the principle pipeline",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "/dream detect-gaps \u2014 the session start hook flagged 1400+ uncategorized failures",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my memory files are getting stale, run dream to raise the baseline",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "/dream",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run dream enrichment on my accumulated knowledge from the last few sessions",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "pick up where we left off yesterday, check the handoff file",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "enrich the auth domain codebook with patterns I found in the stripe integration repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I have 200 commits across two sprints, generate a changelog that surfaces the cross-project changes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "capture what we learned in this session before I close it \u2014 decisions, failures, the works",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep making the same overconfidence mistakes \u2014 run a cognitive self-check before I finalize this design",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "find missing error handling categories in the API layer \u2014 what edge cases aren't we catching?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "I've got 60+ cross-project memory files from mulch, run dream integrate to resolve conflicts between them",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you run the dream integrate pipeline? I've been working across three repos and want to surface any cross-project conflicts",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "detect-gaps mode \u2014 I've got a bunch of uncategorized failures piling up in autoresearch and want to promote missing rules",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "dream enrichment mode to consolidate what I've learned about the auth refactor over the past week",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "detect gaps in test coverage for the payments module before I start refactoring",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "integrate the feature branch into main and resolve the merge conflicts",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit the skill tree against holistic integration and baseline-enrichment principles",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want to surface cross-cutting patterns in this codebase \u2014 map the architecture across all subsystems",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "session just started and the hook flagged signal accumulation \u2014 run dream before we get into the work",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "consolidate accumulated knowledge across sessions using the principle pipeline",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "/dream detect-gaps \u2014 the session start hook flagged 1400+ uncategorized failures",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my memory files are getting stale, run dream to raise the baseline",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "/dream",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run dream enrichment on my accumulated knowledge from the last few sessions",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "pick up where we left off yesterday, check the handoff file",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "enrich the auth domain codebook with patterns I found in the stripe integration repo",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I have 200 commits across two sprints, generate a changelog that surfaces the cross-project changes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "capture what we learned in this session before I close it \u2014 decisions, failures, the works",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep making the same overconfidence mistakes \u2014 run a cognitive self-check before I finalize this design",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "find missing error handling categories in the API layer \u2014 what edge cases aren't we catching?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+
+=== STDERR ===
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/3
+Description: Run a principle-pipeline on accumulated knowledge. Three modes: enrichment (consolidate memory, raise baseline), detect-gaps (find missing detection categories, promote rules), integrate (surface cross-project patterns, resolve conflicts). Triggered proactively at session start when signal accumulates. Invoke as: /dream enrichment, /dream detect-gaps, /dream integrate.
+============================================================
+Gtk-Message: 22:05:17.108: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Train: 12/24 correct, precision=100% recall=0% accuracy=50% (27.4s)
+  [FAIL] rate=0/2 expected=True: session just started and the hook flagged signal accumulatio
+  [FAIL] rate=0/2 expected=True: consolidate accumulated knowledge across sessions using the 
+  [FAIL] rate=0/2 expected=True: /dream detect-gaps — the session start hook flagged 1400+ un
+  [FAIL] rate=0/2 expected=True: my memory files are getting stale, run dream to raise the ba
+  [FAIL] rate=0/2 expected=True: /dream
+  [FAIL] rate=0/2 expected=True: run dream enrichment on my accumulated knowledge from the la
+  [PASS] rate=0/2 expected=False: pick up where we left off yesterday, check the handoff file
+  [PASS] rate=0/2 expected=False: enrich the auth domain codebook with patterns I found in the
+  [PASS] rate=0/2 expected=False: I have 200 commits across two sprints, generate a changelog 
+  [PASS] rate=0/2 expected=False: capture what we learned in this session before I close it — 
+  [PASS] rate=0/2 expected=False: I keep making the same overconfidence mistakes — run a cogni
+  [PASS] rate=0/2 expected=False: find missing error handling categories in the API layer — wh
+Test : 8/16 correct, precision=100% recall=0% accuracy=50% (0.0s)
+  [FAIL] rate=0/2 expected=True: I've got 60+ cross-project memory files from mulch, run drea
+  [FAIL] rate=0/2 expected=True: can you run the dream integrate pipeline? I've been working 
+  [FAIL] rate=0/2 expected=True: detect-gaps mode — I've got a bunch of uncategorized failure
+  [FAIL] rate=0/2 expected=True: dream enrichment mode to consolidate what I've learned about
+  [PASS] rate=0/2 expected=False: detect gaps in test coverage for the payments module before 
+  [PASS] rate=0/2 expected=False: integrate the feature branch into main and resolve the merge
+  [PASS] rate=0/2 expected=False: audit the skill tree against holistic integration and baseli
+  [PASS] rate=0/2 expected=False: I want to surface cross-cutting patterns in this codebase — 
+
+Improving description...
+Warning: claude --print returned 1
+Rate limited, keeping current description: Rate limited: You've hit your limit · resets 2am (America/Los_Angeles)
+
+Exit reason: rate_limited (iteration 1)
+Best score: 4/8 (iteration 1)
+
+Report: /tmp/skill_description_report_dream_20260330_220516.html
+Results saved to: /home/micah/.claude/skills/skill-creator/workspace/batch-optimize/results/dream/2026-03-30_220516
+
+=== RETURN CODE: 0 ===

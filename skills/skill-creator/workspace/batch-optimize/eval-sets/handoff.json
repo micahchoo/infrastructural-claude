@@ -1,0 +1,82 @@
+[
+  {
+    "query": "context is at like 70% and we still have the payment integration, rate limiting, and webhook handling to do \u2014 write a handoff",
+    "should_trigger": true
+  },
+  {
+    "query": "gonna stop for the night, save where we are so I can pick this up tomorrow",
+    "should_trigger": true
+  },
+  {
+    "query": "wrap up the session \u2014 still need to do the DB migrations and the API tests",
+    "should_trigger": true
+  },
+  {
+    "query": "start fresh, this session is getting too long and we're only halfway through the refactor",
+    "should_trigger": true
+  },
+  {
+    "query": "hand off \u2014 I'm passing this to a colleague who'll finish the auth work",
+    "should_trigger": true
+  },
+  {
+    "query": "context usage is showing 75%+, let's capture state before we lose context",
+    "should_trigger": true
+  },
+  {
+    "query": "save progress so i can pick this up in a new window, still got the caching layer and observability work left",
+    "should_trigger": true
+  },
+  {
+    "query": "we're compressing messages already, write a HANDOFF.md before we lose track of what's left",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to step away, write up what's been done and what's left on the stripe migration so I can resume cleanly",
+    "should_trigger": true
+  },
+  {
+    "query": "strategic looping flagged we should hand off \u2014 go ahead and do that",
+    "should_trigger": true
+  },
+  {
+    "query": "pick up where we left off \u2014 read the HANDOFF.md from last session",
+    "should_trigger": false
+  },
+  {
+    "query": "save progress with a git commit before I start the next phase",
+    "should_trigger": false
+  },
+  {
+    "query": "write a README summarizing how the new pipeline architecture works",
+    "should_trigger": false
+  },
+  {
+    "query": "capture the decisions and patterns we found in this session into mulch",
+    "should_trigger": false
+  },
+  {
+    "query": "wrap up the PR description and open the pull request",
+    "should_trigger": false
+  },
+  {
+    "query": "start fresh on the design \u2014 I don't think this approach is right, let's brainstorm alternatives",
+    "should_trigger": false
+  },
+  {
+    "query": "document how to hand off the oncall rotation to the new team in Notion",
+    "should_trigger": false
+  },
+  {
+    "query": "resume from yesterday's session on the auth refactor",
+    "should_trigger": false
+  },
+  {
+    "query": "checkpoint the work so far and push to the feature branch",
+    "should_trigger": false
+  },
+  {
+    "query": "save progress on the debugging investigation \u2014 add what we found to the incident doc",
+    "should_trigger": false
+  }
+]

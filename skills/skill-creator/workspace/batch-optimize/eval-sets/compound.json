@@ -1,0 +1,82 @@
+[
+  {
+    "query": "save what we learned about the retry logic before I close this session",
+    "should_trigger": true
+  },
+  {
+    "query": "document the decision we made to use optimistic locking instead of pessimistic",
+    "should_trigger": true
+  },
+  {
+    "query": "capture this convention - all handlers must return Result types, not throw",
+    "should_trigger": true
+  },
+  {
+    "query": "record that the webhook signature validation has to come before body parsing or it breaks",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to preserve the findings from this debugging session before we move on",
+    "should_trigger": true
+  },
+  {
+    "query": "log that we tried redis for rate limiting but it caused thundering herd on cold start",
+    "should_trigger": true
+  },
+  {
+    "query": "note down that auth0 tenant IDs are case-sensitive - wasted 2hrs on this",
+    "should_trigger": true
+  },
+  {
+    "query": "mid-session knowledge dump - we just figured out why the migrations were failing",
+    "should_trigger": true
+  },
+  {
+    "query": "explicitly document learnings from this spike before we switch contexts",
+    "should_trigger": true
+  },
+  {
+    "query": "compound - save the pattern we settled on for the event sourcing aggregate roots",
+    "should_trigger": true
+  },
+  {
+    "query": "at end of session extract all decisions and patterns we established today",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from the commits we made this sprint",
+    "should_trigger": false
+  },
+  {
+    "query": "write tests to document what the legacy payment processor actually does before I refactor it",
+    "should_trigger": false
+  },
+  {
+    "query": "brainstorm the best way to capture and persist knowledge across sessions in our platform",
+    "should_trigger": false
+  },
+  {
+    "query": "run the close-loop pipeline and record everything from this session to mulch",
+    "should_trigger": false
+  },
+  {
+    "query": "check the handoff doc from yesterday and resume where we left off on the auth refactor",
+    "should_trigger": false
+  },
+  {
+    "query": "we discovered the cache invalidation bug - create a seeds issue so we don't forget it",
+    "should_trigger": false
+  },
+  {
+    "query": "document the architecture of the event pipeline in the codebase diagnostics output",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to run /dream to consolidate all the knowledge from the last few sessions",
+    "should_trigger": false
+  },
+  {
+    "query": "write a HANDOFF.md so the next session can pick up from where we are now",
+    "should_trigger": false
+  }
+]

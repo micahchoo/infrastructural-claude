@@ -1,0 +1,82 @@
+[
+  {
+    "query": "sd create 'fix auth token expiry' --type bug",
+    "should_trigger": true
+  },
+  {
+    "query": "what's ready to work on in this project?",
+    "should_trigger": true
+  },
+  {
+    "query": "initialize seeds in this repo so I can track work with agents",
+    "should_trigger": true
+  },
+  {
+    "query": "block issue 14 on 12 and 13, they need to finish first",
+    "should_trigger": true
+  },
+  {
+    "query": "I've got a .seeds/ folder but sd ready shows nothing \u2014 how do I find unblocked tasks?",
+    "should_trigger": true
+  },
+  {
+    "query": "pour the pattern-enrichment template into a new issue prefixed 'q1-audit'",
+    "should_trigger": true
+  },
+  {
+    "query": "show me all open issues assigned to nobody so I can dispatch agents",
+    "should_trigger": true
+  },
+  {
+    "query": "triage the needs-triage backlog, there's like 40 issues agents dumped in there",
+    "should_trigger": true
+  },
+  {
+    "query": "close sd-42 with reason outcome:success \u2014 the migration passed staging",
+    "should_trigger": true
+  },
+  {
+    "query": "set up git-native issue tracking for this new monorepo, we don't want GitHub Issues",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to track open GitHub issues for this repo \u2014 how do I sync them locally?",
+    "should_trigger": false
+  },
+  {
+    "query": "create a Jira ticket for the login regression we found in prod",
+    "should_trigger": false
+  },
+  {
+    "query": "sd prime is throwing 'no .seeds directory found' \u2014 is this a PATH issue or do I need to install something?",
+    "should_trigger": false
+  },
+  {
+    "query": "what work is ready for the sprint? pull from the backlog in Linear",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to track which features are ready to ship \u2014 can you check the changelog since last tag?",
+    "should_trigger": false
+  },
+  {
+    "query": "create an issue in the repo for the flaky test in ci.yml",
+    "should_trigger": false
+  },
+  {
+    "query": "write a seed phrase backup utility for this crypto wallet app",
+    "should_trigger": false
+  },
+  {
+    "query": "sd next --parallel keeps claiming the same task twice across two agents, race condition?",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to block the deploy until tests pass \u2014 add a gate to the pipeline",
+    "should_trigger": false
+  },
+  {
+    "query": "generate release notes from closed issues this sprint for the changelog",
+    "should_trigger": false
+  }
+]

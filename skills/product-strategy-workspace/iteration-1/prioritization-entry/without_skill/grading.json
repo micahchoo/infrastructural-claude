@@ -1,0 +1,42 @@
+{
+  "eval_id": 1,
+  "eval_name": "prioritization-entry",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "Correctly identifies this as a Phase 2 (Strategize) entry — does not start full discovery from scratch",
+      "passed": false,
+      "evidence": "No explicit phase identification. The output does jump into strategy rather than discovery, but there is no awareness of a lifecycle phase model. The situation summary describes the context but does not identify which lifecycle phase is appropriate. It implicitly treats this as a strategy task (which is correct behavior) but does not explicitly recognize the entry point."
+    },
+    {
+      "text": "Produces at least one persona with behavioral profile (jobs-to-be-done, pain points), not just demographics",
+      "passed": false,
+      "evidence": "The 'User Persona Assumptions' section describes three user types but only with brief demographic/behavioral sketches (e.g., 'Budget-focused millennials: Your current core. Found you on Reddit. Manually tracking expenses...'). These are 2-3 sentence profiles without structured jobs-to-be-done, pain points, current tools, or switch triggers. They are persona sketches, not behavioral profiles."
+    },
+    {
+      "text": "Uses an explicit prioritization framework (RICE, Impact-Effort, MoSCoW, or similar) — not just opinion",
+      "passed": true,
+      "evidence": "prioritization-matrix.md uses an explicit weighted scoring framework with 5 dimensions: Retention Impact (25%), Growth Leverage (20%), Solo-Dev Feasibility (25%), Core Alignment (15%), Engagement Frequency (15%). Includes numerical scoring table and weighted scores producing a ranked priority order. Also has 'Impact vs. Effort with Retention Lens' framework in the strategic analysis."
+    },
+    {
+      "text": "Priority recommendations cite specific user signals (Reddit users, feature request types, solo dev constraint)",
+      "passed": true,
+      "evidence": "Multiple references: 'Your Reddit channel is an asset — feed it' as a strategic principle. Solo dev constraint is central ('Solo-Dev Feasibility' is 25% of the scoring matrix). 'Let users pull you into adjacencies' discusses pull vs push signals from feature requests. Feature request types are analyzed individually (bill reminders, shared budgets, investment tracking)."
+    },
+    {
+      "text": "Defines measurable success metrics for the recommended priority",
+      "passed": false,
+      "evidence": "The 'Metrics to Track' section lists metrics but they are vague: 'Retention rate (7-day, 30-day)', 'Feature adoption rate per new feature', 'NPS or simple satisfaction survey'. No target values, no baselines, no measurement methods, no timeframes. These are metric categories, not measurable success criteria."
+    },
+    {
+      "text": "Produces a strategic brief or dispatch recommendation for what to do next",
+      "passed": false,
+      "evidence": "The executive summary gives an answer ('Build bill reminders first, then shared household budgets. Defer investment tracking.') and the roadmap has quarterly sequencing, but there is no strategic brief artifact with implementation context, constraints, or dispatch to a next-phase skill. The 'answer' is a recommendation but not a structured brief or dispatch."
+    },
+    {
+      "text": "Explicitly states what is NOT being built and why (trade-offs)",
+      "passed": true,
+      "evidence": "Investment tracking is explicitly deferred: 'Defer' in priority order. The strategic analysis states 'let the data decide' for Q3+. 'Q3+: Reassess — Investment tracking may or may not still be the right next move.' The 'Scope ruthlessly' principle reinforces trade-off thinking. However, the rationale is more implicit than explicit — deferral is stated but the 'why not' reasoning is lighter than ideal."
+    }
+  ]
+}

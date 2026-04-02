@@ -1,0 +1,840 @@
+{
+  "exit_reason": "max_iterations (3)",
+  "original_description": "Generate user-facing changelogs from git history. Transforms technical commits into clear, customer-friendly release notes. Categorizes changes, filters noise, and formats professionally. Triggers: \"create changelog\", \"release notes\", \"what changed since\", \"generate changelog\", \"update CHANGELOG.md\", or as an optional step in finishing-a-development-branch when the branch contains user-facing changes.",
+  "best_description": "Generate user-facing changelogs from git history. Transforms technical commits into clear, customer-friendly release notes. Categorizes changes, filters noise, and formats professionally. Triggers: \"create changelog\", \"release notes\", \"what changed since\", \"generate changelog\", \"update CHANGELOG.md\", or as an optional step in finishing-a-development-branch when the branch contains user-facing changes.",
+  "best_score": "8/8",
+  "best_train_score": "11/12",
+  "best_test_score": "8/8",
+  "final_description": "Use this skill when the user wants to publish information about product changes to an external or non-technical audience \u2014 transforming git commits into polished release notes, changelogs, or update summaries. The audience signal is decisive: end users, customers, PMs, app store reviewers, or anyone outside the engineering team. Do NOT trigger when the documentation is for internal technical consumers (DBAs, developers, architects) or when the goal is understanding/analyzing git history rather than publishing it.",
+  "iterations_run": 3,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Generate user-facing changelogs from git history. Transforms technical commits into clear, customer-friendly release notes. Categorizes changes, filters noise, and formats professionally. Triggers: \"create changelog\", \"release notes\", \"what changed since\", \"generate changelog\", \"update CHANGELOG.md\", or as an optional step in finishing-a-development-branch when the branch contains user-facing changes.",
+      "train_passed": 11,
+      "train_failed": 1,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "write up the release notes for this branch before i merge it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our PM wants a changelog for the mobile team, can you pull from git commits",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "changlelog for last 2 weeks of commits plz",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a changelog for the v2.3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what shipped in this release? summarize git log into something non-technical for stakeholders",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate release notes from git history since last tag",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what commits broke the tests? trace the regression in git history",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "document what changed in the database schema for the DBA team",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "summarize the git history of the auth module so i can understand how it evolved",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what changed in this file since last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "git log shows a lot of noise, help me understand what this branch actually does",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up a postmortem on the outage, include what changed before it happened",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 8,
+      "test_failed": 0,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "transform these commits into user-facing release notes, ignore the chore and ci stuff",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what changed since v1.5.0? need something customer-friendly",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "update CHANGELOG.md with everything merged this sprint",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to update docs/CHANGELOG.md before cutting the 3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "i'm finishing up this feature branch, review it before i open a PR",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a migration guide for users upgrading from v1 to v2",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a summary of all commits by the backend team this quarter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write release notes for this API endpoint explaining how to use it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 1,
+      "total": 12,
+      "results": [
+        {
+          "query": "write up the release notes for this branch before i merge it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our PM wants a changelog for the mobile team, can you pull from git commits",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "changlelog for last 2 weeks of commits plz",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a changelog for the v2.3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what shipped in this release? summarize git log into something non-technical for stakeholders",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate release notes from git history since last tag",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what commits broke the tests? trace the regression in git history",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "document what changed in the database schema for the DBA team",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "summarize the git history of the auth module so i can understand how it evolved",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what changed in this file since last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "git log shows a lot of noise, help me understand what this branch actually does",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up a postmortem on the outage, include what changed before it happened",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use this skill when the user wants to produce user-facing release notes or changelogs from git commits \u2014 transforming technical commit history into polished, customer-readable summaries of what shipped. Covers version releases, sprint summaries, app store updates, and PR merge notes. The key signal is the *audience*: end users, customers, PMs, or non-technical stakeholders reading about product changes. Do NOT trigger for internal technical documentation (schema docs, architecture notes, DBA reports), git forensics (tracing regressions, understanding file history), or developer-oriented analysis of what a branch does.",
+      "train_passed": 11,
+      "train_failed": 1,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "changlelog for last 2 weeks of commits plz",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a changelog for the v2.3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our PM wants a changelog for the mobile team, can you pull from git commits",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what shipped in this release? summarize git log into something non-technical for stakeholders",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up the release notes for this branch before i merge it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "summarize the git history of the auth module so i can understand how it evolved",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what commits broke the tests? trace the regression in git history",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what changed in this file since last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate release notes from git history since last tag",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "document what changed in the database schema for the DBA team",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "git log shows a lot of noise, help me understand what this branch actually does",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up a postmortem on the outage, include what changed before it happened",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 8,
+      "test_failed": 0,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "what changed since v1.5.0? need something customer-friendly",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "transform these commits into user-facing release notes, ignore the chore and ci stuff",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "update CHANGELOG.md with everything merged this sprint",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to update docs/CHANGELOG.md before cutting the 3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "i'm finishing up this feature branch, review it before i open a PR",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a migration guide for users upgrading from v1 to v2",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a summary of all commits by the backend team this quarter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write release notes for this API endpoint explaining how to use it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 1,
+      "total": 12,
+      "results": [
+        {
+          "query": "changlelog for last 2 weeks of commits plz",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a changelog for the v2.3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our PM wants a changelog for the mobile team, can you pull from git commits",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what shipped in this release? summarize git log into something non-technical for stakeholders",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up the release notes for this branch before i merge it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "summarize the git history of the auth module so i can understand how it evolved",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what commits broke the tests? trace the regression in git history",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what changed in this file since last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate release notes from git history since last tag",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "document what changed in the database schema for the DBA team",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "git log shows a lot of noise, help me understand what this branch actually does",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up a postmortem on the outage, include what changed before it happened",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use this skill when the user wants to publish information about product changes to an external or non-technical audience \u2014 transforming git commits into polished release notes, changelogs, or update summaries. The audience signal is decisive: end users, customers, PMs, app store reviewers, or anyone outside the engineering team. Do NOT trigger when the documentation is for internal technical consumers (DBAs, developers, architects) or when the goal is understanding/analyzing git history rather than publishing it.",
+      "train_passed": 11,
+      "train_failed": 1,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "create a changelog for the v2.3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "changlelog for last 2 weeks of commits plz",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our PM wants a changelog for the mobile team, can you pull from git commits",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what shipped in this release? summarize git log into something non-technical for stakeholders",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up the release notes for this branch before i merge it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate release notes from git history since last tag",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "summarize the git history of the auth module so i can understand how it evolved",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what commits broke the tests? trace the regression in git history",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "document what changed in the database schema for the DBA team",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "what changed in this file since last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "git log shows a lot of noise, help me understand what this branch actually does",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up a postmortem on the outage, include what changed before it happened",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 8,
+      "test_failed": 0,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "what changed since v1.5.0? need something customer-friendly",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "transform these commits into user-facing release notes, ignore the chore and ci stuff",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "update CHANGELOG.md with everything merged this sprint",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "i'm finishing up this feature branch, review it before i open a PR",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "create a migration guide for users upgrading from v1 to v2",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a summary of all commits by the backend team this quarter",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to update docs/CHANGELOG.md before cutting the 3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write release notes for this API endpoint explaining how to use it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 1,
+      "total": 12,
+      "results": [
+        {
+          "query": "create a changelog for the v2.3.0 release",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "changlelog for last 2 weeks of commits plz",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our PM wants a changelog for the mobile team, can you pull from git commits",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what shipped in this release? summarize git log into something non-technical for stakeholders",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up the release notes for this branch before i merge it",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate release notes from git history since last tag",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "summarize the git history of the auth module so i can understand how it evolved",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what commits broke the tests? trace the regression in git history",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "document what changed in the database schema for the DBA team",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "what changed in this file since last week",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "git log shows a lot of noise, help me understand what this branch actually does",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write up a postmortem on the outage, include what changed before it happened",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

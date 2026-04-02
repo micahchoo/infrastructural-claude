@@ -1,0 +1,42 @@
+{
+  "eval_id": 3,
+  "eval_name": "greenfield-entry",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "Attempts full cycle — Phase 1 (Discover) through Phase 3 (Dispatch) for greenfield product",
+      "passed": false,
+      "evidence": "No lifecycle phase model is used. The output covers problem analysis (01), strategic recommendations (02), competitive landscape (03), first 30 days action plan (04), and risks (05). This maps roughly to discovery and strategy but without phase awareness or explicit lifecycle progression. There is no Phase 3 Dispatch artifact — the output ends with recommendations and risk analysis, not a structured handoff to a build phase."
+    },
+    {
+      "text": "Personas describe specific indie dev behaviors (e.g., community size, feedback volume), not generic 'game developer'",
+      "passed": true,
+      "evidence": "Primary persona: 'Solo/small-team indie dev (1-5 people) — Has a game in Early Access or recently launched, 500-50,000 players across Discord + Steam, Spends 2-5 hours/week manually reading feedback, Feels guilty about what they're missing, Has no dedicated community manager.' Secondary persona: 'Community manager for mid-size indie studio — Manages feedback for 1-3 active titles, Manually aggregates from 3+ channels.' Includes specific community sizes, time spent, and behavioral details."
+    },
+    {
+      "text": "Names actual competitors or competitor categories (Canny, UserVoice, Nolt, or similar feedback tools)",
+      "passed": true,
+      "evidence": "03-competitive-landscape.md names: Canny (canny.io) with detailed analysis, Nolt ('Similar to Canny, slightly cheaper'), UserVoice ('Enterprise feedback management. Way too heavy, too expensive'), FeatureUpvote, Discord bot ecosystem (Suggestion Bot, Feedback Bot), Notion/Airtable templates, Steam's built-in tools, Amplitude/Mixpanel, and social listening tools (Brandwatch, Mention). Organized into direct, adjacent, and indirect categories."
+    },
+    {
+      "text": "Differentiation is grounded in a user pain point — not generic 'better UX' or 'more features'",
+      "passed": true,
+      "evidence": "Differentiation is grounded in a specific pain: 'game feedback is structurally different from SaaS feedback' — balance complaints, content requests, and bug reports have different urgency profiles. The 'real job-to-be-done' is framed as 'not feedback collection, it's feedback filtration — helping devs hear the signal through the noise.' The closing section states 'Your biggest risk is building a data tool when devs need a decision framework.' Pain-point rooted throughout."
+    },
+    {
+      "text": "Produces a product vision statement",
+      "passed": false,
+      "evidence": "No formal product vision statement is produced. The problem analysis describes the problem space well and the strategic recommendations describe what to build, but there is no dedicated vision statement articulating what the product IS and WHY it exists as a single cohesive statement. The closest is 'Start Narrow, Prove the Core Loop' and 'The One Thing That Matters Most' but these are strategic principles, not a vision statement."
+    },
+    {
+      "text": "KPIs have specific measurement methods and target values — not vague 'increase adoption'",
+      "passed": false,
+      "evidence": "No KPIs with specific measurement methods and target values are defined. The strategic recommendations mention pricing ($15/mo target) and growth strategy but do not define success metrics with baselines, targets, or measurement methods. The risk section has 'Key Risks to Validate' with validation approaches but these are assumptions to test, not KPIs. The first-30-days plan has decision criteria but no ongoing success metrics."
+    },
+    {
+      "text": "Routes to product-design or brainstorming as the next step (dispatch)",
+      "passed": false,
+      "evidence": "No explicit routing to product-design or brainstorming. The strategic recommendations section provides a phased build plan (Phase 0-3) and the first-30-days action plan gives a week-by-week schedule, but these are self-contained recommendations — they do not dispatch to a named skill, pipeline stage, or next-phase workflow. The output is advisory, not a pipeline handoff."
+    }
+  ]
+}

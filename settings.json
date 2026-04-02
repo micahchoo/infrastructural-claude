@@ -1,0 +1,409 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ml:*)",
+      "Bash(sd:*)"
+    ]
+  },
+  "model": "sonnet",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/apply-file-overrides.sh 2>&1 || echo 'apply-file-overrides: warning'",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/override-audit.sh 2>&1 | tail -5 || echo \"override-audit: warning - check logs\"",
+            "timeout": 5,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/codebase-analytics.sh",
+            "timeout": 25
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/backup-settings.sh",
+            "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/check-memory-freshness.sh",
+            "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/context-index-freshness.sh --auto --update",
+            "timeout": 30,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "mkdir -p ~/.claude/logs && ~/.claude/scripts/anti-pattern-scan.sh >/dev/null 2>>~/.claude/logs/anti-pattern-scan.log || echo \"anti-pattern-scan: check ~/.claude/logs/anti-pattern-scan.log\"",
+            "timeout": 30,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/observability-scan.sh --quiet 2>/dev/null || true",
+            "timeout": 15,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/seeds-session-inject.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "cd \"${CLAUDE_PROJECT_DIR:-.}\" && test -d .mulch && echo '<mulch-context>' && ml prime 2>/dev/null | head -30 && echo '</mulch-context>' || true",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/readme-seam-check.sh",
+            "timeout": 5,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/anti-pattern-summary.sh",
+            "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/claude-md-nudge.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/foxhound-health.sh 2>&1 | tail -3 || echo \"foxhound-health: degraded\"",
+            "timeout": 3,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/check-plugin-overrides.sh",
+            "timeout": 5,
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/rules-scaffold.sh 2>&1 || echo 'rules-scaffold: warning'",
+            "timeout": 5,
+            "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/micah/.claude/plugins/cache/context-mode/context-mode/1.0.18/hooks/sessionstart.mjs\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/dream-trigger-hook.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read|WebSearch|WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/context-mcp-nudge.sh",
+            "timeout": 3
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bunx -y ccstatusline@latest --hook"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/pipeline-stage-hook.sh",
+            "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/foxhound-nudge.sh",
+            "timeout": 3
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|WebFetch|Read|Grep|Agent|Task|mcp__plugin_context-mode_context-mode__ctx_execute|mcp__plugin_context-mode_context-mode__ctx_execute_file|mcp__plugin_context-mode_context-mode__ctx_batch_execute",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/home/micah/.claude/plugins/cache/context-mode/context-mode/1.0.18/hooks/pretooluse.mjs\""
+          }
+        ]
+      },
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/subagent-preflight-hook.sh",
+            "timeout": 2
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/rules-inject.sh",
+            "timeout": 2
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/brownfield-flow-check.sh",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bunx -y ccstatusline@latest --hook"
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/statusline-command.sh --hook"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/failure-journal-hook.sh",
+            "timeout": 2
+          }
+        ]
+      },
+      {
+        "matcher": "WebFetch|WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/context-mcp-post-fetch.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/eval-capture-hook.sh",
+            "timeout": 3
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/skill-closeloop-hook.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'ARGS=$(cat); SKILL=$(echo \"$ARGS\" | jq -r \".tool_input.skill // empty\"); RESULT=$(echo \"$ARGS\" | jq -r \".tool_result // empty\"); if [ \"$SKILL\" = \"skill-creator\" ] && echo \"$RESULT\" | grep -q \"SKILL.md\"; then echo \"skill-creator completed. Run /autoresearch gate on the modified skill to check principle compliance.\"; fi'"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'ARGS=$(cat); SKILL=$(echo \"$ARGS\" | jq -r \".tool_input.skill // empty\"); [ \"$SKILL\" = \"update-config\" ] && echo \"<system-reminder>PostToolUse: update-config completed. Run commands-auditor to verify permission safety.</system-reminder>\" || true'",
+            "timeout": 3
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/failure-journal-tool-hook.sh",
+            "timeout": 2
+          },
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/edit-quality-check.sh",
+            "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/failure-journal-tool-hook.sh",
+            "timeout": 2
+          }
+        ]
+      },
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/subagent-postflight-hook.sh",
+            "timeout": 2
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/ctx-turn-tracker.sh",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $HOME/.claude/scripts/skill-closeloop-hook.sh",
+            "timeout": 5,
+            "statusMessage": "Feedback round checkpoint..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bunx -y ccstatusline@latest --hook"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/ctx-handoff-trigger.sh",
+            "timeout": 3
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/ctx-usage-logger.sh",
+            "timeout": 3
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/prompt-enhancer.sh",
+            "timeout": 15
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bunx -y ccstatusline@latest --hook"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/statusline-command.sh --hook"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/context-pressure.sh",
+            "timeout": 2
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/failure-journal-sweep.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "hookify@claude-plugins-official": false,
+    "context-mode@context-mode": true
+  },
+  "extraKnownMarketplaces": {},
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
+  "mcpServers": {}
+}

@@ -1,0 +1,14 @@
+{
+  "eval_id": 2,
+  "eval_name": "measurement-entry",
+  "prompt": "We just launched the new onboarding flow for our SaaS product two weeks ago. Before the redesign, our trial-to-paid conversion was around 12% and average time-to-first-value was about 45 minutes. The PM defined success as getting conversion to 18% and time-to-first-value under 15 minutes within 60 days. I have access to our analytics dashboard and we've gotten about 30 support tickets since launch. Can you help me evaluate whether this is working?",
+  "assertions": [
+    {"text": "Correctly identifies this as a Phase 4 (Measure) entry — does not start from discovery or strategy", "passed": null, "evidence": ""},
+    {"text": "References the pre-defined targets (18% conversion, <15min time-to-first-value) as the success criteria", "passed": null, "evidence": ""},
+    {"text": "Plans for both quantitative (analytics) AND qualitative (support tickets) signal types", "passed": null, "evidence": ""},
+    {"text": "Addresses attribution confidence — does not simply claim causation from correlation", "passed": null, "evidence": ""},
+    {"text": "Acknowledges 2 weeks is early and discusses leading vs lagging indicators or measurement timing", "passed": null, "evidence": ""},
+    {"text": "Closes with Learn/next-steps recommendations — what to do based on findings", "passed": null, "evidence": ""},
+    {"text": "Mentions UX audit, flow tracing, or shadow-walk as a signal source for qualitative evaluation", "passed": null, "evidence": ""}
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I've got a plan.md from our design session yesterday, let's start executing it",
+    "should_trigger": true
+  },
+  {
+    "query": "ok the plan is written out in PLAN.md, can you start working through the tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "my HANDOFF has a full implementation plan in it \u2014 pick it up and run the tasks sequentially",
+    "should_trigger": true
+  },
+  {
+    "query": "here's the plan we agreed on: 1) refactor auth middleware 2) add rate limiting 3) update tests. go ahead and implement it",
+    "should_trigger": true
+  },
+  {
+    "query": "we're on step 3 of the plan, the first two checkpoints passed, continue from where we left off",
+    "should_trigger": true
+  },
+  {
+    "query": "the design doc at docs/architecture/redesign.md has all the tasks laid out \u2014 execute it in subagent mode",
+    "should_trigger": true
+  },
+  {
+    "query": "run through the implementation plan I pasted above, use two-phase review between tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "platform doesn't support subagents here so just do sequential mode on this plan please",
+    "should_trigger": true
+  },
+  {
+    "query": "the plan has 5 tasks, waves 1-2 are independent but wave 3 depends on both \u2014 start working through it",
+    "should_trigger": true
+  },
+  {
+    "query": "we brainstormed this yesterday and I saved the output to brainstorm_output.md. now execute it",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to write an implementation plan for the new billing system before we start coding",
+    "should_trigger": false
+  },
+  {
+    "query": "there are 4 completely independent investigation tasks here \u2014 search the codebase for each in parallel",
+    "should_trigger": false
+  },
+  {
+    "query": "we have a 3-month roadmap across multiple sessions, need to orchestrate it with checkpoints and memory between runs",
+    "should_trigger": false
+  },
+  {
+    "query": "haven't thought through the design yet, let's brainstorm the auth refactor before touching any code",
+    "should_trigger": false
+  },
+  {
+    "query": "can you create a step-by-step plan for migrating our postgres schema to the new format",
+    "should_trigger": false
+  },
+  {
+    "query": "these 6 tasks are all independent with no shared state, dispatch them all at once",
+    "should_trigger": false
+  },
+  {
+    "query": "checkpoint 2 failed on the plan \u2014 write a postmortem and figure out why before we continue",
+    "should_trigger": false
+  },
+  {
+    "query": "what does the existing auth code actually do before I start changing it? write characterization tests first",
+    "should_trigger": false
+  },
+  {
+    "query": "we're mid-plan but I realize the approach is wrong \u2014 let me brainstorm an alternative before continuing",
+    "should_trigger": false
+  },
+  {
+    "query": "help me structure a technical spec for the cache layer redesign so we can hand it off to the team",
+    "should_trigger": false
+  }
+]

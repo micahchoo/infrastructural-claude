@@ -1,0 +1,954 @@
+=== STDOUT ===
+{
+  "exit_reason": "max_iterations (3)",
+  "original_description": "Tune NER extraction quality on multilingual chat archives (WhatsApp, Discord). Covers stoplist management, threshold tuning, alias normalization, sender/mentioned separation, cross-source dedup, and precision/recall sampling.",
+  "best_description": "Tune NER extraction quality on multilingual chat archives (WhatsApp, Discord). Covers stoplist management, threshold tuning, alias normalization, sender/mentioned separation, cross-source dedup, and precision/recall sampling.",
+  "best_score": "7/8",
+  "best_train_score": "9/12",
+  "best_test_score": "7/8",
+  "final_description": "Use when debugging or improving the output of an existing NER pipeline specifically on WhatsApp or Discord exports \u2014 not for building or training models. The skill targets platform-specific failure modes: bot names and usernames leaking into person entities, multilingual honorifics extracted as names, sender/mentioned confusion, stoplist expansion for informal text, alias deduplication across chat platforms, and similarity threshold calibration. \n\nTriggers on: \"my NER keeps extracting Discord usernames as people,\" \"WhatsApp export NER is noisy,\" \"stoplist isn't filtering chat noise,\" \"aliases across Discord exports aren't deduplicating.\"\n\nDoes NOT trigger for: training or fine-tuning any NER model (even on chat data); NER on emails, support tickets, documents, or news; entity extraction tasks not involving WhatsApp or Discord archives.",
+  "iterations_run": 3,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Tune NER extraction quality on multilingual chat archives (WhatsApp, Discord). Covers stoplist management, threshold tuning, alias normalization, sender/mentioned separation, cross-source dedup, and precision/recall sampling.",
+      "train_passed": 9,
+      "train_failed": 3,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "my WhatsApp export NER keeps pulling in 'lol' and 'ok' as person entities, how do I add them to a stoplist",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ner on multilingual chat \u2014 mix of English and Tagalog \u2014 stoplist tuned for English is not catching Tagalog filler words that get tagged as ORG entities",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "chat archive NER keeps extracting phone numbers from WhatsApp system messages like 'added +1-555-...' \u2014 platform metadata leaking in",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline is mixing up who sent a message vs who they mentioned. 'hey @sarah can you call John' \u2014 John showing as sender",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "aliases are a mess across my Discord exports, 'xX_DarkLord_Xx' and 'Dave' are same user, how do I normalize these before entity dedup",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the entity extractor is tagging Discord bot names like 'MEE6' and 'Dyno' as real people, need to filter those out",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "extracting named entities from customer support email threads to build a CRM \u2014 need to identify company names and contacts",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "want to fine-tune a BERT NER model on our internal chat logs so it learns company-specific names",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "entity resolution across our CRM and Salesforce \u2014 same companies have slightly different names in each system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "sentiment analysis on Discord messages \u2014 want to track mood trends per channel over time",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to extract person names from news articles and Wikipedia pages for a knowledge graph project",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building a NER model eval harness \u2014 want to run precision/recall benchmarks across 5 different models on a held-out test set",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 1,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "precision on person entities from our Slack export is 40%, recall is fine. want to do a sample-based audit to find the noise patterns",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "running spacy on chat archives and threshold 0.6 gives too much noise but 0.8 misses half the real names \u2014 how do I tune this",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "have WhatsApp and Discord exports covering the same group chat, entities are deduped weirdly \u2014 'Mike' vs 'michael.k' are same person",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "building a social graph from 3 years of family WhatsApp groups, entity extraction keeps surfacing 'papa', 'mom', 'sis' as distinct person entities per group when they should merge",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "deduplicating chat messages in our Discord export \u2014 lots of reposts and cross-channel mirrors creating duplicate message rows",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline on legal contracts is tagging 'Party A' and 'Party B' as person entities incorrectly",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "cleaning up our WhatsApp export CSV \u2014 removing blank rows, fixing encoding issues, normalizing timestamps before analysis",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I train spacy's NER component on a custom dataset of medical records",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 9,
+      "failed": 3,
+      "total": 12,
+      "results": [
+        {
+          "query": "my WhatsApp export NER keeps pulling in 'lol' and 'ok' as person entities, how do I add them to a stoplist",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ner on multilingual chat \u2014 mix of English and Tagalog \u2014 stoplist tuned for English is not catching Tagalog filler words that get tagged as ORG entities",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "chat archive NER keeps extracting phone numbers from WhatsApp system messages like 'added +1-555-...' \u2014 platform metadata leaking in",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline is mixing up who sent a message vs who they mentioned. 'hey @sarah can you call John' \u2014 John showing as sender",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "aliases are a mess across my Discord exports, 'xX_DarkLord_Xx' and 'Dave' are same user, how do I normalize these before entity dedup",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the entity extractor is tagging Discord bot names like 'MEE6' and 'Dyno' as real people, need to filter those out",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "extracting named entities from customer support email threads to build a CRM \u2014 need to identify company names and contacts",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "want to fine-tune a BERT NER model on our internal chat logs so it learns company-specific names",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "entity resolution across our CRM and Salesforce \u2014 same companies have slightly different names in each system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "sentiment analysis on Discord messages \u2014 want to track mood trends per channel over time",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to extract person names from news articles and Wikipedia pages for a knowledge graph project",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building a NER model eval harness \u2014 want to run precision/recall benchmarks across 5 different models on a held-out test set",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use for improving entity extraction quality on WhatsApp or Discord chat archives \u2014 when your NER pipeline is already running but producing noisy or incomplete results. Applies when dealing with chat-specific problems: informal text breaking your entity extractor, username/bot names leaking into person entities, multilingual honorifics appearing as names, sender vs. mentioned confusion, stoplist expansion, alias deduplication across chat platforms, or similarity threshold calibration for fuzzy entity matching.\n\nNot for: training or fine-tuning NER models; NER on formal documents (news, emails, academic text); general data cleaning unrelated to entity extraction; entity extraction from non-chat sources.",
+      "train_passed": 10,
+      "train_failed": 2,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "my WhatsApp export NER keeps pulling in 'lol' and 'ok' as person entities, how do I add them to a stoplist",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ner on multilingual chat \u2014 mix of English and Tagalog \u2014 stoplist tuned for English is not catching Tagalog filler words that get tagged as ORG entities",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "aliases are a mess across my Discord exports, 'xX_DarkLord_Xx' and 'Dave' are same user, how do I normalize these before entity dedup",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "chat archive NER keeps extracting phone numbers from WhatsApp system messages like 'added +1-555-...' \u2014 platform metadata leaking in",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline is mixing up who sent a message vs who they mentioned. 'hey @sarah can you call John' \u2014 John showing as sender",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "want to fine-tune a BERT NER model on our internal chat logs so it learns company-specific names",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the entity extractor is tagging Discord bot names like 'MEE6' and 'Dyno' as real people, need to filter those out",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "extracting named entities from customer support email threads to build a CRM \u2014 need to identify company names and contacts",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building a NER model eval harness \u2014 want to run precision/recall benchmarks across 5 different models on a held-out test set",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "entity resolution across our CRM and Salesforce \u2014 same companies have slightly different names in each system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "sentiment analysis on Discord messages \u2014 want to track mood trends per channel over time",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to extract person names from news articles and Wikipedia pages for a knowledge graph project",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 1,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "precision on person entities from our Slack export is 40%, recall is fine. want to do a sample-based audit to find the noise patterns",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "running spacy on chat archives and threshold 0.6 gives too much noise but 0.8 misses half the real names \u2014 how do I tune this",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "have WhatsApp and Discord exports covering the same group chat, entities are deduped weirdly \u2014 'Mike' vs 'michael.k' are same person",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "building a social graph from 3 years of family WhatsApp groups, entity extraction keeps surfacing 'papa', 'mom', 'sis' as distinct person entities per group when they should merge",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline on legal contracts is tagging 'Party A' and 'Party B' as person entities incorrectly",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "how do I train spacy's NER component on a custom dataset of medical records",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "deduplicating chat messages in our Discord export \u2014 lots of reposts and cross-channel mirrors creating duplicate message rows",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "cleaning up our WhatsApp export CSV \u2014 removing blank rows, fixing encoding issues, normalizing timestamps before analysis",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 10,
+      "failed": 2,
+      "total": 12,
+      "results": [
+        {
+          "query": "my WhatsApp export NER keeps pulling in 'lol' and 'ok' as person entities, how do I add them to a stoplist",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ner on multilingual chat \u2014 mix of English and Tagalog \u2014 stoplist tuned for English is not catching Tagalog filler words that get tagged as ORG entities",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "aliases are a mess across my Discord exports, 'xX_DarkLord_Xx' and 'Dave' are same user, how do I normalize these before entity dedup",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "chat archive NER keeps extracting phone numbers from WhatsApp system messages like 'added +1-555-...' \u2014 platform metadata leaking in",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline is mixing up who sent a message vs who they mentioned. 'hey @sarah can you call John' \u2014 John showing as sender",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "want to fine-tune a BERT NER model on our internal chat logs so it learns company-specific names",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the entity extractor is tagging Discord bot names like 'MEE6' and 'Dyno' as real people, need to filter those out",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "extracting named entities from customer support email threads to build a CRM \u2014 need to identify company names and contacts",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building a NER model eval harness \u2014 want to run precision/recall benchmarks across 5 different models on a held-out test set",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "entity resolution across our CRM and Salesforce \u2014 same companies have slightly different names in each system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "sentiment analysis on Discord messages \u2014 want to track mood trends per channel over time",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to extract person names from news articles and Wikipedia pages for a knowledge graph project",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use when debugging or improving the output of an existing NER pipeline specifically on WhatsApp or Discord exports \u2014 not for building or training models. The skill targets platform-specific failure modes: bot names and usernames leaking into person entities, multilingual honorifics extracted as names, sender/mentioned confusion, stoplist expansion for informal text, alias deduplication across chat platforms, and similarity threshold calibration. \n\nTriggers on: \"my NER keeps extracting Discord usernames as people,\" \"WhatsApp export NER is noisy,\" \"stoplist isn't filtering chat noise,\" \"aliases across Discord exports aren't deduplicating.\"\n\nDoes NOT trigger for: training or fine-tuning any NER model (even on chat data); NER on emails, support tickets, documents, or news; entity extraction tasks not involving WhatsApp or Discord archives.",
+      "train_passed": 9,
+      "train_failed": 3,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "chat archive NER keeps extracting phone numbers from WhatsApp system messages like 'added +1-555-...' \u2014 platform metadata leaking in",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline is mixing up who sent a message vs who they mentioned. 'hey @sarah can you call John' \u2014 John showing as sender",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my WhatsApp export NER keeps pulling in 'lol' and 'ok' as person entities, how do I add them to a stoplist",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ner on multilingual chat \u2014 mix of English and Tagalog \u2014 stoplist tuned for English is not catching Tagalog filler words that get tagged as ORG entities",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "aliases are a mess across my Discord exports, 'xX_DarkLord_Xx' and 'Dave' are same user, how do I normalize these before entity dedup",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the entity extractor is tagging Discord bot names like 'MEE6' and 'Dyno' as real people, need to filter those out",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "want to fine-tune a BERT NER model on our internal chat logs so it learns company-specific names",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "extracting named entities from customer support email threads to build a CRM \u2014 need to identify company names and contacts",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "sentiment analysis on Discord messages \u2014 want to track mood trends per channel over time",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to extract person names from news articles and Wikipedia pages for a knowledge graph project",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building a NER model eval harness \u2014 want to run precision/recall benchmarks across 5 different models on a held-out test set",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "entity resolution across our CRM and Salesforce \u2014 same companies have slightly different names in each system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 1,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "precision on person entities from our Slack export is 40%, recall is fine. want to do a sample-based audit to find the noise patterns",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "have WhatsApp and Discord exports covering the same group chat, entities are deduped weirdly \u2014 'Mike' vs 'michael.k' are same person",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "running spacy on chat archives and threshold 0.6 gives too much noise but 0.8 misses half the real names \u2014 how do I tune this",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline on legal contracts is tagging 'Party A' and 'Party B' as person entities incorrectly",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building a social graph from 3 years of family WhatsApp groups, entity extraction keeps surfacing 'papa', 'mom', 'sis' as distinct person entities per group when they should merge",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "cleaning up our WhatsApp export CSV \u2014 removing blank rows, fixing encoding issues, normalizing timestamps before analysis",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "deduplicating chat messages in our Discord export \u2014 lots of reposts and cross-channel mirrors creating duplicate message rows",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I train spacy's NER component on a custom dataset of medical records",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 9,
+      "failed": 3,
+      "total": 12,
+      "results": [
+        {
+          "query": "chat archive NER keeps extracting phone numbers from WhatsApp system messages like 'added +1-555-...' \u2014 platform metadata leaking in",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "NER pipeline is mixing up who sent a message vs who they mentioned. 'hey @sarah can you call John' \u2014 John showing as sender",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my WhatsApp export NER keeps pulling in 'lol' and 'ok' as person entities, how do I add them to a stoplist",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "ner on multilingual chat \u2014 mix of English and Tagalog \u2014 stoplist tuned for English is not catching Tagalog filler words that get tagged as ORG entities",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "aliases are a mess across my Discord exports, 'xX_DarkLord_Xx' and 'Dave' are same user, how do I normalize these before entity dedup",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the entity extractor is tagging Discord bot names like 'MEE6' and 'Dyno' as real people, need to filter those out",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "want to fine-tune a BERT NER model on our internal chat logs so it learns company-specific names",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "extracting named entities from customer support email threads to build a CRM \u2014 need to identify company names and contacts",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "sentiment analysis on Discord messages \u2014 want to track mood trends per channel over time",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "need to extract person names from news articles and Wikipedia pages for a knowledge graph project",
+          "should_trigger": false,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "building a NER model eval harness \u2014 want to run precision/recall benchmarks across 5 different models on a held-out test set",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "entity resolution across our CRM and Salesforce \u2014 same companies have slightly different names in each system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+
+=== STDERR ===
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/3
+Description: Tune NER extraction quality on multilingual chat archives (WhatsApp, Discord). Covers stoplist management, threshold tuning, alias normalization, sender/mentioned separation, cross-source dedup, and precision/recall sampling.
+============================================================
+Gtk-Message: 21:52:18.648: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Train: 19/24 correct, precision=71% recall=100% accuracy=79% (68.1s)
+  [PASS] rate=2/2 expected=True: my WhatsApp export NER keeps pulling in 'lol' and 'ok' as pe
+  [PASS] rate=2/2 expected=True: ner on multilingual chat — mix of English and Tagalog — stop
+  [PASS] rate=2/2 expected=True: chat archive NER keeps extracting phone numbers from WhatsAp
+  [PASS] rate=2/2 expected=True: NER pipeline is mixing up who sent a message vs who they men
+  [PASS] rate=2/2 expected=True: aliases are a mess across my Discord exports, 'xX_DarkLord_X
+  [PASS] rate=2/2 expected=True: the entity extractor is tagging Discord bot names like 'MEE6
+  [FAIL] rate=2/2 expected=False: extracting named entities from customer support email thread
+  [FAIL] rate=2/2 expected=False: want to fine-tune a BERT NER model on our internal chat logs
+  [PASS] rate=0/2 expected=False: entity resolution across our CRM and Salesforce — same compa
+  [PASS] rate=0/2 expected=False: sentiment analysis on Discord messages — want to track mood 
+  [FAIL] rate=1/2 expected=False: need to extract person names from news articles and Wikipedi
+  [PASS] rate=0/2 expected=False: building a NER model eval harness — want to run precision/re
+Test : 14/16 correct, precision=80% recall=100% accuracy=88% (0.0s)
+  [PASS] rate=2/2 expected=True: precision on person entities from our Slack export is 40%, r
+  [PASS] rate=2/2 expected=True: running spacy on chat archives and threshold 0.6 gives too m
+  [PASS] rate=2/2 expected=True: have WhatsApp and Discord exports covering the same group ch
+  [PASS] rate=2/2 expected=True: building a social graph from 3 years of family WhatsApp grou
+  [PASS] rate=0/2 expected=False: deduplicating chat messages in our Discord export — lots of 
+  [FAIL] rate=2/2 expected=False: NER pipeline on legal contracts is tagging 'Party A' and 'Pa
+  [PASS] rate=0/2 expected=False: cleaning up our WhatsApp export CSV — removing blank rows, f
+  [PASS] rate=0/2 expected=False: how do I train spacy's NER component on a custom dataset of 
+
+Improving description...
+Proposed (17.2s): Use for improving entity extraction quality on WhatsApp or Discord chat archives — when your NER pipeline is already running but producing noisy or incomplete results. Applies when dealing with chat-specific problems: informal text breaking your entity extractor, username/bot names leaking into person entities, multilingual honorifics appearing as names, sender vs. mentioned confusion, stoplist expansion, alias deduplication across chat platforms, or similarity threshold calibration for fuzzy entity matching.
+
+Not for: training or fine-tuning NER models; NER on formal documents (news, emails, academic text); general data cleaning unrelated to entity extraction; entity extraction from non-chat sources.
+
+============================================================
+Iteration 2/3
+Description: Use for improving entity extraction quality on WhatsApp or Discord chat archives — when your NER pipeline is already running but producing noisy or incomplete results. Applies when dealing with chat-specific problems: informal text breaking your entity extractor, username/bot names leaking into person entities, multilingual honorifics appearing as names, sender vs. mentioned confusion, stoplist expansion, alias deduplication across chat platforms, or similarity threshold calibration for fuzzy entity matching.
+
+Not for: training or fine-tuning NER models; NER on formal documents (news, emails, academic text); general data cleaning unrelated to entity extraction; entity extraction from non-chat sources.
+============================================================
+Train: 20/24 correct, precision=75% recall=100% accuracy=83% (63.8s)
+  [PASS] rate=2/2 expected=True: my WhatsApp export NER keeps pulling in 'lol' and 'ok' as pe
+  [PASS] rate=2/2 expected=True: ner on multilingual chat — mix of English and Tagalog — stop
+  [PASS] rate=2/2 expected=True: aliases are a mess across my Discord exports, 'xX_DarkLord_X
+  [PASS] rate=2/2 expected=True: chat archive NER keeps extracting phone numbers from WhatsAp
+  [PASS] rate=2/2 expected=True: NER pipeline is mixing up who sent a message vs who they men
+  [FAIL] rate=2/2 expected=False: want to fine-tune a BERT NER model on our internal chat logs
+  [PASS] rate=2/2 expected=True: the entity extractor is tagging Discord bot names like 'MEE6
+  [FAIL] rate=2/2 expected=False: extracting named entities from customer support email thread
+  [PASS] rate=0/2 expected=False: building a NER model eval harness — want to run precision/re
+  [PASS] rate=0/2 expected=False: entity resolution across our CRM and Salesforce — same compa
+  [PASS] rate=0/2 expected=False: sentiment analysis on Discord messages — want to track mood 
+  [PASS] rate=0/2 expected=False: need to extract person names from news articles and Wikipedi
+Test : 14/16 correct, precision=80% recall=100% accuracy=88% (0.0s)
+  [PASS] rate=2/2 expected=True: precision on person entities from our Slack export is 40%, r
+  [PASS] rate=2/2 expected=True: running spacy on chat archives and threshold 0.6 gives too m
+  [PASS] rate=2/2 expected=True: have WhatsApp and Discord exports covering the same group ch
+  [PASS] rate=2/2 expected=True: building a social graph from 3 years of family WhatsApp grou
+  [FAIL] rate=2/2 expected=False: NER pipeline on legal contracts is tagging 'Party A' and 'Pa
+  [PASS] rate=0/2 expected=False: how do I train spacy's NER component on a custom dataset of 
+  [PASS] rate=0/2 expected=False: deduplicating chat messages in our Discord export — lots of 
+  [PASS] rate=0/2 expected=False: cleaning up our WhatsApp export CSV — removing blank rows, f
+
+Improving description...
+Proposed (21.9s): Use when debugging or improving the output of an existing NER pipeline specifically on WhatsApp or Discord exports — not for building or training models. The skill targets platform-specific failure modes: bot names and usernames leaking into person entities, multilingual honorifics extracted as names, sender/mentioned confusion, stoplist expansion for informal text, alias deduplication across chat platforms, and similarity threshold calibration. 
+
+Triggers on: "my NER keeps extracting Discord usernames as people," "WhatsApp export NER is noisy," "stoplist isn't filtering chat noise," "aliases across Discord exports aren't deduplicating."
+
+Does NOT trigger for: training or fine-tuning any NER model (even on chat data); NER on emails, support tickets, documents, or news; entity extraction tasks not involving WhatsApp or Discord archives.
+
+============================================================
+Iteration 3/3
+Description: Use when debugging or improving the output of an existing NER pipeline specifically on WhatsApp or Discord exports — not for building or training models. The skill targets platform-specific failure modes: bot names and usernames leaking into person entities, multilingual honorifics extracted as names, sender/mentioned confusion, stoplist expansion for informal text, alias deduplication across chat platforms, and similarity threshold calibration. 
+
+Triggers on: "my NER keeps extracting Discord usernames as people," "WhatsApp export NER is noisy," "stoplist isn't filtering chat noise," "aliases across Discord exports aren't deduplicating."
+
+Does NOT trigger for: training or fine-tuning any NER model (even on chat data); NER on emails, support tickets, documents, or news; entity extraction tasks not involving WhatsApp or Discord archives.
+============================================================
+Train: 20/24 correct, precision=75% recall=100% accuracy=83% (71.3s)
+  [PASS] rate=2/2 expected=True: chat archive NER keeps extracting phone numbers from WhatsAp
+  [PASS] rate=2/2 expected=True: NER pipeline is mixing up who sent a message vs who they men
+  [PASS] rate=2/2 expected=True: my WhatsApp export NER keeps pulling in 'lol' and 'ok' as pe
+  [PASS] rate=2/2 expected=True: ner on multilingual chat — mix of English and Tagalog — stop
+  [PASS] rate=2/2 expected=True: aliases are a mess across my Discord exports, 'xX_DarkLord_X
+  [PASS] rate=2/2 expected=True: the entity extractor is tagging Discord bot names like 'MEE6
+  [FAIL] rate=2/2 expected=False: want to fine-tune a BERT NER model on our internal chat logs
+  [FAIL] rate=1/2 expected=False: extracting named entities from customer support email thread
+  [PASS] rate=0/2 expected=False: sentiment analysis on Discord messages — want to track mood 
+  [FAIL] rate=1/2 expected=False: need to extract person names from news articles and Wikipedi
+  [PASS] rate=0/2 expected=False: building a NER model eval harness — want to run precision/re
+  [PASS] rate=0/2 expected=False: entity resolution across our CRM and Salesforce — same compa
+Test : 14/16 correct, precision=80% recall=100% accuracy=88% (0.0s)
+  [PASS] rate=2/2 expected=True: precision on person entities from our Slack export is 40%, r
+  [PASS] rate=2/2 expected=True: have WhatsApp and Discord exports covering the same group ch
+  [PASS] rate=2/2 expected=True: running spacy on chat archives and threshold 0.6 gives too m
+  [FAIL] rate=2/2 expected=False: NER pipeline on legal contracts is tagging 'Party A' and 'Pa
+  [PASS] rate=2/2 expected=True: building a social graph from 3 years of family WhatsApp grou
+  [PASS] rate=0/2 expected=False: cleaning up our WhatsApp export CSV — removing blank rows, f
+  [PASS] rate=0/2 expected=False: deduplicating chat messages in our Discord export — lots of 
+  [PASS] rate=0/2 expected=False: how do I train spacy's NER component on a custom dataset of 
+
+Max iterations reached (3).
+
+Exit reason: max_iterations (3)
+Best score: 7/8 (iteration 1)
+
+Report: /tmp/skill_description_report_chat-archive-ner-tuning_20260330_215218.html
+Results saved to: /home/micah/.claude/skills/skill-creator/workspace/batch-optimize/results/chat-archive-ner-tuning/2026-03-30_215218
+
+=== RETURN CODE: 0 ===

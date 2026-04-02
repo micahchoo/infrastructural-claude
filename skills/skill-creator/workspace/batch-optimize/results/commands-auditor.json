@@ -1,0 +1,9 @@
+{
+  "best_score": 0.625,
+  "best_passed": 5,
+  "best_total": 8,
+  "best_iteration": 1,
+  "original_score": 0.6666666666666666,
+  "exit_reason": "rate_limited (iteration 2)",
+  "iterations": 2
+}

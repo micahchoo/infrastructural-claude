@@ -1,0 +1,82 @@
+[
+  {
+    "query": "what should we build next quarter? we've shipped the MVP and have like 5 different directions we could go",
+    "should_trigger": true
+  },
+  {
+    "query": "help me prioritize the backlog, we have 40 issues and sprint planning is tomorrow",
+    "should_trigger": true
+  },
+  {
+    "query": "we just launched 3 weeks ago and i want to know if it's actually working \u2014 how do we measure success for this feature",
+    "should_trigger": true
+  },
+  {
+    "query": "define KPIs for our new onboarding flow, stakeholders want metrics before we invest more",
+    "should_trigger": true
+  },
+  {
+    "query": "who are our users exactly? we've been building for 6 months and i realize we haven't really defined this",
+    "should_trigger": true
+  },
+  {
+    "query": "are we building the right thing? the eng team is cranking but i'm not sure any of this moves the needle",
+    "should_trigger": true
+  },
+  {
+    "query": "competitive analysis \u2014 figma just announced something that overlaps with our core feature, how do we respond",
+    "should_trigger": true
+  },
+  {
+    "query": "post-launch retro on the payments redesign. it's been 6 weeks, we have data, want to decide if we double down or pivot",
+    "should_trigger": true
+  },
+  {
+    "query": "need a product roadmap for Q3, investors are asking and we need to show strategic direction not just a feature list",
+    "should_trigger": true
+  },
+  {
+    "query": "we finished the brainstorm-to-ship cycle for auth v2. now i need to know if what we shipped actually solved the problem",
+    "should_trigger": true
+  },
+  {
+    "query": "help me design the onboarding flow for new users, specifically the signup screen and first-run experience",
+    "should_trigger": false
+  },
+  {
+    "query": "brainstorm ideas for a dark mode toggle feature in our settings panel",
+    "should_trigger": false
+  },
+  {
+    "query": "write an implementation plan for the notification system we discussed, break it into tasks",
+    "should_trigger": false
+  },
+  {
+    "query": "audit the checkout flow \u2014 trace what the user actually experiences from cart to confirmation, find the friction points",
+    "should_trigger": false
+  },
+  {
+    "query": "i want to add a feature that lets users export to CSV, what's the best approach for our react app",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test the /api/v2/users endpoint, try to break it with malformed payloads and see what leaks",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from the last two weeks of commits for the v1.4 release notes",
+    "should_trigger": false
+  },
+  {
+    "query": "we have a big refactor coming up, write characterization tests for the billing module before we touch it",
+    "should_trigger": false
+  },
+  {
+    "query": "reprioritize \u2014 but specifically i need you to reorder the seeds issues in .seeds/ by urgency for this sprint",
+    "should_trigger": false
+  },
+  {
+    "query": "measure success of our CI pipeline \u2014 test suite is taking 18 mins and i need to baseline it before optimizing",
+    "should_trigger": false
+  }
+]

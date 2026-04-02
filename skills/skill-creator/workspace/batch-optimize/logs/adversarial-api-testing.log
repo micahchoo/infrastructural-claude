@@ -1,0 +1,332 @@
+=== STDOUT ===
+{
+  "exit_reason": "all_passed (iteration 1)",
+  "original_description": "Use when stress-testing or security-testing REST/GraphQL APIs \u2014 after functional tests pass, when the user says \"try to break it\", \"stress test\", \"find vulnerabilities\", \"adversarial test\", \"pentest the API\", or when you've written API tests and haven't checked for IDOR, injection, or concurrency bugs. Also use alongside systematic-debugging when API 500s appear under load, or with eval-protocol when assessing test coverage completeness.",
+  "best_description": "Use when stress-testing or security-testing REST/GraphQL APIs \u2014 after functional tests pass, when the user says \"try to break it\", \"stress test\", \"find vulnerabilities\", \"adversarial test\", \"pentest the API\", or when you've written API tests and haven't checked for IDOR, injection, or concurrency bugs. Also use alongside systematic-debugging when API 500s appear under load, or with eval-protocol when assessing test coverage completeness.",
+  "best_score": "5/8",
+  "best_train_score": "12/12",
+  "best_test_score": "5/8",
+  "final_description": "Use when stress-testing or security-testing REST/GraphQL APIs \u2014 after functional tests pass, when the user says \"try to break it\", \"stress test\", \"find vulnerabilities\", \"adversarial test\", \"pentest the API\", or when you've written API tests and haven't checked for IDOR, injection, or concurrency bugs. Also use alongside systematic-debugging when API 500s appear under load, or with eval-protocol when assessing test coverage completeness.",
+  "iterations_run": 1,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Use when stress-testing or security-testing REST/GraphQL APIs \u2014 after functional tests pass, when the user says \"try to break it\", \"stress test\", \"find vulnerabilities\", \"adversarial test\", \"pentest the API\", or when you've written API tests and haven't checked for IDOR, injection, or concurrency bugs. Also use alongside systematic-debugging when API 500s appear under load, or with eval-protocol when assessing test coverage completeness.",
+      "train_passed": 12,
+      "train_failed": 0,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "functional tests are all green, now try to break our /payments API \u2014 looking for IDOR, injection, anything",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "written unit tests for the API but haven't checked for IDOR or race conditions yet, can you do that now",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "adversarial test the user auth endpoints \u2014 try SQL injection, mass assignment, anything you can think of",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "security audit requires we test for OWASP top 10 on our REST API, help me find injection and auth bypass issues in routes/api.js",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our /admin/users endpoint might have broken access control, can you try to exploit it with different user tokens",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the /orders endpoint is returning 500 errors, help me debug what's causing them",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the API keeps returning 500s under load, use systematic-debugging to trace the root cause in the request pipeline",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "pentest the GraphQL endpoint at api/graphql, we're shipping next week and haven't done any security review",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "help me write a changelog for the API v2 release based on recent commits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write unit tests for the payments API in routes/payments.js",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit our Claude Code permissions in settings.json for any dangerous bash commands",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "review test coverage completeness for our API using eval-protocol \u2014 want to know what decision points we're missing",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "try to break the rate limiting on POST /api/v2/transfers \u2014 I suspect it can be bypassed",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "find vulnerabilities in our checkout API before the security audit on Thursday",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "stress test the /orders REST API, it keeps throwing 500s under load and I think there's a concurrency bug",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "characterize what the existing /auth endpoints actually do before I refactor them",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we passed all functional tests but QA flagged some weird behavior under parallel requests to /cart/checkout, check for concurrency issues",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "load test our API with k6 to see how many requests per second we can handle",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add integration tests for our GraphQL mutations to make sure they return the right data",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "evaluate whether our test suite has good coverage of the API layer",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "results": [
+        {
+          "query": "functional tests are all green, now try to break our /payments API \u2014 looking for IDOR, injection, anything",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "written unit tests for the API but haven't checked for IDOR or race conditions yet, can you do that now",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "adversarial test the user auth endpoints \u2014 try SQL injection, mass assignment, anything you can think of",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "security audit requires we test for OWASP top 10 on our REST API, help me find injection and auth bypass issues in routes/api.js",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our /admin/users endpoint might have broken access control, can you try to exploit it with different user tokens",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the /orders endpoint is returning 500 errors, help me debug what's causing them",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the API keeps returning 500s under load, use systematic-debugging to trace the root cause in the request pipeline",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "pentest the GraphQL endpoint at api/graphql, we're shipping next week and haven't done any security review",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "help me write a changelog for the API v2 release based on recent commits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write unit tests for the payments API in routes/payments.js",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "audit our Claude Code permissions in settings.json for any dangerous bash commands",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "review test coverage completeness for our API using eval-protocol \u2014 want to know what decision points we're missing",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+
+=== STDERR ===
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/3
+Description: Use when stress-testing or security-testing REST/GraphQL APIs — after functional tests pass, when the user says "try to break it", "stress test", "find vulnerabilities", "adversarial test", "pentest the API", or when you've written API tests and haven't checked for IDOR, injection, or concurrency bugs. Also use alongside systematic-debugging when API 500s appear under load, or with eval-protocol when assessing test coverage completeness.
+============================================================
+Gtk-Message: 21:35:10.511: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Train: 22/24 correct, precision=100% recall=83% accuracy=92% (55.7s)
+  [PASS] rate=2/2 expected=True: functional tests are all green, now try to break our /paymen
+  [PASS] rate=1/2 expected=True: written unit tests for the API but haven't checked for IDOR 
+  [PASS] rate=2/2 expected=True: adversarial test the user auth endpoints — try SQL injection
+  [PASS] rate=2/2 expected=True: security audit requires we test for OWASP top 10 on our REST
+  [PASS] rate=1/2 expected=True: our /admin/users endpoint might have broken access control, 
+  [PASS] rate=0/2 expected=False: the /orders endpoint is returning 500 errors, help me debug 
+  [PASS] rate=0/2 expected=False: the API keeps returning 500s under load, use systematic-debu
+  [PASS] rate=2/2 expected=True: pentest the GraphQL endpoint at api/graphql, we're shipping 
+  [PASS] rate=0/2 expected=False: help me write a changelog for the API v2 release based on re
+  [PASS] rate=0/2 expected=False: write unit tests for the payments API in routes/payments.js
+  [PASS] rate=0/2 expected=False: audit our Claude Code permissions in settings.json for any d
+  [PASS] rate=0/2 expected=False: review test coverage completeness for our API using eval-pro
+Test : 9/16 correct, precision=60% recall=38% accuracy=56% (0.0s)
+  [FAIL] rate=0/2 expected=True: try to break the rate limiting on POST /api/v2/transfers — I
+  [PASS] rate=1/2 expected=True: find vulnerabilities in our checkout API before the security
+  [PASS] rate=2/2 expected=True: stress test the /orders REST API, it keeps throwing 500s und
+  [PASS] rate=0/2 expected=False: characterize what the existing /auth endpoints actually do b
+  [FAIL] rate=0/2 expected=True: we passed all functional tests but QA flagged some weird beh
+  [FAIL] rate=2/2 expected=False: load test our API with k6 to see how many requests per secon
+  [PASS] rate=0/2 expected=False: add integration tests for our GraphQL mutations to make sure
+  [PASS] rate=0/2 expected=False: evaluate whether our test suite has good coverage of the API
+
+All train queries passed on iteration 1!
+
+Exit reason: all_passed (iteration 1)
+Best score: 5/8 (iteration 1)
+
+Report: /tmp/skill_description_report_adversarial-api-testing_20260330_213510.html
+Results saved to: /home/micah/.claude/skills/skill-creator/workspace/batch-optimize/results/adversarial-api-testing/2026-03-30_213510
+
+=== RETURN CODE: 0 ===

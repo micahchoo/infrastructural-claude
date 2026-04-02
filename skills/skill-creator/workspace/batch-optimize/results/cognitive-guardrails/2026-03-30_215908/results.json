@@ -1,0 +1,864 @@
+{
+  "exit_reason": "max_iterations (3)",
+  "original_description": "Cognitive self-checks at decision points \u2014 bias interrupts, reasoning-quality gates, and strategic frameworks. Invoke with a check name as argument (e.g., \"wysiati\", \"overconfidence\", \"artifact-challenge\", \"decompose\"). Use when CLAUDE.md's Cognitive Guardrails section fires, when you catch yourself rationalizing, when strategic-looping or executing-plans hits a gate, or when any skill's [eval:] tag references a guardrail. 15 checks in two families \u2014 11 bias interrupts (evidence gaps, substitution, overconfidence, reframing, source diversity, compound probability, sunk costs, success criteria, friction decisions, learning transfer, vague self-grading) and 4 strategic frameworks (artifact-challenge, decompose, invert, leverage).",
+  "best_description": "Cognitive self-checks at decision points \u2014 bias interrupts, reasoning-quality gates, and strategic frameworks. Invoke with a check name as argument (e.g., \"wysiati\", \"overconfidence\", \"artifact-challenge\", \"decompose\"). Use when CLAUDE.md's Cognitive Guardrails section fires, when you catch yourself rationalizing, when strategic-looping or executing-plans hits a gate, or when any skill's [eval:] tag references a guardrail. 15 checks in two families \u2014 11 bias interrupts (evidence gaps, substitution, overconfidence, reframing, source diversity, compound probability, sunk costs, success criteria, friction decisions, learning transfer, vague self-grading) and 4 strategic frameworks (artifact-challenge, decompose, invert, leverage).",
+  "best_score": "7/7",
+  "best_train_score": "11/13",
+  "best_test_score": "7/7",
+  "final_description": "Use when the user explicitly names a guardrail check as a command or instruction: \"invert this\", \"run wysiati\", \"decompose check\", \"leverage check\", \"overconfidence check\", \"pivot-or-persist\", or any of the 15 named checks invoked as a directive. Also trigger when CLAUDE.md's Cognitive Guardrails section fires, when a skill gate references a guardrail, or when catching yourself rationalizing mid-task.\n\nThe trigger test: is a named check being invoked as an instruction to apply to reasoning? Or is the user asking a substantive domain question whose vocabulary happens to overlap with a check's theme? Only trigger for the former. \"Invert this: what guarantees failure?\" = check invocation. \"What are the real constraints here?\" = domain question, not a check invocation.",
+  "iterations_run": 3,
+  "holdout": 0.4,
+  "train_size": 13,
+  "test_size": 7,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Cognitive self-checks at decision points \u2014 bias interrupts, reasoning-quality gates, and strategic frameworks. Invoke with a check name as argument (e.g., \"wysiati\", \"overconfidence\", \"artifact-challenge\", \"decompose\"). Use when CLAUDE.md's Cognitive Guardrails section fires, when you catch yourself rationalizing, when strategic-looping or executing-plans hits a gate, or when any skill's [eval:] tag references a guardrail. 15 checks in two families \u2014 11 bias interrupts (evidence gaps, substitution, overconfidence, reframing, source diversity, compound probability, sunk costs, success criteria, friction decisions, learning transfer, vague self-grading) and 4 strategic frameworks (artifact-challenge, decompose, invert, leverage).",
+      "train_passed": 11,
+      "train_failed": 2,
+      "train_total": 13,
+      "train_results": [
+        {
+          "query": "we're 3 stages into executing-plans and something feels off, do a pivot-or-persist check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the wysiati check before I finalize this migration plan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "overconfidence check: I'm about to claim the race condition is definitely in the scheduler",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've only looked at the error logs and our own codebase \u2014 availability bias check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep second-guessing this architecture decision, can you do a reframe check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "leverage check: which single change to the pipeline scheduler would make everything else easier",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we have 4 independent refactor tasks, dispatch them in parallel with subagents",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the brainstorming skill before we design the new notification system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've been heads-down on this for 2 hours and want to make sure I'm still solving the right problem \u2014 check the strategic-looping skill",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate characterization tests for payments.py before I touch it \u2014 I want a safety net",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to stress test the /payments endpoint for race conditions and edge cases",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before I keep going on this plan, what are the real constraints vs ones we inherited from the old API design",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "invert this: what would guarantee the caching layer fails under load",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 0,
+      "test_total": 7,
+      "test_results": [
+        {
+          "query": "decompose the constraints here \u2014 I suspect we inherited assumptions from the old system that don't apply",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I think I'm rationalizing keeping the old auth system \u2014 run sunk-cost check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before we ship this, hit the artifact-challenge guardrail on the design doc",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I said the refactor is 'good quality' but that's vague \u2014 operationalize that before we close the ticket",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "evaluate whether my agent picked the right tool at the phase transition \u2014 use eval-protocol",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I'm not sure if this approach is right, can you check the mulch knowledge base for prior decisions on our caching strategy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "do a full codebase diagnostic on the auth module, I think the architecture is wrong",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 2,
+      "total": 13,
+      "results": [
+        {
+          "query": "we're 3 stages into executing-plans and something feels off, do a pivot-or-persist check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the wysiati check before I finalize this migration plan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "overconfidence check: I'm about to claim the race condition is definitely in the scheduler",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've only looked at the error logs and our own codebase \u2014 availability bias check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep second-guessing this architecture decision, can you do a reframe check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "leverage check: which single change to the pipeline scheduler would make everything else easier",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we have 4 independent refactor tasks, dispatch them in parallel with subagents",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the brainstorming skill before we design the new notification system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've been heads-down on this for 2 hours and want to make sure I'm still solving the right problem \u2014 check the strategic-looping skill",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate characterization tests for payments.py before I touch it \u2014 I want a safety net",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to stress test the /payments endpoint for race conditions and edge cases",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before I keep going on this plan, what are the real constraints vs ones we inherited from the old API design",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "invert this: what would guarantee the caching layer fails under load",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use for metacognitive self-checks on Claude's own reasoning quality \u2014 bias interrupts and strategic frameworks applied to Claude's decision-making process. Trigger when explicitly naming a check (\"run wysiati\", \"overconfidence check\", \"invert this\", \"leverage check\", \"do a decompose\"), when CLAUDE.md's Cognitive Guardrails section fires, when a skill gate calls for a guardrail, or when catching yourself rationalizing a decision mid-task. The 15 checks cover: evidence gaps (wysiati), substitution, overconfidence, reframing, source diversity, compound probability, sunk costs, success criteria, friction decisions, learning transfer, vague self-grading, plus artifact-challenge, decompose, invert, and leverage. Do NOT trigger when the user is asking a substantive domain question about constraints, architecture, or design \u2014 only trigger when the request is for Claude to apply a reasoning self-check to its own thinking process.",
+      "train_passed": 11,
+      "train_failed": 2,
+      "train_total": 13,
+      "train_results": [
+        {
+          "query": "we're 3 stages into executing-plans and something feels off, do a pivot-or-persist check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "overconfidence check: I'm about to claim the race condition is definitely in the scheduler",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the wysiati check before I finalize this migration plan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've only looked at the error logs and our own codebase \u2014 availability bias check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep second-guessing this architecture decision, can you do a reframe check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "leverage check: which single change to the pipeline scheduler would make everything else easier",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the brainstorming skill before we design the new notification system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we have 4 independent refactor tasks, dispatch them in parallel with subagents",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've been heads-down on this for 2 hours and want to make sure I'm still solving the right problem \u2014 check the strategic-looping skill",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate characterization tests for payments.py before I touch it \u2014 I want a safety net",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to stress test the /payments endpoint for race conditions and edge cases",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "invert this: what would guarantee the caching layer fails under load",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "before I keep going on this plan, what are the real constraints vs ones we inherited from the old API design",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 0,
+      "test_total": 7,
+      "test_results": [
+        {
+          "query": "I think I'm rationalizing keeping the old auth system \u2014 run sunk-cost check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "decompose the constraints here \u2014 I suspect we inherited assumptions from the old system that don't apply",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before we ship this, hit the artifact-challenge guardrail on the design doc",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I said the refactor is 'good quality' but that's vague \u2014 operationalize that before we close the ticket",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "evaluate whether my agent picked the right tool at the phase transition \u2014 use eval-protocol",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "do a full codebase diagnostic on the auth module, I think the architecture is wrong",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I'm not sure if this approach is right, can you check the mulch knowledge base for prior decisions on our caching strategy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 11,
+      "failed": 2,
+      "total": 13,
+      "results": [
+        {
+          "query": "we're 3 stages into executing-plans and something feels off, do a pivot-or-persist check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "overconfidence check: I'm about to claim the race condition is definitely in the scheduler",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the wysiati check before I finalize this migration plan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've only looked at the error logs and our own codebase \u2014 availability bias check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep second-guessing this architecture decision, can you do a reframe check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "leverage check: which single change to the pipeline scheduler would make everything else easier",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the brainstorming skill before we design the new notification system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we have 4 independent refactor tasks, dispatch them in parallel with subagents",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've been heads-down on this for 2 hours and want to make sure I'm still solving the right problem \u2014 check the strategic-looping skill",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate characterization tests for payments.py before I touch it \u2014 I want a safety net",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to stress test the /payments endpoint for race conditions and edge cases",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "invert this: what would guarantee the caching layer fails under load",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "before I keep going on this plan, what are the real constraints vs ones we inherited from the old API design",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use when the user explicitly names a guardrail check as a command or instruction: \"invert this\", \"run wysiati\", \"decompose check\", \"leverage check\", \"overconfidence check\", \"pivot-or-persist\", or any of the 15 named checks invoked as a directive. Also trigger when CLAUDE.md's Cognitive Guardrails section fires, when a skill gate references a guardrail, or when catching yourself rationalizing mid-task.\n\nThe trigger test: is a named check being invoked as an instruction to apply to reasoning? Or is the user asking a substantive domain question whose vocabulary happens to overlap with a check's theme? Only trigger for the former. \"Invert this: what guarantees failure?\" = check invocation. \"What are the real constraints here?\" = domain question, not a check invocation.",
+      "train_passed": 12,
+      "train_failed": 1,
+      "train_total": 13,
+      "train_results": [
+        {
+          "query": "we're 3 stages into executing-plans and something feels off, do a pivot-or-persist check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've only looked at the error logs and our own codebase \u2014 availability bias check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "overconfidence check: I'm about to claim the race condition is definitely in the scheduler",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "invert this: what would guarantee the caching layer fails under load",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the wysiati check before I finalize this migration plan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep second-guessing this architecture decision, can you do a reframe check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "leverage check: which single change to the pipeline scheduler would make everything else easier",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the brainstorming skill before we design the new notification system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've been heads-down on this for 2 hours and want to make sure I'm still solving the right problem \u2014 check the strategic-looping skill",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we have 4 independent refactor tasks, dispatch them in parallel with subagents",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate characterization tests for payments.py before I touch it \u2014 I want a safety net",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to stress test the /payments endpoint for race conditions and edge cases",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before I keep going on this plan, what are the real constraints vs ones we inherited from the old API design",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 0,
+      "test_total": 7,
+      "test_results": [
+        {
+          "query": "decompose the constraints here \u2014 I suspect we inherited assumptions from the old system that don't apply",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I think I'm rationalizing keeping the old auth system \u2014 run sunk-cost check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I said the refactor is 'good quality' but that's vague \u2014 operationalize that before we close the ticket",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before we ship this, hit the artifact-challenge guardrail on the design doc",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "evaluate whether my agent picked the right tool at the phase transition \u2014 use eval-protocol",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I'm not sure if this approach is right, can you check the mulch knowledge base for prior decisions on our caching strategy",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "do a full codebase diagnostic on the auth module, I think the architecture is wrong",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "failed": 1,
+      "total": 13,
+      "results": [
+        {
+          "query": "we're 3 stages into executing-plans and something feels off, do a pivot-or-persist check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've only looked at the error logs and our own codebase \u2014 availability bias check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "overconfidence check: I'm about to claim the race condition is definitely in the scheduler",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "invert this: what would guarantee the caching layer fails under load",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the wysiati check before I finalize this migration plan",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I keep second-guessing this architecture decision, can you do a reframe check",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "leverage check: which single change to the pipeline scheduler would make everything else easier",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "run the brainstorming skill before we design the new notification system",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I've been heads-down on this for 2 hours and want to make sure I'm still solving the right problem \u2014 check the strategic-looping skill",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "we have 4 independent refactor tasks, dispatch them in parallel with subagents",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate characterization tests for payments.py before I touch it \u2014 I want a safety net",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I need to stress test the /payments endpoint for race conditions and edge cases",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "before I keep going on this plan, what are the real constraints vs ones we inherited from the old API design",
+          "should_trigger": false,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": false
+        }
+      ]
+    }
+  ]
+}

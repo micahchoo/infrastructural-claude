@@ -1,0 +1,82 @@
+[
+  {
+    "query": "check handoff",
+    "should_trigger": true
+  },
+  {
+    "query": "resume where I left off yesterday",
+    "should_trigger": true
+  },
+  {
+    "query": "pick up where we left off on the auth refactor",
+    "should_trigger": true
+  },
+  {
+    "query": "/check-handoff",
+    "should_trigger": true
+  },
+  {
+    "query": "continue from last session, we were mid-way through the payment integration",
+    "should_trigger": true
+  },
+  {
+    "query": "I've got a HANDOFF.md in this dir, can you read it and tell me what's next",
+    "should_trigger": true
+  },
+  {
+    "query": "resuming work on the acme-corp project from friday, check the handoff file",
+    "should_trigger": true
+  },
+  {
+    "query": "what was I doing last time? there should be a handoff doc somewhere in here",
+    "should_trigger": true
+  },
+  {
+    "query": "load the handoff and give me a plan for today's session",
+    "should_trigger": true
+  },
+  {
+    "query": "picking this back up after the weekend, validate the handoff and propose next steps",
+    "should_trigger": true
+  },
+  {
+    "query": "write a handoff doc before I end this session",
+    "should_trigger": false
+  },
+  {
+    "query": "create a HANDOFF.md summarizing what we did today",
+    "should_trigger": false
+  },
+  {
+    "query": "onboard me to this codebase, I just joined the team",
+    "should_trigger": false
+  },
+  {
+    "query": "resume the stalled migration task in seeds, it got blocked on the db schema",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to hand off this PR to another dev, how do I document it?",
+    "should_trigger": false
+  },
+  {
+    "query": "continue implementing the feature we planned in the last brainstorm",
+    "should_trigger": false
+  },
+  {
+    "query": "check if the plan we wrote is still valid before we execute it",
+    "should_trigger": false
+  },
+  {
+    "query": "resume the failing CI pipeline, it keeps timing out on the integration tests",
+    "should_trigger": false
+  },
+  {
+    "query": "I left a TODO comment in auth.ts last session, find it and continue",
+    "should_trigger": false
+  },
+  {
+    "query": "what's the current status of the open seeds issues from last week?",
+    "should_trigger": false
+  }
+]

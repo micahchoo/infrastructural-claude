@@ -1,0 +1,332 @@
+=== STDOUT ===
+{
+  "exit_reason": "all_passed (iteration 1)",
+  "original_description": "Progressive multi-level codebase analysis \u2014 maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: \"what is this codebase?\", \"onboard me\", \"map this project\", \"diagnose this repo\", \"analyze architecture\", \"what are the subsystems?\", entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn't enough \u2014 when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).",
+  "best_description": "Progressive multi-level codebase analysis \u2014 maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: \"what is this codebase?\", \"onboard me\", \"map this project\", \"diagnose this repo\", \"analyze architecture\", \"what are the subsystems?\", entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn't enough \u2014 when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).",
+  "best_score": "7/8",
+  "best_train_score": "12/12",
+  "best_test_score": "7/8",
+  "final_description": "Progressive multi-level codebase analysis \u2014 maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: \"what is this codebase?\", \"onboard me\", \"map this project\", \"diagnose this repo\", \"analyze architecture\", \"what are the subsystems?\", entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn't enough \u2014 when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).",
+  "iterations_run": 1,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Progressive multi-level codebase analysis \u2014 maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: \"what is this codebase?\", \"onboard me\", \"map this project\", \"diagnose this repo\", \"analyze architecture\", \"what are the subsystems?\", entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn't enough \u2014 when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).",
+      "train_passed": 12,
+      "train_failed": 0,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "what is this codebase even doing? feels like 3 different apps stitched together",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "new to this monorepo, can you give me a full picture of how everything connects?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just cloned this repo from the acquisition team, no docs anywhere, need to understand what it actually does before I touch anything",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "entering this brownfield codebase cold, team is unavailable, need a full diagnostic before sprint planning",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "onboard me to this codebase",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog for the last two sprints so I can brief the PM",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what does the UserController class actually do at runtime? trace the execution path",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "map out what tests I need to write before modifying the auth module",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "map the architecture of this service before we start the refactor",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what files do I need to change to add a new payment provider?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write characterization tests for the billing subsystem before I touch it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what are the seams in the payment module? want to understand where to inject the new provider",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 1,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "diagnose this repo \u2014 inherited it from a contractor, zero handoff docs",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "seam-identification and shadow-walk both ran but I still don't have a complete picture, need deeper analysis",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I found a bug in the subsystem that handles user sessions, help me debug it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "analyze architecture \u2014 specifically need to understand data flow from ingestion to the API layer",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what are the main subsystems in this project?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "what does this legacy function actually do \u2014 need to understand it before refactoring",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "plan out the implementation for adding websocket support to this service",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "analyze this PR before I merge it, want to catch any architectural issues",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "failed": 0,
+      "total": 12,
+      "results": [
+        {
+          "query": "what is this codebase even doing? feels like 3 different apps stitched together",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "new to this monorepo, can you give me a full picture of how everything connects?",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just cloned this repo from the acquisition team, no docs anywhere, need to understand what it actually does before I touch anything",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "entering this brownfield codebase cold, team is unavailable, need a full diagnostic before sprint planning",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "onboard me to this codebase",
+          "should_trigger": true,
+          "trigger_rate": 1.0,
+          "triggers": 2,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "generate a changelog for the last two sprints so I can brief the PM",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what does the UserController class actually do at runtime? trace the execution path",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "map out what tests I need to write before modifying the auth module",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "map the architecture of this service before we start the refactor",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what files do I need to change to add a new payment provider?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write characterization tests for the billing subsystem before I touch it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what are the seams in the payment module? want to understand where to inject the new provider",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
+
+=== STDERR ===
+Split: 12 train, 8 test (holdout=0.4)
+
+============================================================
+Iteration 1/3
+Description: Progressive multi-level codebase analysis — maps architecture from business domain down to runtime behavior across 8 zoom levels with 6 cross-cutting lenses. Persists findings as architecture docs, mulch records, and seeds issues. Use when: "what is this codebase?", "onboard me", "map this project", "diagnose this repo", "analyze architecture", "what are the subsystems?", entering an unfamiliar project, understanding brownfield codebases. Also use when seam-identification or shadow-walk alone isn't enough — when you need the full picture, not just one facet. Do NOT trigger for: implementation planning (use writing-plans), debugging (use systematic-debugging), code review (use interactive-pr-review), quick orientation without persistence (use hybrid-research onboarding mode).
+============================================================
+Gtk-Message: 21:58:09.817: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Train: 23/24 correct, precision=100% recall=92% accuracy=96% (58.6s)
+  [PASS] rate=2/2 expected=True: what is this codebase even doing? feels like 3 different app
+  [PASS] rate=2/2 expected=True: new to this monorepo, can you give me a full picture of how 
+  [PASS] rate=2/2 expected=True: just cloned this repo from the acquisition team, no docs any
+  [PASS] rate=2/2 expected=True: entering this brownfield codebase cold, team is unavailable,
+  [PASS] rate=2/2 expected=True: onboard me to this codebase
+  [PASS] rate=0/2 expected=False: generate a changelog for the last two sprints so I can brief
+  [PASS] rate=0/2 expected=False: what does the UserController class actually do at runtime? t
+  [PASS] rate=0/2 expected=False: map out what tests I need to write before modifying the auth
+  [PASS] rate=1/2 expected=True: map the architecture of this service before we start the ref
+  [PASS] rate=0/2 expected=False: what files do I need to change to add a new payment provider
+  [PASS] rate=0/2 expected=False: write characterization tests for the billing subsystem befor
+  [PASS] rate=0/2 expected=False: what are the seams in the payment module? want to understand
+Test : 13/16 correct, precision=100% recall=62% accuracy=81% (0.0s)
+  [PASS] rate=2/2 expected=True: diagnose this repo — inherited it from a contractor, zero ha
+  [PASS] rate=2/2 expected=True: seam-identification and shadow-walk both ran but I still don
+  [PASS] rate=0/2 expected=False: I found a bug in the subsystem that handles user sessions, h
+  [PASS] rate=1/2 expected=True: analyze architecture — specifically need to understand data 
+  [FAIL] rate=0/2 expected=True: what are the main subsystems in this project?
+  [PASS] rate=0/2 expected=False: what does this legacy function actually do — need to underst
+  [PASS] rate=0/2 expected=False: plan out the implementation for adding websocket support to 
+  [PASS] rate=0/2 expected=False: analyze this PR before I merge it, want to catch any archite
+
+All train queries passed on iteration 1!
+
+Exit reason: all_passed (iteration 1)
+Best score: 7/8 (iteration 1)
+
+Report: /tmp/skill_description_report_codebase-diagnostics_20260330_215809.html
+Results saved to: /home/micah/.claude/skills/skill-creator/workspace/batch-optimize/results/codebase-diagnostics/2026-03-30_215809
+
+=== RETURN CODE: 0 ===

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Knowledge Infrastructure</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-muted: #8b949e;
+    --accent-blue: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-purple: #bc8cff;
+    --accent-orange: #d29922;
+    --accent-red: #f85149;
+    --accent-cyan: #39d2c0;
+    --accent-pink: #f778ba;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #f0f6fc;
+  }
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    position: relative;
+  }
+  .card h2 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .blue .dot, .blue .badge { background: var(--accent-blue); color: var(--bg); }
+  .green .dot, .green .badge { background: var(--accent-green); color: var(--bg); }
+  .purple .dot, .purple .badge { background: var(--accent-purple); color: var(--bg); }
+  .orange .dot, .orange .badge { background: var(--accent-orange); color: var(--bg); }
+  .red .dot, .red .badge { background: var(--accent-red); color: var(--bg); }
+  .cyan .dot, .cyan .badge { background: var(--accent-cyan); color: var(--bg); }
+  .pink .dot, .pink .badge { background: var(--accent-pink); color: var(--bg); }
+  .card-border-blue { border-left: 3px solid var(--accent-blue); }
+  .card-border-green { border-left: 3px solid var(--accent-green); }
+  .card-border-purple { border-left: 3px solid var(--accent-purple); }
+  .card-border-orange { border-left: 3px solid var(--accent-orange); }
+  .card-border-red { border-left: 3px solid var(--accent-red); }
+  .card-border-cyan { border-left: 3px solid var(--accent-cyan); }
+  .card-border-pink { border-left: 3px solid var(--accent-pink); }
+  .skill-list {
+    list-style: none;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .skill-list li {
+    padding: 0.15rem 0;
+  }
+  .skill-list li::before {
+    content: '\2192';
+    margin-right: 0.4rem;
+    color: var(--text-muted);
+  }
+  .section-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .layer {
+    margin-bottom: 2rem;
+  }
+  .hook-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .hook-row:last-child { border-bottom: none; }
+  .hook-event {
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--accent-orange);
+  }
+  .hook-detail {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+  .hook-script {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    background: rgba(110,118,129,0.1);
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+  }
+  .gate-flow {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin-top: 0.5rem;
+  }
+  .gate {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.75rem;
+    text-align: center;
+    position: relative;
+  }
+  .gate:first-child { border-radius: 8px 0 0 8px; }
+  .gate:last-child { border-radius: 0 8px 8px 0; }
+  .gate h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .gate p {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+  .gate::after {
+    content: '\25B6';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    z-index: 1;
+    font-size: 0.7rem;
+  }
+  .gate:last-child::after { content: ''; }
+  .gate-context-init { border-top: 2px solid var(--accent-green); }
+  .gate-decision { border-top: 2px solid var(--accent-purple); }
+  .gate-quality { border-top: 2px solid var(--accent-blue); }
+  .gate-close { border-top: 2px solid var(--accent-orange); }
+  .ownership {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+  .own-card {
+    background: rgba(110,118,129,0.06);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  .own-card h3 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .own-card p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+  .count {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .flow-arrow::before, .flow-arrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+</style>
+</head>
+<body>
+
+<h1>Knowledge Infrastructure Map</h1>
+<p class="subtitle">7 systems, 3 enforcement layers, full coverage across skills/hooks/pipelines &mdash; updated 2026-03-22</p>
+
+<!-- SYSTEMS -->
+<div class="section-label">Systems &mdash; what each system does</div>
+<div class="grid">
+
+  <div class="card card-border-blue blue">
+    <h2><span class="dot"></span> Foxhound</h2>
+    <p>Discovery search layer. Fans out across patterns, reference projects, ecosystem repos, mulch expertise, and Claude memories.</p>
+    <span class="badge">10 skills</span>
+    <ul class="skill-list">
+      <li>hybrid-research, pattern-advisor, system-design</li>
+      <li>characterization-testing, adversarial-api-testing</li>
+      <li>seam-identification, strategic-looping</li>
+      <li>shadow-walk, chat-archive-ner-tuning, domain-codebooks</li>
+    </ul>
+  </div>
+
+  <div class="card card-border-green green">
+    <h2><span class="dot"></span> Context MCP</h2>
+    <p>Targeted library doc lookup. search_packages &rarr; get_docs for pre-indexed API references (~350ms).</p>
+    <span class="badge">All skills via CLAUDE.md</span>
+    <ul class="skill-list">
+      <li>Global: any import/API call triggers lookup</li>
+      <li>Skill/codebook: get_docs("claude-skill-tree", ...)</li>
+    </ul>
+  </div>
+
+  <div class="card card-border-purple purple">
+    <h2><span class="dot"></span> Cognitive Guardrails</h2>
+    <p>Self-check bias prompts at decision points. 7 biases: wysiati, substitution, overconfidence, reframe, availability, sunk-cost, conjunction.</p>
+    <span class="badge">7 skills</span>
+    <ul class="skill-list">
+      <li>executing-plans, strategic-looping (sunk-cost, substitution)</li>
+      <li>system-design (reframe), hybrid-research (availability, wysiati)</li>
+      <li>interactive-pr-review (wysiati, substitution)</li>
+      <li>eval-protocol (overconfidence, substitution)</li>
+      <li>pattern-advisor (overconfidence, availability)</li>
+    </ul>
+  </div>
+
+  <div class="card card-border-orange orange">
+    <h2><span class="dot"></span> Mulch</h2>
+    <p>Project expertise. JSONL records: conventions, decisions, failures, references. prime &rarr; search &rarr; record &rarr; outcome.</p>
+    <span class="badge">12 skills + hook</span>
+    <ul class="skill-list">
+      <li>Outcome tracking: brainstorming, writing-plans, requesting-code-review, receiving-code-review, systematic-debugging, pattern-extraction</li>
+      <li>PreCompact: context-pressure.sh checkpoint</li>
+    </ul>
+  </div>
+
+  <div class="card card-border-red red">
+    <h2><span class="dot"></span> Seeds</h2>
+    <p>Git-native issue tracking. JSONL issues in .seeds/, tracked in git. sd ready &rarr; sd update &rarr; sd close.</p>
+    <span class="badge">4 skills + hook</span>
+    <ul class="skill-list">
+      <li>executing-plans, handoff, check-handoff, shadow-walk</li>
+      <li>SessionStart: seeds-session-inject.sh</li>
+    </ul>
+  </div>
+
+  <div class="card card-border-cyan cyan">
+    <h2><span class="dot"></span> Eval Protocol</h2>
+    <p>Decision-quality grading. expect/capture/grade primitives for phase gates. PostToolUse capture hook aggregates session coverage.</p>
+    <span class="badge">Pipeline gates + hook</span>
+    <ul class="skill-list">
+      <li>quality-grade gate: simplify &rarr; eval-protocol</li>
+      <li>PostToolUse: eval-capture-hook.sh</li>
+      <li>close-loop gate: aggregate session grades</li>
+    </ul>
+  </div>
+
+  <div class="card card-border-pink pink">
+    <h2><span class="dot"></span> Domain Codebooks</h2>
+    <p>Architectural pattern libraries. 24 domains covering competing design forces. Enriched from reference project analysis.</p>
+    <span class="badge">Via foxhound + context MCP</span>
+    <ul class="skill-list">
+      <li>Accessed via get_docs("domain-codebooks", ...)</li>
+      <li>Enriched via pattern-extraction-pipeline</li>
+      <li>Referenced by pattern-advisor, system-design</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- LAYER OWNERSHIP -->
+<div class="flow-arrow">Enforcement Layers</div>
+<div class="section-label">Layer ownership principle &mdash; who does what</div>
+<div class="ownership">
+  <div class="own-card">
+    <h3>Hooks</h3>
+    <p><strong>Enforce</strong> cross-cutting concerns.<br>Session-deduped. Fire automatically.</p>
+    <span class="count" style="color: var(--accent-orange);">8</span>
+    <p>scripts across 5 event types</p>
+  </div>
+  <div class="own-card">
+    <h3>Skills</h3>
+    <p><strong>Specify</strong> domain-specific precision.<br>Override pipeline defaults.</p>
+    <span class="count" style="color: var(--accent-blue);">18+</span>
+    <p>skills with infra integrations</p>
+  </div>
+  <div class="own-card">
+    <h3>Pipeline Gates</h3>
+    <p><strong>Audit &amp; fallback.</strong><br>Check integration-state.json, skip if skill handled it.</p>
+    <span class="count" style="color: var(--accent-green);">4</span>
+    <p>gates in pipeline-stage-hook</p>
+  </div>
+</div>
+
+<!-- HOOKS -->
+<div class="flow-arrow">Hook Wiring</div>
+<div class="card" style="margin-bottom: 2rem;">
+  <div class="section-label">settings.json hook configuration</div>
+
+  <div class="hook-row">
+    <span class="hook-event">SessionStart</span>
+    <div>
+      <span class="hook-script">codebase-analytics.sh</span>
+      <span class="hook-script">check-plugin-overrides.sh</span>
+      <span class="hook-script">backup-settings.sh</span>
+      <span class="hook-script">check-memory-freshness.sh</span>
+      <span class="hook-script">context-index-freshness.sh</span>
+      <span class="hook-script">anti-pattern-scan.sh</span>
+      <span class="hook-script">seeds-session-inject.sh</span>
+      <br><span class="hook-detail">Context: analytics, freshness, seeds prime. Async where possible.</span>
+    </div>
+  </div>
+
+  <div class="hook-row">
+    <span class="hook-event">PreToolUse [Skill]</span>
+    <div>
+      <span class="hook-script">pipeline-stage-hook.sh</span>
+      <span class="hook-script">anti-pattern-hook.sh</span>
+      <span class="hook-script">foxhound-nudge.sh</span>
+      <span class="hook-script">ccstatusline</span>
+      <br><span class="hook-detail">Pipeline gates, anti-patterns, foxhound nudges. All deduped via session flags.</span>
+    </div>
+  </div>
+
+  <div class="hook-row">
+    <span class="hook-event">PreToolUse [Read|Web*]</span>
+    <div>
+      <span class="hook-script">context-mcp-nudge.sh</span>
+      <br><span class="hook-detail">Nudge to use Context MCP instead of raw fetching.</span>
+    </div>
+  </div>
+
+  <div class="hook-row">
+    <span class="hook-event">PostToolUse [Web*]</span>
+    <div>
+      <span class="hook-script">context-mcp-post-fetch.sh</span>
+      <br><span class="hook-detail">Index fetched docs into Context MCP if library-related.</span>
+    </div>
+  </div>
+
+  <div class="hook-row">
+    <span class="hook-event">PostToolUse [Skill]</span>
+    <div>
+      <span class="hook-script">eval-capture-hook.sh</span>
+      <br><span class="hook-detail">Capture eval-protocol and bias:* checkpoints to session log.</span>
+    </div>
+  </div>
+
+  <div class="hook-row">
+    <span class="hook-event">PreCompact</span>
+    <div>
+      <span class="hook-script">context-pressure.sh</span>
+      <br><span class="hook-detail">Mulch + seeds state checkpoint before context compression.</span>
+    </div>
+  </div>
+
+  <div class="hook-row">
+    <span class="hook-event">UserPromptSubmit</span>
+    <div>
+      <span class="hook-script">prompt-enhancer.sh</span>
+      <span class="hook-script">ccstatusline</span>
+      <br><span class="hook-detail">Prompt enhancement and status line update.</span>
+    </div>
+  </div>
+</div>
+
+<!-- PIPELINE GATES -->
+<div class="flow-arrow">Pipeline Gate Sequence</div>
+<div class="section-label">Gates fire in pipeline-stage-hook.sh based on stage position &amp; pipeline type</div>
+<div class="gate-flow">
+  <div class="gate gate-context-init">
+    <h3 style="color: var(--accent-green);">context-init</h3>
+    <p>Stage 1 of research pipelines.<br>Primes mulch, seeds, sync_deps.</p>
+  </div>
+  <div class="gate gate-decision">
+    <h3 style="color: var(--accent-purple);">decision-check</h3>
+    <p>plan&rarr;execute: wysiati + overconfidence.<br>execute&rarr;verify: substitution.</p>
+  </div>
+  <div class="gate gate-quality">
+    <h3 style="color: var(--accent-blue);">quality-grade</h3>
+    <p>At verify/land stages.<br>simplify &rarr; eval-protocol on recs.</p>
+  </div>
+  <div class="gate gate-close">
+    <h3 style="color: var(--accent-orange);">close-loop</h3>
+    <p>Last stage, all pipelines.<br>mulch record + seeds close + eval aggregate.</p>
+  </div>
+</div>
+
+<div style="margin-top: 2rem; padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;">
+  <div class="section-label">Dedup Mechanism</div>
+  <p style="font-size: 0.8rem; color: var(--text-muted);">
+    <strong style="color: var(--text);">integration-state-$$.json</strong> (session-scoped) tracks what has fired.
+    Pipeline gates read it before acting &mdash; if a skill already handled the concern, the gate skips.
+    Reset at pipeline completion by close-loop gate.
+    Separate from <strong style="color: var(--text);">/tmp/pipeline-state.json</strong> (ephemeral display for statusline).
+    Foxhound nudge uses its own flag: <strong style="color: var(--text);">/tmp/foxhound-session-$$</strong>.
+    Eval capture logs to <strong style="color: var(--text);">/tmp/eval-capture-$$.jsonl</strong>.
+  </p>
+</div>
+
+</body>
+</html>

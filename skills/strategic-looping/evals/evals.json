@@ -1,0 +1,26 @@
+{
+  "skill_name": "strategic-looping",
+  "evals": [
+    {
+      "id": 1,
+      "name": "proactive-checkpoint",
+      "prompt": "You are executing the implementation plan at test-fixtures/sample-plan.md. Assume tasks 1-3 are already completed and passing tests. You are about to start task 4. Walk through your decision-making process for what you would do before starting task 4. Write your reasoning to outputs/decisions.md.",
+      "expected_output": "Should notice that tasks 4-6 introduce a pandas dependency that tasks 1-3 didn't need, and that this dependency isn't established anywhere in the plan. Should proactively flag this precondition gap and suggest inserting a setup step before continuing. Should also notice the shift from simple dict returns to pandas-based operations and consider whether that's the right call.",
+      "files": ["test-fixtures/sample-plan.md"]
+    },
+    {
+      "id": 2,
+      "name": "proactive-routing",
+      "prompt": "You are executing a plan. The next task says: 'Task 3: Refactor the parser module to use regex-based extraction instead of string splitting. Update parse_message() to use compiled regex patterns for sender, timestamp, and content extraction.' The existing parser module is at src/parser.py and has 15 passing tests. Walk through your decision-making process for how you would approach this task. Write your reasoning to outputs/decisions.md.",
+      "expected_output": "Should proactively decide to capture baseline behavior (run existing tests, note current behavior) BEFORE making changes. Should recognize this is changing existing behavior (not adding new) and route to verification-before-completion to establish the baseline. Should consider test-driven-development to write new regex-specific tests before refactoring.",
+      "files": ["test-fixtures/sample-plan.md"]
+    },
+    {
+      "id": 3,
+      "name": "convergence-loop",
+      "prompt": "You have completed all 7 tasks from the implementation plan at test-fixtures/sample-plan.md. All individual task tests pass (unit tests). But when you run the end-to-end test that exercises the full pipeline (parse chat export → run all analytics → generate report → verify CLI output), it fails: the report generator crashes because the word_freq module returns a list of tuples but the report formatter expects a dict. Walk through how you would handle this situation. Write your reasoning to outputs/decisions.md.",
+      "expected_output": "Should define a convergence threshold (end-to-end test passes, not just unit tests). Should diagnose the interface mismatch as an integration issue rather than a bug in either module. Should consider whether other modules might have similar interface mismatches. Should fix, re-measure, and check if the fix introduced new issues. Should reflect on why unit tests passed but integration failed (missing contract tests).",
+      "files": ["test-fixtures/sample-plan.md"]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "add a new endpoint for user profile updates in the accounts service",
+    "should_trigger": true
+  },
+  {
+    "query": "implement the cart checkout flow, we need to handle coupon codes and inventory checks",
+    "should_trigger": true
+  },
+  {
+    "query": "fix the bug in parseInvoice() where negative amounts crash the parser",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to add OAuth2 support to our auth module before the sprint review tomorrow",
+    "should_trigger": true
+  },
+  {
+    "query": "write the subscription renewal logic in src/billing/renew.ts",
+    "should_trigger": true
+  },
+  {
+    "query": "can you implement the retry backoff for our kafka consumer? it currently drops messages on transient failures",
+    "should_trigger": true
+  },
+  {
+    "query": "the dedup logic in pipeline.go is broken, fix it so we dont process the same event twice",
+    "should_trigger": true
+  },
+  {
+    "query": "build out the permissions middleware for our API \u2014 need role-based access on the /admin routes",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to add CSV export to the reports module, right now it only does JSON",
+    "should_trigger": true
+  },
+  {
+    "query": "we need a slugify() utility in lib/strings.js \u2014 converts display names to URL-safe identifiers",
+    "should_trigger": true
+  },
+  {
+    "query": "what does this parseInvoice function actually do? I'm scared to touch it",
+    "should_trigger": false
+  },
+  {
+    "query": "write tests for the existing CartService before I refactor it \u2014 I want a safety net",
+    "should_trigger": false
+  },
+  {
+    "query": "stress test our /checkout endpoint, try to break it with malformed payloads and concurrent requests",
+    "should_trigger": false
+  },
+  {
+    "query": "our unit tests pass but prod keeps failing \u2014 I think the mocks are lying to us",
+    "should_trigger": false
+  },
+  {
+    "query": "run the test suite and tell me what's failing in the billing module",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to brainstorm the architecture for the new notification system before we start coding",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog from the last two weeks of commits for the v2.3 release",
+    "should_trigger": false
+  },
+  {
+    "query": "audit our permissions.allow in settings.json \u2014 I'm worried we have Bash(*) open",
+    "should_trigger": false
+  },
+  {
+    "query": "resume from yesterday's handoff, we were halfway through the payment integration",
+    "should_trigger": false
+  },
+  {
+    "query": "find all the places in the codebase that call UserService.delete() \u2014 I need to understand the blast radius before touching it",
+    "should_trigger": false
+  }
+]

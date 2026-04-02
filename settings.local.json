@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun install:*)",
+      "Bash(opencode debug:*)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(''''Plugins:'''', d.get\\(''''plugin''''\\)\\); print\\(''''Skills paths:'''', d.get\\(''''skills'''',{}\\).get\\(''''paths'''',[]\\)\\)\")"
+    ]
+  }
+}

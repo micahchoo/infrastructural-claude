@@ -1,0 +1,82 @@
+[
+  {
+    "query": "how would you design a URL shortener like bit.ly that handles 100M requests/day?",
+    "should_trigger": true
+  },
+  {
+    "query": "we're debating microservices vs monolith for our new fintech startup, what should we consider?",
+    "should_trigger": true
+  },
+  {
+    "query": "need a caching strategy for our postgres-backed API that's getting hammered, Redis vs Memcached?",
+    "should_trigger": true
+  },
+  {
+    "query": "explain CAP theorem and how it affects our choice between MongoDB and Cassandra",
+    "should_trigger": true
+  },
+  {
+    "query": "design a rate limiting system for our public API that works across multiple data centers",
+    "should_trigger": true
+  },
+  {
+    "query": "consistent hashing for our sharding strategy \u2014 how does it minimize rebalancing when nodes join/leave?",
+    "should_trigger": true
+  },
+  {
+    "query": "architect a notification system like WhatsApp that supports 1B users and offline delivery",
+    "should_trigger": true
+  },
+  {
+    "query": "we need 99.99% availability for our payment service \u2014 what does that mean in downtime and how do we get there?",
+    "should_trigger": true
+  },
+  {
+    "query": "circuit breaker pattern \u2014 when should I use it vs a simple retry with backoff in our microservices mesh?",
+    "should_trigger": true
+  },
+  {
+    "query": "CQRS and event sourcing for our order management system \u2014 is the complexity worth it at our scale (~50k orders/day)?",
+    "should_trigger": true
+  },
+  {
+    "query": "how do I implement rate limiting in Express.js using the express-rate-limit package?",
+    "should_trigger": false
+  },
+  {
+    "query": "my Redis cache keeps getting cache stampede on cold starts, here's the code \u2014 how do I fix this race condition?",
+    "should_trigger": false
+  },
+  {
+    "query": "WebSockets vs SSE \u2014 I'm building a Next.js dashboard and need to pick one, show me example code for both",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I set up OAuth2 with Google in my Django app using django-allauth?",
+    "should_trigger": false
+  },
+  {
+    "query": "my Postgres query on the sharded users table is returning wrong results after the migration, here's the SQL",
+    "should_trigger": false
+  },
+  {
+    "query": "implement a message queue consumer in Python that reads from SQS with exponential backoff on failures",
+    "should_trigger": false
+  },
+  {
+    "query": "CDN is serving stale assets after our deploy \u2014 how do I invalidate the CloudFront cache via CLI?",
+    "should_trigger": false
+  },
+  {
+    "query": "setting up nginx as a reverse proxy for my Node app \u2014 getting 502 bad gateway, here's my nginx.conf",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I add horizontal pod autoscaling to my Kubernetes deployment based on CPU and memory metrics?",
+    "should_trigger": false
+  },
+  {
+    "query": "our distributed tracing with Jaeger isn't capturing spans across service boundaries \u2014 missing context propagation in the headers",
+    "should_trigger": false
+  }
+]

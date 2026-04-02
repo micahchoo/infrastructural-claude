@@ -1,0 +1,82 @@
+[
+  {
+    "query": "the hover animations on our nav feel janky, can you review the CSS transitions?",
+    "should_trigger": true
+  },
+  {
+    "query": "check our typography hierarchy \u2014 body copy at 14px feels cramped on desktop, wondering if we're violating any best practices",
+    "should_trigger": true
+  },
+  {
+    "query": "we added a skeleton loader but it flickers, what are the UX guidelines for loading state animations?",
+    "should_trigger": true
+  },
+  {
+    "query": "review src/components/Icon.tsx \u2014 we're using inline SVGs but I think we should switch to a sprite sheet, what's the right approach?",
+    "should_trigger": true
+  },
+  {
+    "query": "what prefetching strategy should we use for our dashboard routes? we have like 8 heavy pages and first nav feels slow",
+    "should_trigger": true
+  },
+  {
+    "query": "our audio feedback on button clicks is too loud and the timing feels off \u2014 any UX patterns for web audio cues?",
+    "should_trigger": true
+  },
+  {
+    "query": "need to pick a font pairing for the marketing site, currently using Inter for everything but the headings need more personality",
+    "should_trigger": true
+  },
+  {
+    "query": "the modal dismiss animation feels wrong \u2014 it just disappears. what's the principle here, should it scale down or slide out?",
+    "should_trigger": true
+  },
+  {
+    "query": "reviewing PR #442 \u2014 it adds a custom tooltip component but the show/hide delay seems arbitrary, is there a standard?",
+    "should_trigger": true
+  },
+  {
+    "query": "we got a figma handoff with 6 different icon styles mixed together, what are best practices for icon consistency in a design system?",
+    "should_trigger": true
+  },
+  {
+    "query": "want to stress test our icon API endpoint \u2014 it serves SVGs dynamically and I need to check it handles malformed requests",
+    "should_trigger": false
+  },
+  {
+    "query": "the typography tokens in our design system are drifting from the figma source of truth, help me write characterization tests to document what values the components actually render",
+    "should_trigger": false
+  },
+  {
+    "query": "brainstorm a prefetching service for our Next.js app \u2014 we need to think through caching strategy, TTL, and how it integrates with our auth layer",
+    "should_trigger": false
+  },
+  {
+    "query": "we're building an animation editor component where users can keyframe CSS properties \u2014 need to map out the architecture before I start coding",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a changelog for the last sprint \u2014 we shipped a new icon set, font updates, and some animation tweaks",
+    "should_trigger": false
+  },
+  {
+    "query": "focus management in our modal is broken \u2014 tab key cycles outside the dialog. this is an accessibility bug, not just UX, need to fix the DOM behavior",
+    "should_trigger": false
+  },
+  {
+    "query": "audit our CSS animation bundle \u2014 I think we're shipping unused keyframes and it's adding 40KB to the bundle",
+    "should_trigger": false
+  },
+  {
+    "query": "our NER pipeline is extracting typography terms from chat archives as named entities \u2014 need to tune the stoplist to filter out CSS property names",
+    "should_trigger": false
+  },
+  {
+    "query": "write tests for the PrefetchManager class before I refactor it \u2014 I don't fully understand what it does yet",
+    "should_trigger": false
+  },
+  {
+    "query": "the icon codebook in domain-codebooks covers spatial editing but we need something specific to our map-based UI \u2014 can you help extend it?",
+    "should_trigger": false
+  }
+]

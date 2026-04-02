@@ -1,0 +1,82 @@
+[
+  {
+    "query": "run the wysiati check before I finalize this migration plan",
+    "should_trigger": true
+  },
+  {
+    "query": "I keep second-guessing this architecture decision, can you do a reframe check",
+    "should_trigger": true
+  },
+  {
+    "query": "before we ship this, hit the artifact-challenge guardrail on the design doc",
+    "should_trigger": true
+  },
+  {
+    "query": "I think I'm rationalizing keeping the old auth system \u2014 run sunk-cost check",
+    "should_trigger": true
+  },
+  {
+    "query": "we're 3 stages into executing-plans and something feels off, do a pivot-or-persist check",
+    "should_trigger": true
+  },
+  {
+    "query": "I've only looked at the error logs and our own codebase \u2014 availability bias check",
+    "should_trigger": true
+  },
+  {
+    "query": "overconfidence check: I'm about to claim the race condition is definitely in the scheduler",
+    "should_trigger": true
+  },
+  {
+    "query": "decompose the constraints here \u2014 I suspect we inherited assumptions from the old system that don't apply",
+    "should_trigger": true
+  },
+  {
+    "query": "I said the refactor is 'good quality' but that's vague \u2014 operationalize that before we close the ticket",
+    "should_trigger": true
+  },
+  {
+    "query": "invert this: what would guarantee the caching layer fails under load",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to stress test the /payments endpoint for race conditions and edge cases",
+    "should_trigger": false
+  },
+  {
+    "query": "run the brainstorming skill before we design the new notification system",
+    "should_trigger": false
+  },
+  {
+    "query": "do a full codebase diagnostic on the auth module, I think the architecture is wrong",
+    "should_trigger": false
+  },
+  {
+    "query": "evaluate whether my agent picked the right tool at the phase transition \u2014 use eval-protocol",
+    "should_trigger": false
+  },
+  {
+    "query": "we have 4 independent refactor tasks, dispatch them in parallel with subagents",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm not sure if this approach is right, can you check the mulch knowledge base for prior decisions on our caching strategy",
+    "should_trigger": false
+  },
+  {
+    "query": "before I keep going on this plan, what are the real constraints vs ones we inherited from the old API design",
+    "should_trigger": false
+  },
+  {
+    "query": "generate characterization tests for payments.py before I touch it \u2014 I want a safety net",
+    "should_trigger": false
+  },
+  {
+    "query": "I've been heads-down on this for 2 hours and want to make sure I'm still solving the right problem \u2014 check the strategic-looping skill",
+    "should_trigger": false
+  },
+  {
+    "query": "leverage check: which single change to the pipeline scheduler would make everything else easier",
+    "should_trigger": true
+  }
+]

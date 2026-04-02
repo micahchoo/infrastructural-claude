@@ -1,0 +1,626 @@
+# Pipeline definitions for the skill-tree atlas.
+# Each pipeline is a named sequence of stages. Stages that map to existing
+# skill/script nodes get stage_of edges; unmapped stages become standalone
+# pipeline-stage nodes.
+#
+# THIS FILE IS DESCRIPTIVE, NOT ORCHESTRATIVE.
+# It declares structure — which stages exist, which gates apply, what actions
+# should happen. It does NOT execute anything. Enforcement lives in:
+#   - Skills: embed gate logic inline (e.g., codebase-diagnostics gates)
+#   - Hooks: pipeline-stage-hook.sh reads this file to log stage transitions
+#   - Agents: gate-enforcer dispatches happen because skills say so, not this YAML
+# The actions: fields under gates document WHAT skills should do, not executable commands.
+
+pipelines:
+  - name: feedback-loop
+    status: active
+    description: "Atlas self-improvement: measure tree health, detect issues, annotate skills, human review, verify improvements"
+    stages:
+      - name: measure
+        order: 1
+        description: "Discover + extract + validate + evaluate skill tree"
+      - name: detect
+        order: 2
+        description: "Compute findings from graph with blast-radius scoring"
+      - name: annotate
+        order: 3
+        description: "Auto-apply safe annotations, flag the rest"
+      - name: review
+        order: 4
+        description: "Human confirms/dismisses/edits flagged findings"
+      - name: verify
+        order: 5
+        description: "Re-measure, diff, detect regressions"
+
+  - name: override-evaluation
+    status: active
+    description: "Plugin override lifecycle: detect version change, diff, test regression, reach verdict, apply"
+    stages:
+      - name: detect-update
+        order: 1
+        # Dream-added: 2026-03-25 — was skill: "hook:PreToolUse:check-plugin-overrides" (not a real skill, broke cache)
+        # Triggered by check-plugin-overrides.sh hook, not by skill invocation
+        description: "SessionStart hook detects new plugin version"
+      - name: diff
+        order: 2
+        description: "Diff old vs new upstream for each overridden file"
+      - name: test
+        order: 3
+        description: "Blind comparison: clean new vs overridden new"
+      - name: verdict
+        order: 4
+        description: "Reapply as-is, reapply reshaped, or drop override"
+      - name: apply
+        order: 5
+        description: "Apply overrides and run update-override-version.sh"
+
+  - name: eval-protocol
+    status: active
+    description: "Decision-quality checkpoints: set expectations, capture actual decisions, grade correctness"
+    stages:
+      - name: expect
+        order: 1
+        skill: eval-protocol
+        description: "Define expected tool/approach/target at phase boundary"
+      - name: capture
+        order: 2
+        skill: eval-protocol
+        description: "Record actual decision made"
+      - name: grade
+        order: 3
+        skill: eval-protocol
+        description: "Compare expected vs actual, score decision quality"
+
+  - name: skill-creation
+    status: active
+    description: "End-to-end skill development: intent capture through eval-driven iteration to description optimization"
+    stages:
+      - name: capture-intent
+        order: 1
+        description: "Understand what the skill should do and when it triggers"
+      - name: diffusion-decision
+        order: 2
+        description: "Standalone skill vs diffused checkpoints vs both"
+      - name: interview
+        order: 3
+        description: "Edge cases, formats, dependencies, success criteria"
+      - name: write-draft
+        order: 4
+        description: "Write SKILL.md with frontmatter and instructions"
+      - name: test-run
+        order: 5
+        description: "Spawn with-skill and baseline runs on test prompts"
+      - name: evaluate
+        order: 6
+        description: "Grade assertions, launch viewer, collect human feedback"
+      - name: improve
+        order: 7
+        description: "Revise skill based on feedback, repeat test round"
+      - name: optimize-description
+        order: 8
+        description: "Trigger eval queries + optimization loop for description"
+
+  - name: ner-tuning
+    status: active
+    description: "NER extraction quality loop for chat archives: extract, evaluate, tune filters, re-extract, sample"
+    stages:
+      - name: extract
+        order: 1
+        skill: chat-archive-ner-tuning
+        description: "Run NER pipeline on chat data"
+      - name: evaluate
+        order: 2
+        description: "Sample entities, measure precision/recall"
+      - name: tune-stoplist
+        order: 3
+        description: "Update stoplists, thresholds, alias normalization"
+      - name: re-extract
+        order: 4
+        description: "Re-run pipeline with tuned parameters"
+      - name: sample-verify
+        order: 5
+        description: "Verify improvements via sampling"
+
+  - name: brainstorm-to-ship
+    status: active
+    description: "Full feature delivery cascade: brainstorm design, write plan (with worktree setup), execute, verify, land"
+    stages:
+      - name: brainstorm
+        order: 1
+        skill: brainstorming
+        description: "Explore intent, requirements, design alternatives"
+      - name: plan
+        order: 2
+        skill: writing-plans
+        description: "Worktree setup, interface extraction, task decomposition, execution waves"
+      - name: execute
+        order: 3
+        skill: executing-plans
+        description: "Execute plan — sequential or subagent mode based on harness"
+      - name: verify
+        order: 4
+        skill: verification-before-completion
+        description: "Anti-pattern scan, secret scan, wiring check, pr-review-toolkit quality check"
+      - name: land
+        order: 5
+        skill: requesting-code-review
+        description: "Landing decision: PR for review, merge directly, or cleanup"
+
+  - name: debugging-loop
+    status: active
+    description: "Structured debugging through verification: gather evidence (incl. CI), hypothesize, fix, verify"
+    stages:
+      - name: debug
+        order: 1
+        skill: systematic-debugging
+        description: "4-phase debugging: observe (check CI first), hypothesize, test, fix"
+      - name: verify
+        order: 2
+        skill: verification-before-completion
+        description: "Confirm fix, check for regressions"
+
+  - name: code-review-loop
+    status: active
+    description: "Code review from both sides: request review, perform review, respond to feedback"
+    stages:
+      - name: request
+        order: 1
+        skill: requesting-code-review
+        description: "Submit work for review with context"
+      - name: review
+        order: 2
+        skill: interactive-pr-review
+        description: "Reviewer examines changes via pr-review-toolkit multi-agent dispatch (code-reviewer, silent-failure-hunter, pr-test-analyzer, type-design-analyzer, comment-analyzer, code-simplifier)"
+      - name: respond
+        order: 3
+        skill: receiving-code-review
+        description: "Author addresses feedback with technical rigor"
+
+  - name: pattern-extraction
+    status: active
+    description: "Study reference codebases, extract structured pattern codebooks, enrich with evidence"
+    stages:
+      - name: characterize
+        order: 1
+        skill: characterization-testing
+        description: "Write tests documenting what existing code does"
+      - name: extract
+        order: 2
+        skill: pattern-extraction-pipeline
+        description: "Extract force clusters, competing patterns, anti-patterns"
+      - name: codebook
+        order: 3
+        skill: domain-codebooks
+        description: "Organized codebook ready for consumption"
+
+  - name: session-continuity
+    status: active
+    description: "Agent-to-agent handoff: write state, start fresh, resume from handoff"
+    stages:
+      - name: write-handoff
+        order: 1
+        skill: handoff
+        description: "Capture goal, progress, decisions, next steps, and trajectory narrative (how we got here, contested decisions, shaky assumptions)"
+      - name: resume
+        order: 2
+        skill: check-handoff
+        description: "Read handoff, validate files, propose session plan"
+
+  - name: research-loop
+    status: active
+    description: "Multi-source investigation: gather evidence broadly, then drill deep"
+    stages:
+      - name: gather
+        order: 1
+        skill: hybrid-research
+        description: "Survey 3+ sources before going deep on any one"
+      - name: advise
+        order: 2
+        skill: pattern-advisor
+        description: "Produce concrete recommendations from gathered evidence"
+
+  - name: product-to-ship
+    status: forming
+    description: "Greenfield product delivery: product design through landing"
+    stages:
+      - name: design
+        order: 1
+        skill: product-design
+        description: "Vision, tokens, sections, handoff"
+      - name: plan
+        order: 2
+        skill: writing-plans
+        description: "Implementation plan from product handoff"
+      - name: execute
+        order: 3
+        skill: executing-plans
+        description: "Execute plan — sequential or subagent mode"
+      - name: verify
+        order: 4
+        skill: verification-before-completion
+        description: "Anti-pattern scan, secret scan, wiring check"
+      - name: land
+        order: 5
+        skill: requesting-code-review
+        description: "Landing decision: PR, merge, or cleanup"
+
+  - name: product-lifecycle
+    status: forming
+    description: "Outer product loop: discover → strategize → build → measure → learn → iterate"
+    stages:
+      - name: discover
+        order: 1
+        skill: product-strategy
+        description: "User/market research, competitive analysis, persona development"
+      - name: strategize
+        order: 2
+        skill: product-strategy
+        description: "Vision, KPIs, prioritization, roadmap"
+      - name: dispatch
+        order: 3
+        skill: product-strategy
+        description: "Route to build pipeline with strategic brief"
+      - name: build
+        order: 4
+        description: "Executes brainstorm-to-ship or product-to-ship (nested pipeline)"
+      - name: measure
+        order: 5
+        skill: product-strategy
+        description: "Post-build signal collection, KPI evaluation"
+      - name: learn
+        order: 6
+        skill: product-strategy
+        description: "Structured AAR: intended vs actual, root cause of gap, one concrete change for next cycle. Feeds double-loop check at next discover stage."
+
+  - name: codebase-diagnostics
+    status: active
+    description: "Progressive codebase analysis: sweep (4 waves), drill (user-directed), synthesize (persist)"
+    stages:
+      - name: entry
+        order: 1
+        skill: codebase-diagnostics
+        description: "Staleness check, context priming"
+      - name: wave1-foundation
+        order: 2
+        skill: codebase-diagnostics
+        description: "Domain, Ecosystem, Infrastructure — 3 parallel agents"
+      - name: wave2-subsystems
+        order: 3
+        skill: codebase-diagnostics
+        description: "Seam-identification survey+label"
+      - name: wave3-deep-analysis
+        order: 4
+        skill: codebase-diagnostics
+        description: "Per-subsystem: component, contract, module, behavior"
+      - name: wave4-synthesis
+        order: 5
+        skill: codebase-diagnostics
+        description: "Cross-cutting patterns, risk map, evolution"
+      - name: drill
+        order: 6
+        skill: codebase-diagnostics
+        description: "User-directed deeper/wider/lateral navigation"
+      - name: synthesize
+        order: 7
+        skill: codebase-diagnostics
+        description: "Persist: overview, _meta.json, mulch, seeds"
+
+  - name: architecture-discovery
+    status: deprecated
+    description: "DEPRECATED 2026-03-26: Use codebase-diagnostics pipeline instead. map→Wave2+Drill, characterize→Wave3 contract, assess-qa→Wave3 component, extract→Wave4 synthesis, codebook→Holistic Integration"
+    stages:
+      - name: map
+        order: 1
+        skill: seam-identification
+        description: "Map architectural joints and extension points"
+      - name: characterize
+        order: 2
+        skill: characterization-testing
+        description: "Write tests documenting actual behavior"
+      - name: assess-qa
+        order: 3
+        skill: quality-linter
+        description: "Evaluate QA architecture: classify tests, extract team contracts, identify force clusters"
+      - name: extract
+        order: 4
+        skill: pattern-extraction-pipeline
+        description: "Extract force clusters and competing patterns"
+      - name: codebook
+        order: 5
+        skill: domain-codebooks
+        description: "Organize into consumable codebook"
+
+  - name: hardening
+    status: forming
+    description: "Post-implementation stress testing: functional tests then adversarial"
+    stages:
+      - name: test
+        order: 1
+        skill: test-driven-development
+        description: "Functional test suite + pr-test-analyzer gap analysis"
+      - name: attack
+        order: 2
+        skill: adversarial-api-testing
+        description: "IDOR, injection, concurrency, rate limiting"
+
+  - name: ci-debug
+    status: forming
+    description: "CI failure triage: diagnose GHA, debug root cause, verify fix"
+    stages:
+      - name: diagnose
+        order: 1
+        skill: gha
+        description: "Fetch logs, identify failing step"
+      - name: debug
+        order: 2
+        skill: systematic-debugging
+        description: "Root cause analysis"
+      - name: verify
+        order: 3
+        skill: verification-before-completion
+        description: "Confirm fix, check for regressions"
+
+  - name: deploy
+    status: planned
+    description: "Post-land deployment via Portainer"
+    stages:
+      - name: review
+        order: 1
+        skill: requesting-code-review
+        description: "Final review before deploy"
+      - name: deploy
+        order: 2
+        skill: portainer-deploy
+        description: "Build, push, deploy via Portainer stack"
+
+# Pipeline gates — cross-cutting enforcement stages.
+# Hooks enforce these; skills specify domain-specific precision; pipelines audit.
+# Dedup via session-scoped integration-state.json (written by hooks, read by gates).
+gates:
+  - name: context-init
+    description: "Prime mulch/seeds, sync deps at research phase start"
+    trigger: "order == 1 in research-type pipelines"
+    affects:
+      - pipeline: brainstorm-to-ship
+        before_stage: brainstorm
+      - pipeline: research-loop
+        before_stage: gather
+      - pipeline: pattern-extraction
+        before_stage: characterize
+      - pipeline: debugging-loop
+        before_stage: debug
+      - pipeline: skill-creation
+        before_stage: capture-intent
+      - pipeline: product-lifecycle
+        before_stage: discover
+      - pipeline: codebase-diagnostics
+        before_stage: entry
+    actions:
+      - "mulch: ml search '<pipeline context>' (if .mulch/ exists AND not already primed)"
+      - "seeds: sd ready (if .seeds/ exists AND not already primed)"
+      - "sync_deps: foxhound sync_deps(root) if package manifest exists AND index stale"
+      - "architecture: if docs/architecture/_meta.json exists AND project has >20 files, load overview.md + subsystems.md as pipeline context"
+      - "domain_inference: detect project domain from manifest files (package.json→JS/TS, Cargo.toml→Rust, pyproject.toml→Python, *.xcodeproj→Swift, go.mod→Go). If domain codebook exists in foxhound patterns tier, load it as pipeline context. Graceful skip if no domain detected."
+      - "compound_learning: ml search '<pipeline-name> retro' to load prior retros as feed-forward context. Extract feed-forward checklist items (sentence 3 from retro protocol). Skip if no prior retros exist (first cycle)."
+
+  - name: decision-check
+    description: "Cognitive guardrails at high-stakes transitions"
+    trigger: "plan→execute or execute→verify transitions only"
+    why_narrowed: "10 pipelines × ~3 transitions = 60-90 invocations. Restricting to 2 high-stakes types reduces to ~6-10."
+    triggers:
+      - pipeline: brainstorm-to-ship
+        before_stage: execute
+        guardrails: [wysiati, overconfidence, artifact-challenge]
+      - pipeline: brainstorm-to-ship
+        before_stage: verify
+        guardrails: [substitution]
+      - pipeline: debugging-loop
+        before_stage: verify
+        guardrails: [substitution]
+      - pipeline: skill-creation
+        before_stage: write-draft
+        guardrails: [wysiati, overconfidence, artifact-challenge]
+      - pipeline: skill-creation
+        before_stage: test-run
+        guardrails: [substitution]
+      - pipeline: product-lifecycle
+        before_stage: dispatch
+        guardrails: [substitution, wysiati]
+      - pipeline: product-lifecycle
+        before_stage: learn
+        guardrails: [sunk-cost, substitution]
+      - pipeline: codebase-diagnostics
+        before_stage: wave3-deep-analysis
+        guardrails: [wysiati, overconfidence, substitution]
+
+  - name: quality-grade
+    description: "simplify→eval-protocol graded recommendations before landing"
+    trigger: "verify/land stages after implementation work"
+    actions:
+      - "simplify: /simplify (recs only) on changed files"
+      - "eval-protocol: grade each rec — A/B actionable, C deprioritize (~20% noise)"
+      - "pr-review: silent-failure-hunter on changed files (error handling gaps)"
+      - "pr-review: pr-test-analyzer on changed files (test coverage gaps)"
+    triggers:
+      - pipeline: brainstorm-to-ship
+        before_stage: land
+      - pipeline: code-review-loop
+        before_stage: request
+      - pipeline: skill-creation
+        before_stage: optimize-description
+      - pipeline: debugging-loop
+        before_stage: verify
+
+  - name: claim-verification
+    description: "Verify synthesis claims against actual artifacts before user presentation"
+    trigger: "sweep-complete transitions where claims will be presented"
+    # claim-verification mode already exists in agents/gate-enforcer.md — this wires it
+    triggers:
+      - pipeline: codebase-diagnostics
+        before_stage: drill
+        mode: claim-verification
+
+  - name: close-loop
+    description: "Automatic mulch/seeds/eval closing at pipeline completion"
+    trigger: "last stage of all pipelines"
+    mulch_record_types:
+      codebase-diagnostics: decision
+      brainstorm-to-ship: decision
+      debugging-loop: failure
+      pattern-extraction: reference
+      code-review-loop: convention
+      ner-tuning: convention
+      product-lifecycle: decision
+    actions:
+      - "mulch: ml record --type <type> --evidence-commit HEAD (if not already produced)"
+      - "seeds: sd close any in_progress issues (if not already closed)"
+      - "eval: aggregate pipeline decision grades → session quality score"
+      - "notes: collect [NOTE] markers from session, feed to record-extractor alongside [SNAG] markers"
+      - "architecture: if docs/architecture/_meta.json exists, run architecture-staleness.sh against changed files. For each stale subsystem doc, sd create seed with labels source:codebase-diagnostics,staleness"
+      - "reset: clear integration-state.json for next pipeline run"
+    # Compound learning: 5-sentence retro protocol at pipeline completion.
+    # Research basis: docs/research-compound-learning-patterns.md (AAR, PDCA, feed-forward, double-loop, design-rationale)
+    retro_protocol:
+      description: "Structured retro replacing single mulch record. Each sentence draws from a different research pattern."
+      sentences:
+        - "prediction_vs_reality: What did we expect? What happened? (PDCA Check — theory revision, not pass/fail)"
+        - "key_decision_reversal: What was the biggest decision, and what would make us reverse it? (Design Rationale — survives context erosion)"
+        - "feed_forward: What went wrong that could go wrong again? (grows the pre-flight checklist for next cycle)"
+        - "trajectory: How did we get here, in one paragraph? (SBAR — sender synthesizes, transfers mental model)"
+        - "assumption_check: What assumption from the original plan should we re-examine? (Double-loop — question governing variables)"
+      storage: "ml record --type decision --tags retro,<pipeline-name> with 5-sentence body"
+      read_at: "context-init gate loads prior retros via ml search '<pipeline-name> retro'"
+
+  - name: compound-learning
+    description: "Feed-forward checklists, trajectory narratives, theory revision, and boundary-object discipline at high-value transitions"
+    trigger: "transitions where prior-cycle learning prevents known rework patterns"
+    research_basis: "docs/research-compound-learning-patterns.md — 7 patterns: double-loop (Argyris), AAR (US Army), design-rationale (Rittel/Conklin), PDCA (Deming/Rother), SBAR (distributed cognition), feed-forward (control theory), boundary-objects (Star/Griesemer)"
+
+    # ── High-value transitions ──
+    triggers:
+      # brainstorm-to-ship: spec→plan is the weakest joint (4/5 rework patterns originate here)
+      - pipeline: brainstorm-to-ship
+        before_stage: plan
+        actions: [feed-forward-checklist, spec-retro-read]
+        protocol: "Read prior spec retros: ml search 'spec retro'. Check feed-forward list for known spec failure modes (adapter contracts, type scope, seam inventory, wiring subtasks, companion tests). Surface as blocking questions if any apply."
+        pattern: feed-forward
+
+      # brainstorm-to-ship: plan→execute loses trajectory — subagents get tasks but not WHY
+      - pipeline: brainstorm-to-ship
+        before_stage: execute
+        actions: [trajectory-narrative]
+        protocol: "Inject 1-paragraph trajectory narrative into subagent context: how we got here, which decisions were contested, which assumptions are shaky. Subagents who know the trajectory can judge whether a task is load-bearing or incidental."
+        pattern: SBAR
+
+      # product-lifecycle: learn→discover is the double-loop boundary
+      - pipeline: product-lifecycle
+        before_stage: discover
+        actions: [double-loop]
+        protocol: "Before new cycle: which governing assumptions from last cycle should be re-examined? Not 'what went wrong' but 'what beliefs drove our choices and are they still valid?' Write assumptions explicitly — the act of writing IS the intervention (Argyris)."
+        pattern: double-loop
+
+      # product-lifecycle: dispatch→build needs a kill switch
+      - pipeline: product-lifecycle
+        before_stage: build
+        actions: [reversal-condition]
+        protocol: "Strategic brief must include reversal condition: what concrete, measurable signal would make us abort this build and return to strategy? Without this, sunk-cost fallacy locks in bad bets."
+        pattern: design-rationale
+
+      # product-lifecycle: measure→learn IS the AAR — structure it as one
+      - pipeline: product-lifecycle
+        before_stage: learn
+        actions: [aar-structure]
+        protocol: "Structured AAR, not open-ended synthesis. Four questions: (1) what was intended (from strategic brief), (2) what actually happened (from measure output), (3) why the difference (root cause, not blame), (4) one concrete change for next cycle (specific and actionable, not aspirational). Must be written by the same agent that will execute next cycle."
+        pattern: AAR
+
+      # skill-creation: evaluate→improve — PDCA Check must revise theory, not just score
+      - pipeline: skill-creation
+        before_stage: improve
+        actions: [theory-revision]
+        protocol: "PDCA Check as theory revision: not 'score was low' but 'our model of what makes this skill trigger correctly was wrong because X.' Revise the triggering model first, then revise the skill. Without theory revision, improvement is random walk."
+        pattern: PDCA
+
+      # skill-creation: improve→optimize-description — same mistakes every skill
+      - pipeline: skill-creation
+        before_stage: optimize-description
+        actions: [feed-forward-checklist]
+        protocol: "Read prior skill-creation retros: ml search 'skill-creation retro'. Known pitfalls: description length vs specificity, trigger word overlap with similar skills, edge case disambiguation. Load as checklist before optimization begins."
+        pattern: feed-forward
+
+    # ── Medium-value transitions ──
+
+      # code-review-loop: review output is a boundary object between reviewer/author
+      - pipeline: code-review-loop
+        before_stage: respond
+        actions: [boundary-object-zones]
+        protocol: "Review output must mark each finding as: must-address (immutable core) vs author-discretion (plastic zone). Without this, respond stage either treats all findings as mandatory (over-specification) or cherry-picks (under-specification). The reviewer is the broker between quality standards and implementation reality."
+        pattern: boundary-objects
+
+      # debugging-loop: known failures in same subsystem should load as candidate hypotheses
+      - pipeline: debugging-loop
+        before_stage: debug
+        actions: [feed-forward-checklist]
+        protocol: "Before generating hypotheses: ml search for prior failures in the same subsystem/domain. Load known failure modes as candidate hypotheses before generating new ones from scratch. Feed-forward from prior debugging cycles prevents re-deriving the same root causes."
+        pattern: feed-forward
+
+      # pattern-extraction: characterize→extract needs a prediction to enable theory revision
+      - pipeline: pattern-extraction
+        before_stage: extract
+        actions: [prediction-before-observation]
+        protocol: "Before extraction: state target condition (Kata step 3) — what patterns do we expect to find based on characterization? Without a prediction, PDCA Check degenerates to 'interesting findings' without theory revision. The prediction can be wrong — that's where learning lives."
+        pattern: PDCA
+
+      # session-continuity: HANDOFF.md captures state but not trajectory
+      - pipeline: session-continuity
+        before_stage: resume
+        actions: [trajectory-narrative-check]
+        protocol: "HANDOFF.md must include trajectory section: not just state (done/next) but how we got here — which decisions were hard, which assumptions are shaky, what the receiver can't see from the artifacts alone. The cost of handoff is proportional to the gap between sender's representational state and receiver's reconstruction ability (Hutchins)."
+        pattern: SBAR
+
+# ─── Principle Pipelines (dream-agent, self-contained skill invocations) ───
+# These are NOT tracked by pipeline-stage-hook.sh (no skill: fields).
+# They serve as documentation and measurement schema for the dream-agent.
+
+baseline-enrichment:
+  trigger: "/dream enrichment"
+  description: "Consolidate memory, merge redundant records, raise the baseline"
+  stages:
+    - name: orient
+      action: count unreviewed records, stale memory, redundant entries
+    - name: consolidate
+      action: merge duplicates, add outcomes to reviewed records
+      gate: human-review
+    - name: promote
+      action: update mulch conventions with validated patterns
+      gate: human-review
+    - name: measure
+      action: count records consolidated, duplicates merged, conventions updated
+
+closing-the-loop:
+  trigger: "/dream detect-gaps"
+  description: "Find missing detection categories, graduate candidate rules"
+  stages:
+    - name: orient
+      action: count uncategorized journal entries, candidate rules
+    - name: analyze
+      action: cluster uncategorized entries, propose new categories
+      gate: human-review
+    - name: graduate
+      action: add new categories to failure-journal-hook.sh classify()
+      gate: human-review
+    - name: measure
+      action: count categories added, uncategorized entries resolved
+
+holistic-integration:
+  trigger: "/dream integrate"
+  description: "Surface cross-project patterns, transfer solutions"
+  stages:
+    - name: orient
+      action: count project memory files, cross-project patterns
+    - name: scan
+      action: find matching patterns across projects, identify transferable solutions
+    - name: connect
+      action: write cross-project memory files, link related records
+      gate: human-review
+    - name: measure
+      action: count patterns surfaced, connections made, projects linked

@@ -1,0 +1,42 @@
+{
+  "eval_id": 3,
+  "eval_name": "greenfield-entry",
+  "configuration": "with_skill",
+  "expectations": [
+    {
+      "text": "Attempts full cycle — Phase 1 (Discover) through Phase 3 (Dispatch) for greenfield product",
+      "passed": true,
+      "evidence": "Produces a complete artifact set covering Discover through Dispatch: personas (3), competitive landscape, opportunity framing (Discover/Phase 1); vision, KPIs, prioritization, roadmap (Strategize/Phase 2); strategic brief for Wave 1 with dispatch to product-design (Dispatch/Phase 3). The strategy overview explicitly maps the full cycle with 'Where to Start (next action)' pointing to product-design dispatch."
+    },
+    {
+      "text": "Personas describe specific indie dev behaviors (e.g., community size, feedback volume), not generic 'game developer'",
+      "passed": true,
+      "evidence": "Three detailed personas with game-dev-specific behaviors: Solo Dev Sam ('Spends 3-5 hours/week manually reading Discord and Steam feedback', 'Has a game in Early Access with 2,000-15,000 players'); Studio Lead Alex ('Manages a team of 3-8', 'Has shipped 2-4 titles'); Community Manager Jordan ('Manually copies feedback from Discord channels into a spreadsheet', 'Manages feedback across 2-4 active channels'). Each has specific community size ranges, feedback volumes, and workflow details."
+    },
+    {
+      "text": "Names actual competitors or competitor categories (Canny, UserVoice, Nolt, or similar feedback tools)",
+      "passed": true,
+      "evidence": "competitive-landscape.md names 5 competitor categories: Canny (canny.io) with detailed gap analysis, UserVoice ('Enterprise feedback management... Prohibitively expensive $799+/mo'), Steam Review Analysis Tools (SteamDB, Gamalytic, VGInsights), Discord Bots (Suggestion Bots, Feedback Bots), and Manual Processes (Spreadsheets, Notion, Trello). Includes positioning and white space analysis."
+    },
+    {
+      "text": "Differentiation is grounded in a user pain point — not generic 'better UX' or 'more features'",
+      "passed": true,
+      "evidence": "Differentiation is rooted in the specific pain point of game feedback being structurally different from SaaS feedback. Vision statement: 'not by tallying votes, but by connecting scattered community signals to the developer's own game vision.' Competitive positioning identifies a specific white space: 'game-aware categorization and vision-alignment scoring.' The core bet is 'vision-aligned prioritization is meaningfully better than popularity-based prioritization' — a specific user problem, not generic quality."
+    },
+    {
+      "text": "Produces a product vision statement",
+      "passed": true,
+      "evidence": "vision.md contains a dedicated 'Vision Statement': 'DevPulse helps indie game developers make strategic decisions about player feedback — not by tallying votes, but by connecting scattered community signals to the developer's own game vision...' Also includes 'Why This, Why Now', 'What This Product Is NOT', and 'Core Bet' sections."
+    },
+    {
+      "text": "KPIs have specific measurement methods and target values — not vague 'increase adoption'",
+      "passed": true,
+      "evidence": "kpis.md defines 5 KPIs each with metric, baseline, target, measurement method, leading indicator, and timeframe. Examples: 'KPI-1: Feedback Triage Time Reduction — Target: <30 min/week (down from 2-5 hours), Measurement method: In-app time tracking.' 'KPI-2: Decision Confidence — Target: Average score >= 4.0 within 60 days, Measurement method: Monthly in-app survey.' 'KPI-5: Categorization Accuracy — Target: >= 70% accuracy, Measurement method: Track re-categorization events as a percentage.'"
+    },
+    {
+      "text": "Routes to product-design or brainstorming as the next step (dispatch)",
+      "passed": false,
+      "evidence": "strategy-overview.md 'Where to Start (next action)' gives concrete next steps (validate hypothesis with interviews, build Wave 1 MVP, measure KPI-1) but does NOT explicitly name product-design or brainstorming as the dispatch target. The strategic brief (briefs/strategic-brief-wave1.md) is structured as a handoff document with persona, success metric, constraints, competitive context, and kill criteria — but it does not explicitly route to a named skill or pipeline stage like 'dispatch to product-design'. The brief title says '(from product-strategy)' but not 'to product-design'. Close but does not meet the assertion."
+    }
+  ]
+}

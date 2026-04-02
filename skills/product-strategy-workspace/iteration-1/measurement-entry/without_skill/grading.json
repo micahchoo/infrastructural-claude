@@ -1,0 +1,42 @@
+{
+  "eval_id": 2,
+  "eval_name": "measurement-entry",
+  "configuration": "without_skill",
+  "expectations": [
+    {
+      "text": "Correctly identifies this as a Phase 4 (Measure) entry — does not start from discovery or strategy",
+      "passed": false,
+      "evidence": "No explicit phase identification. The output does focus on measurement (correct behavior) but without lifecycle phase awareness. The evaluation framework jumps directly into 'Where You Are vs. Where You Need to Be' without identifying this as a Measure phase entry. It implicitly stays in measurement territory but has no lifecycle model."
+    },
+    {
+      "text": "References the pre-defined targets (18% conversion, <15min time-to-first-value) as the success criteria",
+      "passed": true,
+      "evidence": "The evaluation framework section 'Where You Are vs. Where You Need to Be' references the targets: the context mentions 'trial-to-paid conversion was around 12%', 'time-to-first-value was about 45 minutes', 'success as getting conversion to 18% and time-to-first-value under 15 minutes within 60 days'. Dashboard queries reference these targets as comparison benchmarks."
+    },
+    {
+      "text": "Plans for both quantitative (analytics) AND qualitative (support tickets) signal types",
+      "passed": true,
+      "evidence": "The evaluation framework covers analytics dashboard queries (TTFV distribution, conversion, funnel, retention) AND support ticket analysis (categorization framework with 6 categories, key questions). Dashboard-queries-and-ticket-analysis.md has dedicated sections for both 'Analytics Dashboard: Exact Queries to Run' (5 queries) and 'Support Ticket Analysis Template' (4-step process)."
+    },
+    {
+      "text": "Addresses attribution confidence — does not simply claim causation from correlation",
+      "passed": true,
+      "evidence": "Section '5. Statistical Confidence Reality Check' explicitly addresses this: discusses sample size requirements, warns against premature conclusions. The executive summary states 'What NOT to Do Right Now' which guards against over-interpreting early data. The framework distinguishes between scenarios where metrics improved vs where causation can be claimed."
+    },
+    {
+      "text": "Acknowledges 2 weeks is early and discusses leading vs lagging indicators or measurement timing",
+      "passed": true,
+      "evidence": "The evaluation framework explicitly distinguishes: 'Priority 1: TTFV (fastest signal)' vs 'Priority 2: Conversion (lagging signal)'. The 'Two-Week Verdict Framework' provides 4 scenarios for interpreting early data. Decision Framework has staged checkpoints: 'Week 2 (NOW): Trajectory Check', 'Week 4: Directional Read', 'Week 6: Firm Signal', 'Week 8 (Day 60): Final Verdict'. Executive summary title is 'Week 2 Executive Summary'."
+    },
+    {
+      "text": "Closes with Learn/next-steps recommendations — what to do based on findings",
+      "passed": true,
+      "evidence": "Executive summary includes 'Recommended Immediate Actions' section and 'What NOT to Do Right Now'. The evaluation framework provides scenario-based next steps (Scenarios A through D with different actions). The decision framework gives explicit checkpoints at weeks 2, 4, 6, and 8 with different actions depending on what the data shows."
+    },
+    {
+      "text": "Mentions UX audit, flow tracing, or shadow-walk as a signal source for qualitative evaluation",
+      "passed": false,
+      "evidence": "No mention of UX audit, flow tracing, shadow-walk, or walking through the flow from a user perspective. The qualitative analysis is limited to support ticket categorization and analytics data. The output does not suggest directly experiencing the onboarding flow as a signal source."
+    }
+  ]
+}

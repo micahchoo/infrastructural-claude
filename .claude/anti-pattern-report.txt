@@ -1,0 +1,43 @@
+=== FINDINGS ===
+[untested-churn] autoresearch/grade.py:0 -- 4 commits (6mo), no test file
+[untested-churn] autoresearch/harvest.py:0 -- 2 commits (6mo), no test file
+[untested-churn] autoresearch/lint-rule-validator.py:0 -- 1 commits (6mo), no test file
+[untested-churn] autoresearch/optimize_description.py:0 -- 1 commits (6mo), no test file
+[untested-churn] autoresearch/regrade_behavioral_loom.py:0 -- 1 commits (6mo), no test file
+[untested-churn] autoresearch/regress.py:0 -- 1 commits (6mo), no test file
+[untested-churn] autoresearch/run_ab.py:0 -- 4 commits (6mo), no test file
+[untested-churn] autoresearch/validate_eval_set.py:0 -- 1 commits (6mo), no test file
+[untested-churn] autoresearch/view_results.py:0 -- 1 commits (6mo), no test file
+[untested-churn] autoresearch/viewer.py:0 -- 1 commits (6mo), no test file
+[untested-churn] quality-linter-workspace/grade-iteration-5.py:0 -- 2 commits (6mo), no test file
+[untested-churn] skills/brainstorming/scripts/helper.js:0 -- 1 commits (6mo), no test file
+[untested-churn] skills/brainstorming/scripts/server.cjs:0 -- 1 commits (6mo), no test file
+[untested-churn] skills/skill-creator/scripts/.marketplace-base.improve_description.py:0 -- 1 commits (6mo), no test file
+[untested-churn] skills/skill-creator/scripts/.marketplace-base.run_loop.py:0 -- 1 commits (6mo), no test file
+[untested-churn] skills/skill-creator/scripts/improve_description.py:0 -- 1 commits (6mo), no test file
+[untested-churn] skills/skill-creator/scripts/run_loop.py:0 -- 2 commits (6mo), no test file
+[untested-churn] skills/skill-creator/workspace/batch-optimize/generate_eval_sets.py:0 -- 1 commits (6mo), no test file
+[untested-churn] skills/skill-creator/workspace/batch-optimize/run_batch.py:0 -- 1 commits (6mo), no test file
+[untested-churn] skills/writing-skills/render-graphs.js:0 -- 1 commits (6mo), no test file
+
+=== RISK SCORES ===
+autoresearch/grade.py  2  untested-churn:2x1
+autoresearch/harvest.py  2  untested-churn:2x1
+autoresearch/lint-rule-validator.py  2  untested-churn:2x1
+autoresearch/optimize_description.py  2  untested-churn:2x1
+autoresearch/regrade_behavioral_loom.py  2  untested-churn:2x1
+autoresearch/regress.py  2  untested-churn:2x1
+autoresearch/run_ab.py  2  untested-churn:2x1
+autoresearch/validate_eval_set.py  2  untested-churn:2x1
+autoresearch/view_results.py  2  untested-churn:2x1
+autoresearch/viewer.py  2  untested-churn:2x1
+quality-linter-workspace/grade-iteration-5.py  2  untested-churn:2x1
+skills/brainstorming/scripts/helper.js  2  untested-churn:2x1
+skills/brainstorming/scripts/server.cjs  2  untested-churn:2x1
+skills/skill-creator/scripts/.marketplace-base.improve_description.py  2  untested-churn:2x1
+skills/skill-creator/scripts/.marketplace-base.run_loop.py  2  untested-churn:2x1
+skills/skill-creator/scripts/improve_description.py  2  untested-churn:2x1
+skills/skill-creator/scripts/run_loop.py  2  untested-churn:2x1
+skills/skill-creator/workspace/batch-optimize/generate_eval_sets.py  2  untested-churn:2x1
+skills/skill-creator/workspace/batch-optimize/run_batch.py  2  untested-churn:2x1
+skills/writing-skills/render-graphs.js  2  untested-churn:2x1

@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "skill_name": "product-strategy",
+    "skill_path": "/home/micah/.claude/skills/product-strategy/SKILL.md",
+    "executor_model": "claude-opus-4-6",
+    "analyzer_model": "claude-opus-4-6",
+    "timestamp": "2026-03-26T11:36:08Z",
+    "evals_run": ["prioritization-entry", "measurement-entry", "greenfield-entry"],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_name": "prioritization-entry",
+      "configuration": "with_skill",
+      "pass_rate": 1.0,
+      "passed": 7,
+      "total": 7,
+      "tokens": 56665,
+      "duration_seconds": 311.2
+    },
+    {
+      "eval_name": "prioritization-entry",
+      "configuration": "without_skill",
+      "pass_rate": 0.429,
+      "passed": 3,
+      "total": 7,
+      "tokens": 46620,
+      "duration_seconds": 119.4
+    },
+    {
+      "eval_name": "measurement-entry",
+      "configuration": "with_skill",
+      "pass_rate": 1.0,
+      "passed": 7,
+      "total": 7,
+      "tokens": 34648,
+      "duration_seconds": 206.5
+    },
+    {
+      "eval_name": "measurement-entry",
+      "configuration": "without_skill",
+      "pass_rate": 0.571,
+      "passed": 4,
+      "total": 7,
+      "tokens": 31478,
+      "duration_seconds": 141.4
+    },
+    {
+      "eval_name": "greenfield-entry",
+      "configuration": "with_skill",
+      "pass_rate": 0.857,
+      "passed": 6,
+      "total": 7,
+      "tokens": 38824,
+      "duration_seconds": 304.2
+    },
+    {
+      "eval_name": "greenfield-entry",
+      "configuration": "without_skill",
+      "pass_rate": 0.429,
+      "passed": 3,
+      "total": 7,
+      "tokens": 25906,
+      "duration_seconds": 216.3
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {"mean": 0.952, "stddev": 0.083},
+      "tokens": {"mean": 43379, "stddev": 11637},
+      "duration_seconds": {"mean": 273.97, "stddev": 56.4}
+    },
+    "without_skill": {
+      "pass_rate": {"mean": 0.476, "stddev": 0.082},
+      "tokens": {"mean": 34668, "stddev": 10469},
+      "duration_seconds": {"mean": 159.03, "stddev": 50.1}
+    },
+    "delta": {
+      "pass_rate": "+0.476",
+      "time_seconds": "+115.0",
+      "tokens": "+8711"
+    }
+  },
+  "notes": [
+    "Primary value-add is structural: lifecycle phase identification, behavioral personas, measurable KPIs, and pipeline dispatch.",
+    "Baseline performs well on tactical analysis (frameworks, competitor naming, trade-offs) — skill adds strategic discipline, not raw intelligence.",
+    "Token cost ~25% higher with skill (43k vs 35k mean), duration ~1.7x longer (274s vs 159s). Expected for multi-artifact structured output.",
+    "One skill failure: greenfield dispatch didn't explicitly name downstream skill. Dispatch phase needs stronger enforcement.",
+    "Non-discriminating assertions: 'cites user signals', 'names competitors', 'explicit trade-offs'. Both pass. Consider tightening."
+  ]
+}
