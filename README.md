@@ -1,6 +1,6 @@
 # How This `.claude` Got This Way
 
-This is a Claude Code configuration directory that grew from a vanilla install into a layered system of 35 skills, 40+ hooks, 10 pipelines, and three persistence layers. It was built by one person over many sessions, mostly by experimenting and then figuring out how the experiments relate.
+This is a Claude Code configuration directory that grew from a vanilla install into a layered system of 45 skills, 48 hooks, 10 pipelines, and three persistence layers. It was built by one person over many sessions, mostly by experimenting and then figuring out how the experiments relate.
 
 If you use Claude Code and know what `CLAUDE.md`, `settings.json`, and hooks are, this document explains what's here and why.
 
@@ -82,9 +82,9 @@ None of this was designed top-down. It grew from individual experiments, each tr
 
 ### Persistence and memory across sessions
 
-- **Mulch** — Structured expertise records in JSONL that accumulate across sessions and live in git. Six record types: convention, pattern, failure, decision, reference, guide. Each record carries a classification (foundational, tactical, operational, observational), and tags from a taxonomy namespace system (scope, assumption, source, lifecycle, etc.). Organized by domain — three here: hooks, skills, infrastructure. When you make a decision, mulch records why, what it rules out, and what assumptions it rests on — so the next session can `ml search "scope:<module>"` and find prior art instead of re-deriving from first principles. Outcome tracking closes the loop: `ml outcome <domain> <id> --status success/failure` records whether a decision actually worked.
+- **Mulch** — Structured expertise records in JSONL that accumulate across sessions and live in git. Six record types: convention, pattern, failure, decision, reference, guide. Each record carries a classification (foundational, tactical, operational, observational), and tags from a taxonomy namespace system (scope, assumption, source, lifecycle, etc.). Organized by domain — six here: hooks, skills, infrastructure, agents-dream, agents-gate-enforcer, agents-record-extractor. When you make a decision, mulch records why, what it rules out, and what assumptions it rests on — so the next session can `ml search "scope:<module>"` and find prior art instead of re-deriving from first principles. Outcome tracking closes the loop: `ml outcome <domain> <id> --status success/failure` records whether a decision actually worked.
 
-- **Seeds** — Git-native issue tracking in JSONL. Issues live in `.seeds/` and are tracked in git alongside the code. DAG-aware scheduling (`sd ready` returns unblocked work sorted by priority, `sd next` picks the highest-priority unblocked task), atomic task claiming for multi-agent workflows (`sd claim` sets in_progress + assignee, fails if already claimed), priority sorting, dependency wiring (`--blocked-by`). Three instances in this repo: main (skill tree work), autoresearch (experiment tasks), and foxhound (MCP server work) — each subsystem tracks its own work. Templates (`sd tpl pour`) scaffold recurring workflows like codebook enrichment cycles.
+- **Seeds** — Git-native issue tracking in JSONL. Issues live in `.seeds/` and are tracked in git alongside the code. DAG-aware scheduling (`sd ready` returns unblocked work sorted by priority, `sd next` picks the highest-priority unblocked task), atomic task claiming for multi-agent workflows (`sd claim` sets in_progress + assignee, fails if already claimed), priority sorting, dependency wiring (`--blocked-by`). Two instances in this repo: main (skill tree work) and autoresearch (experiment tasks) — each subsystem tracks its own work. Templates (`sd tpl pour`) scaffold recurring workflows like codebook enrichment cycles.
 
 - **Handoff structure** — Session continuity protocol. When context window usage gets critical — specifically, when PreCompact fires (the most reliable signal, no percentage guessing) — a `HANDOFF.md` gets written so a fresh session can resume where the last one left off. The `check-handoff` skill reads it on startup, validates referenced files still exist, summarizes state, and proposes a session plan. Before writing a handoff, the system runs assumption checks against mulch, README seam checks, and seeds cross-references — cleaning up loose ends before handing off.
 
@@ -94,9 +94,9 @@ None of this was designed top-down. It grew from individual experiments, each tr
 
 ### Automation and reactivity
 
-- **Hooks system** — 30+ hook scripts across 6 event types: SessionStart (prime context on startup), PreToolUse (inject guidance before a tool fires), PostToolUse (capture outcomes after), UserPromptSubmit (enhance user prompts), PreCompact (save state before context compression), TaskCompleted. Each script is stateless — state lives in `.mulch/` and `.seeds/`, not in the scripts. The scripts don't call each other except through shared caches in `/tmp/`. All hooks must be idempotent and respect the timeouts configured in `settings.json`.
+- **Hooks system** — 48 hooks across 6 event types: SessionStart (prime context on startup), PreToolUse (inject guidance before a tool fires), PostToolUse (capture outcomes after), UserPromptSubmit (enhance user prompts), PreCompact (save state before context compression), TaskCompleted. Each script is stateless — state lives in `.mulch/` and `.seeds/`, not in the scripts. The scripts don't call each other directly, but share state through `/tmp/` caches and `anti-pattern-report.txt`. All hooks must be idempotent and respect the timeouts configured in `settings.json`.
 
-- **Session start priming** — When a session begins, a cascade of 13 SessionStart hooks fires. The ordering matters because 5 are async and can race:
+- **Session start priming** — When a session begins, a cascade of 18 SessionStart hooks fires (nested in 3 top-level settings.json entries). The ordering matters because async hooks can race:
   - `codebase-analytics.sh` (sync, runs first) — produces a compact codebase snapshot (~100-140 lines, ~1200 tokens) covering languages, structure, symbols, churn, largest files, recent commits, working changes, branches, tech debt markers, QA infrastructure, and archetype signals. Detects monorepo sub-packages. Cached per git state for 5 minutes.
   - `seeds-session-inject.sh` — loads issue context, summarizes ready/blocked work count
   - `check-memory-freshness.sh` — warns about stale memories by checking `last-verified` and `ttl-days` fields
@@ -106,6 +106,10 @@ None of this was designed top-down. It grew from individual experiments, each tr
   - `anti-pattern-summary.sh` — surfaces anti-pattern scan counts from the cached report
   - `backup-settings.sh` — snapshots `settings.json` on start, detects mid-session mutation using autoresearch's guard/restore pattern
   - `readme-seam-check.sh` — compares README claims against codebase ground truth (follows the measure-leverage scorecard pattern: quiet on success)
+  - `apply-file-overrides.sh` — copies local file-level overrides into plugin cache
+  - `override-audit.sh` — detects plugin override version drift
+  - `rules-scaffold.sh` — scaffolds `.claude/rules/` from project signals (idempotent)
+  - `dream-trigger-hook.sh` — counts accumulated signal and offers /dream when thresholds met
 
 - **Prompt enhancer** — A UserPromptSubmit hook that uses Haiku (claude-haiku-4-5) to bridge the gap between raw codebase analytics and user intent. The value proposition: things a small model can derive cheaply that would cost the large model multiple tool calls — intent-to-file mapping, relevance filtering, change connection.
 
@@ -124,12 +128,10 @@ None of this was designed top-down. It grew from individual experiments, each tr
 
   It also detects retries (same command in last 5 journal entries), extracts the first meaningful error line, and captures `[SNAG]` markers from the model's own output. The journal is capped at 100KB with oldest-half-dropped rotation. Downstream consumers: a checkpoint hook reads the journal at skill boundaries for high-risk skills, and `failure-journal-sweep.sh` (PreCompact) surfaces unresolved errors before context compression.
 
-- **Anti-pattern pipeline** — Five scripts, one pipeline that wasn't designed as a pipeline but grew into one:
-  1. `anti-pattern-scan.sh` — detects risk signals by running rule-driven pattern matching against git-tracked source files. Rules are loaded from a rules file, each with a pattern, negative-pattern window, and severity. Results are cached per git state in `/tmp/` for 5 minutes.
-  2. `anti-pattern-query.sh` — unified query interface with three modes: `scan` (full scan), `summary` (count), `inject` (context slice for a specific skill)
-  3. `anti-pattern-hook.sh` — PreToolUse hook that injects relevant findings when consumer skills are invoked
-  4. `anti-pattern-summary.sh` — SessionStart hook that surfaces the finding count as a one-liner
-  5. The `/tmp/` cache is the implicit bus — the scan produces it, the other four scripts consume it
+- **Anti-pattern pipeline** — Three scripts, one pipeline that wasn't designed as a pipeline but grew into one:
+  1. `anti-pattern-scan.sh` — detects risk signals by running rule-driven pattern matching against git-tracked source files. Rules are loaded from a rules file, each with a pattern, negative-pattern window, and severity. Results are cached in `anti-pattern-report.txt`.
+  2. `anti-pattern-query.sh` — unified query interface with three modes: `scan` (full scan), `summary` (count), `inject` (context slice for a specific skill). The inject mode replaced the former `anti-pattern-hook.sh`.
+  3. `anti-pattern-summary.sh` — SessionStart hook that surfaces the finding count as a one-liner
 
 - **Context pressure** — A PreCompact hook. PreCompact fires when the context window is being compacted — the most reliable signal of context pressure, since it's an actual system event rather than a percentage estimate. When it fires, it does three things: warns that context is critical and remaining work should be handed off, checkpoints mulch state (prompts to record any in-flight expertise before context is lost), and checkpoints seeds state (counts in-progress issues and prompts to update them with current status). Then it triggers handoff consideration.
 
@@ -172,9 +174,11 @@ None of this was designed top-down. It grew from individual experiments, each tr
 
 - **Override management** — When the superpowers plugin updates upstream, local skill overrides might conflict. There are currently 15 active overrides that add eval checkpoints, context MCP library lookups, mulching, merged/deprecated skill redirects, and skill-creation customizations. A four-part system manages the lifecycle:
   1. `plugin-override-guidebook.md` — documents the protocol, tracks active overrides with version numbers and what each override adds
-  2. `override-audit.sh` — detects version drift and assesses override value
-  3. `override-prefilter.sh` — checks which overrides need re-evaluation after a plugin update (runs at SessionStart)
-  4. A three-verdict protocol resolves each override:
+  2. `override-audit.sh` — detects version drift and assesses override value (SessionStart)
+  3. `override-prefilter.sh` — checks which overrides need re-evaluation after a plugin update
+  4. `apply-file-overrides.sh` — copies local overrides into plugin cache (SessionStart)
+  5. `override-ctl.sh` + `update-override-version.sh` — manage override lifecycle
+  6. A three-verdict protocol resolves each override:
 
   | Verdict | When | Action |
   |---------|------|--------|
@@ -277,12 +281,12 @@ The audit measures P3 by checking whether a skill's diffusable insights actually
 The current system has 6 layers. Each emerged from experiments becoming infrastructure — not from a designed architecture.
 
 ```
-L5  ORCHESTRATION    pipelines.yaml — 10 named pipelines, 4 cross-cutting gates
-L4  COGNITION        cognitive-guardrails (11 checks), eval-protocol (180+ checkpoints)
-L3  KNOWLEDGE        foxhound (6 tiers) + context MCP (FTS5) — dual search
-L2  AUTOMATION       30+ hooks across 6 event types, prompt-enhancer (Haiku)
-L1  PERSISTENCE      3x seeds, 3x mulch (3 domains), memory files, autoresearch evidence
-L0  RUNTIME          settings.json, 7 plugins, MCP servers, permissions
+L5  ORCHESTRATION    pipelines.yaml — 10 active pipelines, 4 cross-cutting gates
+L4  COGNITION        cognitive-guardrails (11 checks), eval-protocol (180+ checkpoints), 3 agents
+L3  KNOWLEDGE        foxhound (6 tiers + session) + context MCP (FTS5) — dual search
+L2  AUTOMATION       48 hooks across 6 event types, prompt-enhancer (Haiku)
+L1  PERSISTENCE      2x seeds, 2x mulch (10 domains), memory files, autoresearch evidence
+L0  RUNTIME          settings.json, 11 plugins, MCP servers, permissions
 ```
 
 ### L0: Runtime
@@ -290,7 +294,7 @@ L0  RUNTIME          settings.json, 7 plugins, MCP servers, permissions
 The substrate everything else runs on.
 
 - `settings.json` wires hooks to scripts and configures permissions. This is where automation lives — not in CLAUDE.md. The file contains hook definitions mapping event types to shell scripts with timeout configurations.
-- 7 plugins: superpowers (skill framework — the foundation for all skills), cognitive-guardrails (bias checks), context-mode (output sandbox), frontend-design (UI generation), code-simplifier (post-implementation cleanup), ralph-loop (recurring task runner), plus LSP plugins (TypeScript via typescript-lsp, Python via pyright-lsp) for language intelligence.
+- 11 plugins: superpowers (skill framework — the foundation for all skills), cognitive-guardrails (bias checks), context-mode (output sandbox), frontend-design (UI generation), code-simplifier (post-implementation cleanup), ralph-loop (recurring task runner), pr-review-toolkit (PR review agents), plugin-dev (plugin development tools), claude-code-setup (automation recommender), plus LSP plugins (TypeScript via typescript-lsp, Python via pyright-lsp) for language intelligence.
 - MCP servers: foxhound for unified search across all indexed knowledge.
 - Two CLAUDE.md files with different scopes: the global `~/.claude/CLAUDE.md` is loaded in ALL projects and sets behavioral defaults, routing rules for the knowledge infrastructure, cognitive guardrail trigger conditions, and a dictionary of precise terms (pipeline vs stage vs gate vs phase vs wave vs task vs step vs checkpoint — these have exact meanings here). The project-level `.claude/CLAUDE.md` describes this specific repo's structure, conventions, seams, subsystem boundaries, gotchas, and caching topology.
 
@@ -298,32 +302,32 @@ The substrate everything else runs on.
 
 Four systems that give sessions memory:
 
-- **Mulch** — expertise records in `.mulch/expertise/`. Three domains: hooks, skills, infrastructure. Each record has a type (convention, decision, failure, etc.), classification (foundational/tactical/operational/observational), and taxonomy tags. Queryable via `ml search`. Records are append-only JSONL — git tracks the history.
-- **Seeds** — issue tracking in `.seeds/issues.jsonl`. Three instances: main repo, autoresearch, foxhound. DAG-aware scheduling, priority sorting, atomic claiming. Cross-referenced via `sd-cross-ref.sh` which queries both global and autoresearch instances.
+- **Mulch** — expertise records in `.mulch/expertise/`. Six domains: hooks, skills, infrastructure, agents-dream, agents-gate-enforcer, agents-record-extractor. Each record has a type (convention, decision, failure, etc.), classification (foundational/tactical/operational/observational), and taxonomy tags. Queryable via `ml search`. Records are append-only JSONL — git tracks the history.
+- **Seeds** — issue tracking in `.seeds/issues.jsonl`. Two instances: main repo and autoresearch. DAG-aware scheduling, priority sorting, atomic claiming. Cross-referenced via `sd-cross-ref.sh` which queries both global and autoresearch instances.
 - **Memory** — auto-memory files in `projects/.../memory/`. User preferences, feedback corrections, project state, external references. Indexed by `MEMORY.md`. Freshness-checked on SessionStart.
 - **Evidence** — autoresearch evidence records in `autoresearch/evidence/`. One JSON file per skill (34 total) with empirical tier, attributed cloth scores, loom hit rates, behavioral pattern detection, injection conversion rates, and flags (`contradiction`, `stale_evidence`, `weak_injection`). Built by `build_evidence.py` from raw `results.jsonl`.
 
 ### L2: Automation
 
-30+ hooks are the connective tissue — they're what make P1 (integration) real at runtime.
+48 hooks are the connective tissue — they're what make P1 (integration) real at runtime. Settings.json uses nested `hooks` arrays within top-level entries, so 3 top-level SessionStart entries expand to 18 sub-hooks.
 
-Six event types, with actual hook counts from settings.json:
-- **SessionStart** (13 hooks, 5 async): codebase analytics, seeds priming, memory freshness, plugin override checks, observability scan, CLAUDE.md nudge, anti-pattern summary, settings backup, README seam check, foxhound health check, context freshness check.
-- **PreToolUse** (6 hooks): anti-pattern injection, context MCP nudge (on Read/WebSearch), foxhound nudge (on Skill for research skills), skill context injection (on Skill for planning skills), pipeline stage detection (on Skill), context-mode subagent routing.
-- **PostToolUse** (5 hooks): skill close-loop bus (on Skill), eval capture (on Skill), failure journal (on Bash), context MCP post-fetch (on WebFetch/WebSearch), lint prototype (on Skill).
-- **UserPromptSubmit** (1 hook): prompt enhancer (Haiku).
-- **PreCompact** (2 hooks): context pressure warning + state checkpointing, failure journal sweep.
-- **TaskCompleted**: pipeline completion tracking.
+Six event types, with actual hook counts:
+- **SessionStart** (18 hooks): codebase analytics, seeds priming, mulch priming, memory freshness, plugin override checks (audit + apply-file-overrides + check-plugin-overrides), observability scan, CLAUDE.md nudge, anti-pattern summary, settings backup, README seam check, foxhound health, context freshness, rules scaffold, dream trigger, context-mode init.
+- **PreToolUse** (10 hooks): context MCP nudge (on Read/WebSearch/WebFetch), ccstatusline, pipeline stage detection (on Skill), foxhound nudge (on Skill), context-mode routing, subagent preflight (on Agent), rules injection (on Edit/Write), brownfield flow check (on Edit/Write), statusline.
+- **PostToolUse** (11 hooks): failure journal (on Bash), context MCP post-fetch (on WebFetch/WebSearch), eval capture (on Skill), skill close-loop bus (on Skill), hookify rule check (on Skill), update-config detection (on Skill), failure journal tool (on Edit/Write/Agent/mcp), edit quality check (on Edit/Write), subagent postflight (on Agent), context turn tracker.
+- **UserPromptSubmit** (6 hooks): ccstatusline, context handoff trigger, context usage logger, prompt enhancer (Haiku), statusline.
+- **PreCompact** (2 hooks): context pressure warning, failure journal sweep.
+- **TaskCompleted** (1 hook): skill close-loop.
 
 Three emergent multiplexers — things that weren't designed as buses but grew into them:
-1. **PostToolUse:Skill bus** — eval-capture, skill-closeloop, hookify rule check, and pipeline-stage all fire on every skill completion. New "after skill finishes" behavior goes here. This is the skill lifecycle bus.
-2. **Anti-pattern pipeline** — 5 scripts sharing state through `/tmp/` caches keyed by git state, functioning as scan → cache → query → inject → summarize. The cache is the implicit message bus.
+1. **PostToolUse:Skill bus** — eval-capture, skill-closeloop, hookify rule check, and update-config detection all fire on every skill completion. New "after skill finishes" behavior goes here. This is the skill lifecycle bus.
+2. **Anti-pattern pipeline** — 3 scripts sharing state through `anti-pattern-report.txt`, functioning as scan → query (3 modes) → summarize.
 3. **Caching topology** — scripts share state through `/tmp/` caches. The producer must run before consumers:
 
    | Cache | Producer | Consumers |
    |-------|----------|-----------|
    | `/tmp/codebase-analytics-*` | `codebase-analytics.sh` (sync) | `anti-pattern-summary.sh`, `readme-seam-check.sh`, `prompt-enhancer.sh` |
-   | `/tmp/anti-pattern-*` | `anti-pattern-scan.sh` (async) | `anti-pattern-hook.sh`, `anti-pattern-query.sh` |
+   | `anti-pattern-report.txt` | `anti-pattern-scan.sh` (async) | `anti-pattern-query.sh`, `anti-pattern-summary.sh` |
    | `/tmp/enhancer-*` | `prompt-enhancer.sh` | (don't duplicate its file-relevance work) |
 
    Cache races between async hooks are a real operational concern. The 5-minute TTL and git-state keying help but don't eliminate all races.
@@ -343,6 +347,7 @@ Systems that check the quality of decisions, not just outputs:
 
 - **Cognitive guardrails** — 11 bias interrupts wired into CLAUDE.md with specific trigger conditions and into pipeline gates for automatic enforcement. The `decision-check` gate fires `wysiati` + `overconfidence` at plan-to-execute, `substitution` at execute-to-verify. These fire regardless of which pipeline you're in.
 - **Eval protocol** — expect/capture/grade at workflow phase transitions. 180+ `[eval:]` checkpoints across the skill tree. The `quality-grade` pipeline gate runs simplify → eval-protocol to grade recommendations before action at verify/land stages.
+- **Agents** — 3 autonomous agents in `agents/`, each with dedicated mulch expertise domains: **dream-agent** (cross-session knowledge consolidation — enrichment, detect-gaps, integrate modes, invoked via `/dream`), **gate-enforcer** (pipeline gate verification — guardrails, quality grading, claim verification, dispatched by skills at gate transitions), **record-extractor** (extract decisions/conventions/failures from skill artifacts at close-loop). Each has principle-pipeline templates in `agents/dream-templates/`.
 
 ### L5: Orchestration
 
@@ -363,21 +368,23 @@ Failed experiments and superseded designs live in `archive/`. Agent journals fro
 
 | Metric | Count |
 |--------|-------|
-| Skills | 35 |
+| Skills | 45 |
 | Eval checkpoints | 180+ |
 | Cross-references between skills | 160+ |
-| Hook scripts | 40+ |
+| Hook bindings (total) | 48 |
+| Hook scripts | 55 |
 | Hook event types | 6 |
-| Named pipelines | 10 |
+| Named pipelines | 10 active + 4 forming/planned |
 | Cross-cutting pipeline gates | 4 |
-| Plugin overrides | 15 |
-| Mulch domains | 3 |
-| Seeds instances | 3 |
+| Agents | 3 |
+| Plugins | 11 |
+| Mulch domains | 10 (6 main + 4 autoresearch) |
+| Seeds instances | 2 |
 | Memory files | 7 |
 | Autoresearch evidence records | 34 |
 | Reference codebases (A/B test fixtures) | 24 |
 | Codebook domains | 24 |
-| Shell script LOC | ~4,400 |
+| Shell script LOC | ~5,900 |
 
 ### Evidence maturity
 
@@ -392,9 +399,8 @@ Most of the system is still at tier 0 — validated by static analysis (cross-re
 
 ### Known issues
 
-The observability scan reports 6 high findings:
-- 3 dead references to scripts that were planned but never written (`check-skill-registry.sh`, `check-trigger-registry.sh`, `skill-tree-analytics.sh` — referenced in `2026-03-21-maximize-high-leverage.md`)
-- 1 dual-instance conflict (3 `.seeds/` instances — main, autoresearch, foxhound — can cause issue tracking confusion; mitigated by `sd-cross-ref.sh` but not eliminated)
+The observability scan reports 3 high findings:
+- 1 dual-instance conflict (2 `.seeds/` instances — main and autoresearch — intentional by design, mitigated by `sd-cross-ref.sh`)
 - 2 core autoresearch scripts (`grade.py` at 4 commits, `run_ab.py` at 4 commits) with no test files — core eval infrastructure that's untested by its own standards
 
 ### What's honest
